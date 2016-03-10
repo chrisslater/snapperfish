@@ -42,11 +42,14 @@ export default class App extends Component {
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
               <LinkContainer to="/about">
-                <NavItem eventKey={4}>About Us</NavItem>
+                <NavItem eventKey={1}>About Us</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/styleguide">
+                <NavItem eventKey={2}>Style Guide</NavItem>
               </LinkContainer>
             </Nav>
             <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+              <NavItem eventKey={3} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
                 <i className="fa fa-github"/>
               </NavItem>
             </Nav>
