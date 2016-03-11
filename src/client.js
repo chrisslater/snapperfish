@@ -13,6 +13,9 @@ import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import getRoutes from './routes';
 
+import {Themed} from 'rethemeable';
+import Theme from './theme/theme';
+
 const client = new ApiClient();
 const history = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');
@@ -41,14 +44,18 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
+console.log('meh: ', Themed, Theme);
+
 if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
     <Provider store={store} key="provider">
-      <div>
-        {component}
-        <DevTools />
-      </div>
+      <Themed theme={Theme}>
+        <div>
+          {component}
+          <DevTools />
+        </div>
+      </Themed>
     </Provider>,
     dest
   );

@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
+import {Themeable} from 'rethemeable';
 
-export default class About extends Component {
+@Themeable
+export default class Button extends Component {
+
+
   render() {
+    console.log('button styles', this.theme);
+    const theme = this.theme;
+
     return (
-      <button>Button</button>
+      <button className={theme.Button}>Button</button>
     );
   }
 }
