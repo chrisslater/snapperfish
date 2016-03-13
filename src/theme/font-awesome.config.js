@@ -11,8 +11,8 @@ module.exports = {
     mixins: true,
     core: true,
     icons: true,
-    larger: true,
+    larger: false,
     path: true,
-    animated: true,
+    animated: false,
   }
 };

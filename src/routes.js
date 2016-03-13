@@ -6,7 +6,6 @@ import {
 import {
   App,
   Home,
-  About,
   StyleGuide,
   NotFound,
 } from 'containers';
@@ -21,7 +20,6 @@ export default () => {
       <IndexRoute component={Home}/>
 
       { /* Routes */ }
-      <Route path="about" component={About}/>
       <Route path="styleguide" component={StyleGuide}/>
 
       { /* Catch all route */ }
