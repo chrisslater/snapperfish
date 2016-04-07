@@ -44,8 +44,6 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-console.log('meh: ', Themed, Theme);
-
 if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(

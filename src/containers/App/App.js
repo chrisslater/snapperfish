@@ -1,21 +1,15 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { IndexLink } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
-import { routeActions } from 'react-router-redux';
 import config from '../../config';
 
-@connect(
-  state => ({user: state.auth.user}),
-  {pushState: routeActions.push})
 export default class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
-    pushState: PropTypes.func.isRequired
+    children: PropTypes.object.isRequired
   };
 
   static contextTypes = {
