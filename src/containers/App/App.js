@@ -11,15 +11,23 @@ import {connect} from 'react-redux';
 import * as contentTypesActions from 'redux/modules/contentTypes';
 import { isLoaded, load } from 'redux/modules/contentTypes';
 
+@asyncConnect([{
+  promise: ({ store: { dispatch, getState } }) => {
+    const promises = [];
+    if (!isLoaded(getState())) {
+      promises.push(dispatch(load()));
+    }
 
-
+    return Promise.all(promises);
+  }
+}])
 @connect(
   state => ({
     contentTypes: state.contentTypes.types,
   }),
   {...contentTypesActions}
 )
-class App extends Component {
+export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     lunch: PropTypes.object.isRequired,
@@ -75,14 +83,3 @@ class App extends Component {
     );
   }
 }
-
-export default asyncConnect([{
-  promise: ({ store: { dispatch, getState } }) => {
-    const promises = [];
-    //if (!isLoaded(getState())) {
-      promises.push(dispatch(load()));
-    //}
-
-    return Promise.all(promises);
-  }
-}])(App);

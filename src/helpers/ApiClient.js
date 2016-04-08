@@ -2,7 +2,6 @@ import superagent from 'superagent';
 import config from '../config';
 import contentful from 'contentful';
 
-
 const contentfulApi = contentful.createClient({
   space: 'roofkhs3hdws',
   accessToken: '367e1129b9af076a9e89224663ffa43d3b705cd790962da11347684a29ca89bc'
@@ -55,9 +54,5 @@ class _ApiClient {
   }
 }
 
-
 const ApiClient = _ApiClient;
-
-
-
 export default ApiClient;
