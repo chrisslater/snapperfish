@@ -11,17 +11,7 @@ import {connect} from 'react-redux';
 import * as contentTypesActions from 'redux/modules/contentTypes';
 import { isLoaded, load } from 'redux/modules/contentTypes';
 
-import contentful from 'contentful';
 
-// @TODO: This needs to come from environment vars.
-const cont = contentful.createClient({
-  space: 'roofkhs3hdws',
-  accessToken: '367e1129b9af076a9e89224663ffa43d3b705cd790962da11347684a29ca89bc'
-});
-
-if (__CLIENT__) {
-  window.cont = cont;
-}
 
 @connect(
   state => ({
@@ -29,8 +19,6 @@ if (__CLIENT__) {
   }),
   {...contentTypesActions}
 )
-
-
 class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
@@ -89,13 +77,11 @@ class App extends Component {
 }
 
 export default asyncConnect([{
-  promise: ({ store: { dispatch, getState } }) => function () {
+  promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
-    console.log('woeking');
-    if (!isLoaded(getState())) {
-      console.log('woeking');
+    //if (!isLoaded(getState())) {
       promises.push(dispatch(load()));
-    }
+    //}
 
     return Promise.all(promises);
   }

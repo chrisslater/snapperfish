@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action = {}) {
+  console.log('action', state, action);
   switch (action.type) {
     case LOAD:
       return {
@@ -33,7 +34,10 @@ export function load() {
     promise: (client) => {
 
       console.log('client', client);
-      return client.get('/widget/load/param1/param2')
+
+
+
+      return client.getContentTypes();
     }// params not used, just shown as demonstration
   };
 }
