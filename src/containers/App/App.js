@@ -6,10 +6,42 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
 import config from '../../config';
+import { asyncConnect } from 'redux-async-connect';
+import {connect} from 'react-redux';
+import * as contentTypesActions from 'redux/modules/contentTypes';
+import { isLoaded, load } from 'redux/modules/contentTypes';
 
+import contentful from 'contentful';
+
+// @TODO: This needs to come from environment vars.
+const cont = contentful.createClient({
+  space: 'roofkhs3hdws',
+  accessToken: '367e1129b9af076a9e89224663ffa43d3b705cd790962da11347684a29ca89bc'
+});
+
+if (__CLIENT__) {
+  window.cont = cont;
+}
+
+
+@asyncConnect([{
+  deferred: true,
+  promise: ({ store: { dispatch, getState } }) => function () {
+    if (!isLoaded(getState())) {
+      return dispatch(load());
+    }
+  }
+}])
+@connect(
+  state => ({
+    contentTypes: state.contentTypes.types,
+  }),
+  {...contentTypesActions}
+)
 export default class App extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
+    lunch: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
@@ -18,6 +50,8 @@ export default class App extends Component {
 
   render() {
     const styles = require('./App.scss');
+
+    console.log(this.props);
 
     return (
       <div className={styles.app}>
