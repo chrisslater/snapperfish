@@ -11,9 +11,12 @@ const initialState = {
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-
+    case LOAD:
+      return {
+        loading: true,
+      };
     case ADD:
-      return state.push(action.payload);
+      return state.types.push(action.payload);
     default:
       return state;
   }

@@ -23,22 +23,15 @@ if (__CLIENT__) {
   window.cont = cont;
 }
 
-
-@asyncConnect([{
-  deferred: true,
-  promise: ({ store: { dispatch, getState } }) => function () {
-    if (!isLoaded(getState())) {
-      return dispatch(load());
-    }
-  }
-}])
 @connect(
   state => ({
     contentTypes: state.contentTypes.types,
   }),
   {...contentTypesActions}
 )
-export default class App extends Component {
+
+
+class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     lunch: PropTypes.object.isRequired,
@@ -94,3 +87,16 @@ export default class App extends Component {
     );
   }
 }
+
+export default asyncConnect([{
+  promise: ({ store: { dispatch, getState } }) => function () {
+    const promises = [];
+    console.log('woeking');
+    if (!isLoaded(getState())) {
+      console.log('woeking');
+      promises.push(dispatch(load()));
+    }
+
+    return Promise.all(promises);
+  }
+}])(App);
