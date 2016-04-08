@@ -1,3 +1,5 @@
+/* @flow */
+
 const LOAD = 'contentTypes/LOAD';
 const LOAD_SUCCESS = 'contentTypes/LOAD_SUCCESS';
 const LOAD_FAIL = 'contentTypes/LOAD_FAIL';
@@ -6,23 +8,23 @@ const initialState = {
 };
 
 class ContentType {
-  constructor(props) {
+  constructor(props: Object) {
     Object.assign(this, props);
   }
 }
 
-function processContentTypes(contentTypes) {
+function processContentTypes(contentTypes: Array) {
   const _contentTypes = {};
-  contentTypes.forEach((type) => {
-    _contentTypes[type.name] = new ContentType({
-      id: type.sys.id,
-      name: type.name,
+  contentTypes.forEach(({ name, sys: { id } }) => {
+    _contentTypes[name] = new ContentType({
+      id: id,
+      name: name,
     });
   });
   return _contentTypes;
 }
 
-export default function reducer(state = initialState, action = {}) {
+export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
     case LOAD_SUCCESS:
       return Object.assign({
@@ -34,11 +36,11 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function isLoaded(globalState) {
+export function isLoaded(globalState: Object): boolean {
   return globalState.contentTypes && globalState.contentTypes.isLoaded;
 }
 
-export function load() {
+export function load(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => {
