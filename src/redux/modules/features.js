@@ -70,7 +70,7 @@ function mapImage(image: ImageRaw) {
   });
 }
 
-export function mapFeature(feature: Object) {
+export function mapFeature(feature: Object): Feature {
   const {
     fields: {
       photo: image
@@ -90,7 +90,7 @@ export function mapFeature(feature: Object) {
   return new Feature(props);
 }
 
-export function mapFeatures(features: Array) {
+export function mapFeatures(features: Array<Object>): Array<Feature> {
   return features.map(feature => mapFeature(feature));
 }
 

@@ -19,8 +19,6 @@ export default class App extends Component {
   render() {
     const styles = require('./App.scss');
 
-    console.log(this.props);
-
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head}/>

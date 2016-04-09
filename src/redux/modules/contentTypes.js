@@ -10,6 +10,9 @@ const initialState = {
 type ContentTypeRaw = { name: string; sys: { id: string}; };
 
 class ContentType {
+  id: number;
+  name: string;
+
   constructor(props: Object) {
     Object.assign(this, props);
   }
@@ -23,7 +26,7 @@ export function mapContentType({ name, sys: { id } }: ContentTypeRaw): ContentTy
   });
 }
 
-export function mapContentTypes(contentTypes: Array): Object {
+export function mapContentTypes(contentTypes: Array<Object>): Object {
   const _contentTypes = {};
   contentTypes.forEach(contentType => {
     const _contentType = mapContentType(contentType);
