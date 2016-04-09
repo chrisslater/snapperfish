@@ -7,8 +7,6 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
-import {connect} from 'react-redux';
-import * as contentTypesActions from 'redux/modules/contentTypes';
 import { isLoaded, load } from 'redux/modules/contentTypes';
 
 @asyncConnect([{
@@ -21,16 +19,9 @@ import { isLoaded, load } from 'redux/modules/contentTypes';
     return Promise.all(promises);
   }
 }])
-@connect(
-  state => ({
-    contentTypes: state.contentTypes.types,
-  }),
-  {...contentTypesActions}
-)
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
-    lunch: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
