@@ -7,22 +7,31 @@ const initialState = {
   isLoaded: false
 };
 
+type ContentTypeRaw = { name: string; sys: { id: string}; };
+
 class ContentType {
   constructor(props: Object) {
     Object.assign(this, props);
   }
 }
 
-export function mapContentTypes(contentTypes: Array) {
+
+export function mapContentType({ name, sys: { id } }: ContentTypeRaw): ContentType {
+  return new ContentType({
+    id: id,
+    name: name,
+  });
+}
+
+export function mapContentTypes(contentTypes: Array): Object {
   const _contentTypes = {};
-  contentTypes.forEach(({ name, sys: { id } }) => {
-    _contentTypes[name] = new ContentType({
-      id: id,
-      name: name,
-    });
+  contentTypes.forEach(contentType => {
+    const _contentType = mapContentType(contentType);
+    _contentTypes[_contentType.name] = _contentType;
   });
   return _contentTypes;
 }
+
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
     case LOAD:

@@ -18,53 +18,80 @@ class Image {
   }
 }
 
-function processFeatures(features: Array) {
-  return features.map(({
+type ImageRaw = {
+  fields: {
+    file: {
+      contentType: string;
+      url: string;
+      details: {
+        image: {
+          height: number;
+          width: number;
+        };
+        size: number;
+      };
+    };
+    title: string;
+  };
+  sys: {
+    id: string;
+  };
+};
+
+function mapImage(image: ImageRaw) {
+  const {
     fields: {
-      photo: _image
+      file: {
+        contentType: mime,
+        url: url,
+        details: {
+          image: {
+            height: height,
+            width: width,
+            },
+          size: size,
+        },
+      },
+      title: title,
     },
     sys: {
-      id: featureId
-    }
-  }) => {
-    const props = {};
+      id: imageId,
+    },
+  } = image;
 
-    if (_image) {
-      const {
-        fields: {
-          file: {
-            contentType: mime,
-            url: url,
-            details: {
-              image: {
-                height: height,
-                width: width,
-              },
-              size: size,
-            },
-          },
-          title: title,
-        },
-        sys: {
-          id: imageId,
-        }
-      } = _image;
-
-      props.image = new Image({
-        id: imageId,
-        mime: mime,
-        url: url,
-        width: width,
-        height: height,
-        size: size,
-        title: title,
-      });
-    }
-
-    props.id = featureId;
-
-    return new Feature(props);
+  return new Image({
+    id: imageId,
+    mime: mime,
+    url: url,
+    width: width,
+    height: height,
+    size: size,
+    title: title,
   });
+}
+
+export function mapFeature(feature: Object) {
+  const {
+    fields: {
+      photo: image
+      },
+    sys: {
+      id: featureId
+      }
+    } = feature;
+  const props = {};
+
+  props.id = featureId;
+
+  if (image) {
+    props.image = mapImage(image);
+  }
+
+  return new Feature(props);
+}
+
+export function mapFeatures(features: Array) {
+  return features.map(feature => mapFeature(feature));
 }
 
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
@@ -72,7 +99,7 @@ export default function reducer(state: Object = initialState, action: Object = {
     case LOAD_SUCCESS:
       return Object.assign({
         isLoaded: true,
-        items: processFeatures(action.result.items)
+        items: mapFeatures(action.result.items)
       });
 
     default:

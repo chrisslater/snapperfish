@@ -69,7 +69,6 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.props.features);
     return (
       <div>
         <Helmet title="Home"/>
