@@ -6,19 +6,7 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
 import config from '../../config';
-import { asyncConnect } from 'redux-async-connect';
-import { isLoaded, load } from 'redux/modules/contentTypes';
 
-@asyncConnect([{
-  promise: ({ store: { dispatch, getState } }) => {
-    const promises = [];
-    if (!isLoaded(getState())) {
-      promises.push(dispatch(load()));
-    }
-
-    return Promise.all(promises);
-  }
-}])
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,

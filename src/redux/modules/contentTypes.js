@@ -13,7 +13,7 @@ class ContentType {
   }
 }
 
-function processContentTypes(contentTypes: Array) {
+export function mapContentTypes(contentTypes: Array) {
   const _contentTypes = {};
   contentTypes.forEach(({ name, sys: { id } }) => {
     _contentTypes[name] = new ContentType({
@@ -23,13 +23,17 @@ function processContentTypes(contentTypes: Array) {
   });
   return _contentTypes;
 }
-
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
+    case LOAD:
+      return {
+        isLoaded: false
+      };
+
     case LOAD_SUCCESS:
       return Object.assign({
         isLoaded: true,
-      }, processContentTypes(action.result.items));
+      }, mapContentTypes(action.result.items));
 
     default:
       return state;

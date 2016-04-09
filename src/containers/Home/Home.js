@@ -1,18 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import config from '../../config';
 import Helmet from 'react-helmet';
-import { isLoaded, load } from 'redux/modules/features';
 import { asyncConnect } from 'redux-async-connect';
 import {connect} from 'react-redux';
+
+import {
+  isLoaded as isContentTypesLoaded,
+  load as loadContentTypes,
+  mapContentTypes,
+} from 'redux/modules/contentTypes';
+import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/modules/features';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
 
-    if (!isLoaded(getState())) {
-      let contentTypes = getState().contentTypes;
-      if(contentTypes && contentTypes.Image) {
-        promises.push(dispatch(load(contentTypes.Image.id)));
+    if (!isFeaturesLoaded(getState())) {
+      if (!isContentTypesLoaded(getState())) {
+        const promiseContentTypes = dispatch(loadContentTypes());
+        const promiseFeatures = new Promise((resolve) => {
+          promiseContentTypes.then((res) => {
+            const contentTypes = mapContentTypes(res.items);
+            resolve(dispatch(loadFeatures(contentTypes.Image.id)));
+          });
+        });
+
+        promises.push(promiseContentTypes);
+        promises.push(promiseFeatures);
       }
     }
 
@@ -34,29 +48,28 @@ export default class Home extends Component {
     features: []
   };
 
+  featuresMarkup() {
+    return this.props.features.map((feature) => {
+      const {
+        id,
+        image: {
+          url,
+          width,
+          height,
+          title,
+        }
+      } = feature;
+
+      return (
+        <a key={'feature_' + id}>
+          <img src={url} width={width} height={height} alt={title} title={title}/>
+        </a>
+      );
+    });
+  }
+
   render() {
     console.log(this.props.features);
-    const PHOTOS = [
-      {
-        src: '/gallery/evilspirit.png',
-        width: 384,
-        height: 384,
-        aspectRatio: 1,
-        lightboxImage: {
-          src: '/gallery/evilspirit.png'
-        }
-      },
-      {
-        src: '/gallery/wonderer.png',
-        width: 384,
-        height: 384,
-        aspectRatio: 1,
-        lightboxImage: {
-          src: '/gallery/wonderer.png'
-        }
-      }
-    ];
-
     return (
       <div>
         <Helmet title="Home"/>
@@ -69,22 +82,5 @@ export default class Home extends Component {
           {this.featuresMarkup()}
       </div>
     );
-  }
-
-  featuresMarkup() {
-    return this.props.features.map((feature) => {
-      const { id, image: {
-        url,
-        width,
-        height,
-        title,
-        }} = feature;
-
-      return (
-        <a key={'feature_' + id}>
-          <img src={url} width={width} height={height} alt={title} title={title}/>
-        </a>
-      );
-    });
   }
 }
