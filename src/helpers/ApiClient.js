@@ -3,8 +3,8 @@ import config from '../config';
 import contentful from 'contentful';
 
 const contentfulApi = contentful.createClient({
-  space: 'roofkhs3hdws',
-  accessToken: '367e1129b9af076a9e89224663ffa43d3b705cd790962da11347684a29ca89bc'
+  space: __CONTENTFUL_SPACE__,
+  accessToken: __CONTENTFUL_ACCESS_TOKEN__,
 });
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
