@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('dotenv').config();
 
 // Webpack config for development
 var fs = require('fs');
@@ -105,6 +106,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/webpack-stats\.json$/),
     new webpack.DefinePlugin({
+      __CONTENTFUL_SPACE_: process.env.CONTENTFUL_SPACE,
+      __CONTENTFUL_ACCESS_TOKEN__: process.env.CONTENTFUL_ACCESS_TOKEN,
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,

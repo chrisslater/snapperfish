@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('dotenv').config();
 
 // Webpack config for creating the production bundle.
 var path = require('path');
@@ -61,7 +62,8 @@ module.exports = {
       'process.env': {
         NODE_ENV: '"production"'
       },
-
+      __CONTENTFUL_SPACE_: process.env.CONTENTFUL_SPACE,
+      __CONTENTFUL_ACCESS_TOKEN__: process.env.CONTENTFUL_ACCESS_TOKEN,
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: false,
