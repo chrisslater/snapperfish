@@ -62,7 +62,7 @@ function mapImage(image: ImageRaw) {
   return new Image({
     id: imageId,
     mime: mime,
-    url: url,
+    src: url,
     width: width,
     height: height,
     size: size,

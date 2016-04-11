@@ -47,6 +47,10 @@ module.exports = {
   },
   progress: true,
   resolve: {
+    alias: {
+      conf: path.resolve(__dirname, 'conf', 'development' + '.js')
+    },
+
     modulesDirectories: [
       'src',
       'node_modules'
@@ -62,8 +66,6 @@ module.exports = {
       'process.env': {
         NODE_ENV: '"production"'
       },
-      __CONTENTFUL_SPACE_: process.env.CONTENTFUL_SPACE,
-      __CONTENTFUL_ACCESS_TOKEN__: process.env.CONTENTFUL_ACCESS_TOKEN,
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: false,

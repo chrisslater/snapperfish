@@ -1,5 +1,4 @@
 require('babel-polyfill');
-require('dotenv').config();
 
 // Webpack config for development
 var fs = require('fs');
@@ -8,6 +7,8 @@ var webpack = require('webpack');
 var assetsPath = path.resolve(__dirname, '../static/dist');
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
+
+console.log('ba', path.resolve(__dirname,'..', 'envConfig', 'development'));
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
@@ -95,7 +96,12 @@ module.exports = {
   },
   progress: true,
   resolve: {
+    alias: {
+      envConfig: path.resolve(__dirname, '..', 'envConfig', 'env-development'),
+    },
+
     modulesDirectories: [
+      'envConfig',
       'src',
       'node_modules'
     ],
@@ -106,8 +112,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/webpack-stats\.json$/),
     new webpack.DefinePlugin({
-      __CONTENTFUL_SPACE_: process.env.CONTENTFUL_SPACE,
-      __CONTENTFUL_ACCESS_TOKEN__: process.env.CONTENTFUL_ACCESS_TOKEN,
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,

@@ -2,9 +2,13 @@ import superagent from 'superagent';
 import config from '../config';
 import contentful from 'contentful';
 
+const env = require('env');
+
+console.log(env);
+
 const contentfulApi = contentful.createClient({
-  space: __CONTENTFUL_SPACE__,
-  accessToken: __CONTENTFUL_ACCESS_TOKEN__,
+  space: env.CONTENTFUL_SPACE,
+  accessToken: env.CONTENTFUL_ACCESS_TOKEN,
 });
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];

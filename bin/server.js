@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 require('../server.babel'); // babel registration (runtime transpilation for node)
-require('dotenv').config();
-
-
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
+
+
+//
+//console.log(conf);
+
 /**
  * Define isomorphic constants.
  */
@@ -12,8 +14,6 @@ global.__CLIENT__ = false;
 global.__SERVER__ = true;
 global.__DISABLE_SSR__ = false;  // <----- DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
-global.__CONTENTFUL_SPACE__ = process.env.CONTENTFUL_SPACE;
-global.__CONTENTFUL_ACCESS_TOKEN__ = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 if (__DEVELOPMENT__) {
   if (!require('piping')({

@@ -52,17 +52,12 @@ export default class Home extends Component {
     return this.props.features.map((feature) => {
       const {
         id,
-        image: {
-          url,
-          width,
-          height,
-          title,
-        }
+        image
       } = feature;
 
       return (
         <a key={'feature_' + id}>
-          <img src={url} width={width} height={height} alt={title} title={title}/>
+          <img {...image}/>
         </a>
       );
     });
