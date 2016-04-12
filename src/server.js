@@ -18,7 +18,10 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+import env from './env';
+
+//const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const targetUrl = 'https://cdn.contentful.com/spaces/' + env.CONTENTFUL_SPACE;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -33,6 +36,7 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 
 // Proxy to API server
 app.use('/api', (req, res) => {
+  console.log('api request', req);
   proxy.web(req, res, {target: targetUrl});
 });
 

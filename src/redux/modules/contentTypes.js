@@ -60,7 +60,7 @@ export function load(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => {
-      return client.getContentTypes();
+      return client.get('content_types');
     }
   };
 }
