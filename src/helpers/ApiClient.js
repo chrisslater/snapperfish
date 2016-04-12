@@ -1,10 +1,7 @@
 import superagent from 'superagent';
 import config from '../config';
 import contentful from 'contentful';
-
-const env = require('env');
-
-console.log(env);
+import env from 'env';
 
 const contentfulApi = contentful.createClient({
   space: env.CONTENTFUL_SPACE,
