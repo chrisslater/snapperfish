@@ -1,12 +1,27 @@
 import superagent from 'superagent';
 import config from '../config';
 import contentful from 'contentful';
+import Prismic from 'prismic.io';
 import env from 'env';
 
 const contentfulApi = contentful.createClient({
   space: env.CONTENTFUL_SPACE,
   accessToken: env.CONTENTFUL_ACCESS_TOKEN,
 });
+
+//const prismicPromise = Prismic.Api('https://snapperfish.prismic.io/api');
+//
+//function prismicApi (func) {
+//
+//  let test = prismicPromise.then((Api) => func(Api, Prismic));
+//  console.log('what comes back', test);
+//
+//  return Promise.resolve(test);
+//}
+//
+//if (__CLIENT__) {
+//  window.p = prismicApi;
+//}
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -49,6 +64,8 @@ class _ApiClient {
 
         request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));
       }));
+
+    //this.prismic = prismicApi;
 
     Object.assign(this, contentfulApi);
   }

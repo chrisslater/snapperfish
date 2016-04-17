@@ -43,7 +43,7 @@ function mapImage(image: ImageRaw) {
     fields: {
       file: {
         contentType: mime,
-        url: url,
+        url: src,
         details: {
           image: {
             height: height,
@@ -59,13 +59,25 @@ function mapImage(image: ImageRaw) {
     },
   } = image;
 
+  //const {
+  //  alt: alt,
+  //  dimensions: {
+  //    width: width,
+  //    height: height,
+  //  },
+  //  url: src,
+  //} = image;
+
+
+
   return new Image({
     id: imageId,
     mime: mime,
-    src: url,
+    src: src,
     width: width,
     height: height,
     size: size,
+    alt: title,
     title: title,
   });
 }
@@ -79,6 +91,18 @@ export function mapFeature(feature: Object): Feature {
       id: featureId
       }
     } = feature;
+
+  //const {
+  //  data: {
+  //    'feature.primary-image': {
+  //      value: {
+  //        main: image,
+  //      }
+  //    }
+  //  },
+  //  uid: featureId,
+  //} = feature;
+
   const props = {};
 
   props.id = featureId;
@@ -97,10 +121,17 @@ export function mapFeatures(features: Array<Object>): Array<Feature> {
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
     case LOAD_SUCCESS:
+
+      //console.log('w00t', action);
       return Object.assign({
         isLoaded: true,
         items: mapFeatures(action.result.items)
       });
+
+      //return Object.assign({
+      //  isLoaded: true,
+      //  items: mapFeatures(action.result.results)
+      //});
 
     default:
       return state;
@@ -121,3 +152,22 @@ export function load(id: string): Object {
     }
   };
 }
+
+
+/**
+ *  For using Prismic
+ */
+//export function load(): Object {
+//  return {
+//    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+//    promise: (client) => {
+//      return client.prismic((Api, Prismic) => {
+//        return Api
+//          .form('everything')
+//          .ref(Api.master())
+//          .query(Prismic.Predicates.at("document.type", "feature"))
+//          .submit();
+//      });
+//    }
+//  };
+//}

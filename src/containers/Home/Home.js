@@ -11,6 +11,19 @@ import {
 } from 'redux/modules/contentTypes';
 import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/modules/features';
 
+//@asyncConnect([{
+//  promise: ({ store: { dispatch, getState } }) => {
+//    const promises = [];
+//
+//    if (!isFeaturesLoaded(getState())) {
+//      const promiseFeatures = dispatch(loadFeatures());
+//      promises.push(promiseFeatures);
+//    }
+//
+//    return Promise.all(promises);
+//  }
+//}])
+
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
