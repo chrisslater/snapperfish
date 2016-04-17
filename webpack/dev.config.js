@@ -64,6 +64,7 @@ reactTransform[1].transforms.push({
 });
 
 module.exports = {
+  //devtool: "source-map",
   devtool: 'inline-source-map',
   context: path.resolve(__dirname, '..'),
   entry: {

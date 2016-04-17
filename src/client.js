@@ -16,7 +16,12 @@ import getRoutes from './routes';
 import {Themed} from 'rethemeable';
 import Theme from './theme/theme';
 
-const client = new ApiClient();
+function formatUrl(path) {
+  const adjustedPath = path[0] !== '/' ? '/' + path : path;
+  return '/api' + adjustedPath;
+}
+
+const client = new ApiClient(null, formatUrl);
 const history = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');
 const store = createStore(history, client, window.__data);

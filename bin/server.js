@@ -3,10 +3,6 @@ require('../server.babel'); // babel registration (runtime transpilation for nod
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 
-
-//
-//console.log(conf);
-
 /**
  * Define isomorphic constants.
  */

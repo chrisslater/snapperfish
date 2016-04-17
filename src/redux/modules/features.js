@@ -12,85 +12,92 @@ class Feature {
   }
 }
 
-class Image {
-  constructor(props: Object) {
-    Object.assign(this, props);
+class Features {
+  constructor(features = []) {
+    this.items = features;
   }
 }
 
-type ImageRaw = {
-  fields: {
-    file: {
-      contentType: string;
-      url: string;
-      details: {
-        image: {
-          height: number;
-          width: number;
-        };
-        size: number;
-      };
-    };
-    title: string;
-  };
-  sys: {
-    id: string;
-  };
-};
+//class Image {
+//  constructor(props: Object) {
+//    Object.assign(this, props);
+//  }
+//}
+//
+//type ImageRaw = {
+//  fields: {
+//    file: {
+//      contentType: string;
+//      url: string;
+//      details: {
+//        image: {
+//          height: number;
+//          width: number;
+//        };
+//        size: number;
+//      };
+//    };
+//    title: string;
+//  };
+//  sys: {
+//    id: string;
+//  };
+//};
 
-function mapImage(image: ImageRaw) {
-  const {
-    fields: {
-      file: {
-        contentType: mime,
-        url: src,
-        details: {
-          image: {
-            height: height,
-            width: width,
-            },
-          size: size,
-        },
-      },
-      title: title,
-    },
-    sys: {
-      id: imageId,
-    },
-  } = image;
-
-  //const {
-  //  alt: alt,
-  //  dimensions: {
-  //    width: width,
-  //    height: height,
-  //  },
-  //  url: src,
-  //} = image;
-
-
-
-  return new Image({
-    id: imageId,
-    mime: mime,
-    src: src,
-    width: width,
-    height: height,
-    size: size,
-    alt: title,
-    title: title,
-  });
-}
+//function mapImage(image) {
+//  const {
+//    fields: {
+//      file: {
+//        contentType: mime,
+//        url: src,
+//        details: {
+//          image: {
+//            height: height,
+//            width: width,
+//            },
+//          size: size,
+//        },
+//      },
+//      title: title,
+//    },
+//    sys: {
+//      id: imageId,
+//    },
+//  } = image;
+//
+//  //const {
+//  //  alt: alt,
+//  //  dimensions: {
+//  //    width: width,
+//  //    height: height,
+//  //  },
+//  //  url: src,
+//  //} = image;
+//
+//  return new Image({
+//    id: imageId,
+//    mime: mime,
+//    src: src,
+//    width: width,
+//    height: height,
+//    size: size,
+//    alt: title,
+//    title: title,
+//  });
+//}
 
 export function mapFeature(feature: Object): Feature {
+
   const {
-    fields: {
-      photo: image
-      },
+    //fields: {
+    //  photo: image
+    //},
     sys: {
-      id: featureId
+      id: Id
       }
     } = feature;
+
+
 
   //const {
   //  data: {
@@ -105,48 +112,37 @@ export function mapFeature(feature: Object): Feature {
 
   const props = {};
 
-  props.id = featureId;
+  props.id = Id;
 
-  if (image) {
-    props.image = mapImage(image);
-  }
+  //if (image) {
+  //  props.image = mapImage(image);
+  //}
 
   return new Feature(props);
 }
 
-export function mapFeatures(features: Array<Object>): Array<Feature> {
-  return features.map(feature => mapFeature(feature));
+export function mapFeatures(features: Array<Object>): Features {
+  return new Features(features.map(feature => mapFeature(feature)));
 }
 
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
     case LOAD_SUCCESS:
-
-      //console.log('w00t', action);
-      return Object.assign({
-        isLoaded: true,
-        items: mapFeatures(action.result.items)
-      });
-
-      //return Object.assign({
-      //  isLoaded: true,
-      //  items: mapFeatures(action.result.results)
-      //});
-
+      return mapFeatures(action.result.items)
     default:
       return state;
   }
 }
 
 export function isLoaded(globalState: Object): boolean {
-  return globalState.features && globalState.features.isLoaded;
+  return !!(globalState.features && globalState.features.items);
 }
 
 export function load(id: string): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => {
-      return client.getEntries({
+      return client.get('entries', {
         content_type: id,
       });
     }

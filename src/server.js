@@ -19,6 +19,7 @@ import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
 import env from './env';
+import superagent from 'superagent';
 
 //const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 const targetUrl = 'https://cdn.contentful.com/spaces/' + env.CONTENTFUL_SPACE;
@@ -31,13 +32,23 @@ const proxy = httpProxy.createProxyServer({
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
-
 app.use(Express.static(path.join(__dirname, '..', 'static')));
+
+function formatUrl (path) {
+  const adjustedPath = path[0] !== '/' ? '/' + path : path;
+  return targetUrl + adjustedPath;
+}
 
 // Proxy to API server
 app.use('/api', (req, res) => {
-  console.log('api request', req);
-  proxy.web(req, res, {target: targetUrl});
+  const client = new ApiClient(req, formatUrl, {
+    access_token: env.CONTENTFUL_ACCESS_TOKEN
+  });
+
+  client
+    .get(req.path, { params: req.params })
+    .then(body => res.send(body))
+    .catch(body => res.send(body));
 });
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
@@ -60,7 +71,9 @@ app.use((req, res) => {
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
-  const client = new ApiClient(req);
+  const client = new ApiClient(req, formatUrl, {
+    //access_token: env.CONTENTFUL_ACCESS_TOKEN
+  });
   const history = createHistory(req.originalUrl);
 
   const store = createStore(history, client);
