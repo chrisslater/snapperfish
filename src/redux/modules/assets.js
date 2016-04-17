@@ -5,11 +5,27 @@ class Asset {
   constructor(props: Object) {
     Object.assign(this, props);
   }
+
+  getFormattedDetails() {
+    return {
+      src: this.file.url,
+      width: this.details.image.width,
+      height: this.details.image.height,
+      alt: this.title,
+      title: this.title,
+    };
+  }
 }
 
 class Assets {
   constructor(assets = []) {
     this.items = assets;
+  }
+
+  getAssetById(id: string) {
+    return this.items.find((asset) => {
+      return (id === asset.id);
+    });
   }
 }
 

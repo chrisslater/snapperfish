@@ -16,6 +16,10 @@ class ContentType {
   constructor(props: Object) {
     Object.assign(this, props);
   }
+
+  getId() {
+    return this.id;
+  }
 }
 
 

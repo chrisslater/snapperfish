@@ -26,53 +26,86 @@ import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/module
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
-    const promises = [];
 
-    if (!isFeaturesLoaded(getState())) {
-      if (!isContentTypesLoaded(getState())) {
-        const promiseContentTypes = dispatch(loadContentTypes());
-        const promiseFeatures = new Promise((resolve) => {
-          promiseContentTypes.then((res) => {
-            const contentTypes = mapContentTypes(res.items);
-            resolve(dispatch(loadFeatures(contentTypes.Image.id)));
-          });
-        });
+    let id;
+    let contentTypesPromise;
 
-        promises.push(promiseContentTypes);
-        promises.push(promiseFeatures);
-      }
+    if (isContentTypesLoaded(getState())) {
+      id = getState().contentTypes.Image.getId();
+    } else {
+      contentTypesPromise = dispatch(loadContentTypes());
     }
 
-    return Promise.all(promises);
+    const promiseFeatures = new Promise((resolve) => {
+      if (isContentTypesLoaded(getState())) {
+        dispatch(loadFeatures(id)).then(() => resolve());
+      } else {
+        contentTypesPromise.then(res => {
+
+          const id = mapContentTypes(res.items).Image.getId();
+          console.log('w00t', id);
+          dispatch(loadFeatures(id)).then(() => resolve());
+        });
+      }
+    });
+
+    return Promise.all(contentTypesPromise, promiseFeatures);
   }
 }])
 @connect(
   state => ({
-    features: state.features.items,
+    assets: state.assets,
+    features: state.features,
   })
 )
 export default class Home extends Component {
 
   static propTypes = {
-    features: PropTypes.array,
+    //features: PropTypes.,
   }
 
   static defaultProps = {
-    features: []
+    features: null
   };
 
   featuresMarkup() {
-    return this.props.features.map((feature) => {
-      const {
-        id,
-        image
-      } = feature;
+    const {
+      features,
+      assets
+    } = this.props;
 
-      return (
-        <a key={'feature_' + id}>
-          <img {...image}/>
-        </a>
-      );
+
+    console.log('meh', features, assets);
+    if (!features.items) {
+      return;
+    }
+
+    return features.items.map((feature) => {
+      console.log(feature);
+
+
+      if (feature.image) {
+        const image = assets.getAssetById(feature.image.id);
+
+        console.log('image!', image.getFormattedDetails());
+
+        return (
+          <a key={'feature_' + feature.id}>
+            <img {...image.getFormattedDetails()}/>
+          </a>
+        );
+      }
+      //const asset = assets.getAsset();
+      //
+      //
+      //
+      //
+      //
+      //return (
+      //  <a key={'feature_' + id}>
+      //    <img {...image}/>
+      //  </a>
+      //);
     });
   }
 

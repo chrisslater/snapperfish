@@ -87,32 +87,30 @@ class Features {
 //}
 
 export function mapFeature(feature: Object): Feature {
-
   const {
-    //fields: {
-    //  photo: image
-    //},
+    fields: {
+      photo: image
+    },
     sys: {
-      id: Id
-      }
-    } = feature;
-
-
-
-  //const {
-  //  data: {
-  //    'feature.primary-image': {
-  //      value: {
-  //        main: image,
-  //      }
-  //    }
-  //  },
-  //  uid: featureId,
-  //} = feature;
+      id: id
+    }
+  } = feature;
 
   const props = {};
 
-  props.id = Id;
+  props.id = id;
+
+  if (image) {
+    const {
+      sys: {
+        id: imageId,
+      }
+    } = image;
+
+    props.image = { id: imageId };
+  }
+
+
 
   //if (image) {
   //  props.image = mapImage(image);
@@ -122,20 +120,26 @@ export function mapFeature(feature: Object): Feature {
 }
 
 export function mapFeatures(features: Array<Object>): Features {
+  console.log(features[0]);
   return new Features(features.map(feature => mapFeature(feature)));
 }
 
 export default function reducer(state: Object = initialState, action: Object = {}): Object {
   switch (action.type) {
     case LOAD_SUCCESS:
-      return mapFeatures(action.result.items)
+      return mapFeatures(action.result.items);
     default:
       return state;
   }
 }
 
 export function isLoaded(globalState: Object): boolean {
-  return !!(globalState.features && globalState.features.items);
+
+  if (globalState.features && globalState.features instanceof Features) {
+    return true;
+  }
+
+  return false;
 }
 
 export function load(id: string): Object {
