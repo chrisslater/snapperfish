@@ -1,11 +1,6 @@
 import Asset from './Asset';
 
 class Image extends Asset {
-
-  getId() {
-    return this.id;
-  }
-
   getFormatted() {
     return {
       src: this.file.url,

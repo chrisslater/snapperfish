@@ -3,6 +3,10 @@ class Asset {
     Object.assign(this, props);
   }
 
+  getId() {
+    return this.id;
+  }
+
   getFormattedDetails() {
     return {
       src: this.file.url,
