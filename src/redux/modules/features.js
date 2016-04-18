@@ -110,12 +110,6 @@ export function mapFeature(feature: Object): Feature {
     props.image = { id: imageId };
   }
 
-
-
-  //if (image) {
-  //  props.image = mapImage(image);
-  //}
-
   return new Feature(props);
 }
 
@@ -152,22 +146,3 @@ export function load(id: string): Object {
     }
   };
 }
-
-
-/**
- *  For using Prismic
- */
-//export function load(): Object {
-//  return {
-//    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-//    promise: (client) => {
-//      return client.prismic((Api, Prismic) => {
-//        return Api
-//          .form('everything')
-//          .ref(Api.master())
-//          .query(Prismic.Predicates.at("document.type", "feature"))
-//          .submit();
-//      });
-//    }
-//  };
-//}

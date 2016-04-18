@@ -11,19 +11,6 @@ import {
 } from 'redux/modules/contentTypes';
 import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/modules/features';
 
-//@asyncConnect([{
-//  promise: ({ store: { dispatch, getState } }) => {
-//    const promises = [];
-//
-//    if (!isFeaturesLoaded(getState())) {
-//      const promiseFeatures = dispatch(loadFeatures());
-//      promises.push(promiseFeatures);
-//    }
-//
-//    return Promise.all(promises);
-//  }
-//}])
-
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
 
@@ -43,7 +30,6 @@ import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/module
         contentTypesPromise.then(res => {
 
           const id = mapContentTypes(res.items).Image.getId();
-          console.log('w00t', id);
           dispatch(loadFeatures(id)).then(() => resolve());
         });
       }
@@ -62,7 +48,7 @@ export default class Home extends Component {
 
   static propTypes = {
     //features: PropTypes.,
-  }
+  };
 
   static defaultProps = {
     features: null
@@ -74,20 +60,13 @@ export default class Home extends Component {
       assets
     } = this.props;
 
-
-    console.log('meh', features, assets);
     if (!features.items) {
       return;
     }
 
     return features.items.map((feature) => {
-      console.log(feature);
-
-
       if (feature.image) {
         const image = assets.getAssetById(feature.image.id);
-
-        console.log('image!', image.getFormattedDetails());
 
         return (
           <a key={'feature_' + feature.id}>
@@ -95,17 +74,6 @@ export default class Home extends Component {
           </a>
         );
       }
-      //const asset = assets.getAsset();
-      //
-      //
-      //
-      //
-      //
-      //return (
-      //  <a key={'feature_' + id}>
-      //    <img {...image}/>
-      //  </a>
-      //);
     });
   }
 

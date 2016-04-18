@@ -1,33 +1,7 @@
 /* @flow */
+import Asset from './models/Asset';
+import Assets from './models/Assets';
 const LOAD_SUCCESS = 'features/LOAD_SUCCESS';
-
-class Asset {
-  constructor(props: Object) {
-    Object.assign(this, props);
-  }
-
-  getFormattedDetails() {
-    return {
-      src: this.file.url,
-      width: this.details.image.width,
-      height: this.details.image.height,
-      alt: this.title,
-      title: this.title,
-    };
-  }
-}
-
-class Assets {
-  constructor(assets = []) {
-    this.items = assets;
-  }
-
-  getAssetById(id: string) {
-    return this.items.find((asset) => {
-      return (id === asset.id);
-    });
-  }
-}
 
 type AssetRaw = {
   fields: {
@@ -52,7 +26,7 @@ type AssetRaw = {
 export function mapAsset({ fields, sys }: AssetRaw): Asset {
   const {
     id: id
-  } = sys;
+    } = sys;
 
   return new Asset(Object.assign({}, { id: id }, fields));
 }
