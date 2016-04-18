@@ -71,7 +71,7 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
   const client = new ApiClient(req, formatUrl, {
-    // access_token: env.CONTENTFUL_ACCESS_TOKEN
+    access_token: env.CONTENTFUL_ACCESS_TOKEN
   });
   const history = createHistory(req.originalUrl);
 
