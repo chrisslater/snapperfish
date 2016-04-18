@@ -18,74 +18,6 @@ class Features {
   }
 }
 
-//class Image {
-//  constructor(props: Object) {
-//    Object.assign(this, props);
-//  }
-//}
-//
-//type ImageRaw = {
-//  fields: {
-//    file: {
-//      contentType: string;
-//      url: string;
-//      details: {
-//        image: {
-//          height: number;
-//          width: number;
-//        };
-//        size: number;
-//      };
-//    };
-//    title: string;
-//  };
-//  sys: {
-//    id: string;
-//  };
-//};
-
-//function mapImage(image) {
-//  const {
-//    fields: {
-//      file: {
-//        contentType: mime,
-//        url: src,
-//        details: {
-//          image: {
-//            height: height,
-//            width: width,
-//            },
-//          size: size,
-//        },
-//      },
-//      title: title,
-//    },
-//    sys: {
-//      id: imageId,
-//    },
-//  } = image;
-//
-//  //const {
-//  //  alt: alt,
-//  //  dimensions: {
-//  //    width: width,
-//  //    height: height,
-//  //  },
-//  //  url: src,
-//  //} = image;
-//
-//  return new Image({
-//    id: imageId,
-//    mime: mime,
-//    src: src,
-//    width: width,
-//    height: height,
-//    size: size,
-//    alt: title,
-//    title: title,
-//  });
-//}
-
 export function mapFeature(feature: Object): Feature {
   const {
     fields: {
@@ -128,7 +60,6 @@ export default function reducer(state: Object = initialState, action: Object = {
 }
 
 export function isLoaded(globalState: Object): boolean {
-
   if (globalState.features && globalState.features instanceof Features) {
     return true;
   }

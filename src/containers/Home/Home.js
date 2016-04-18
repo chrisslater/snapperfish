@@ -9,11 +9,10 @@ import {
   load as loadContentTypes,
   mapContentTypes,
 } from 'redux/modules/contentTypes';
-import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/modules/features';
+import { load as loadFeatures } from 'redux/modules/features';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
-
     let id;
     let contentTypesPromise;
 
@@ -28,9 +27,8 @@ import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/module
         dispatch(loadFeatures(id)).then(() => resolve());
       } else {
         contentTypesPromise.then(res => {
-
-          const id = mapContentTypes(res.items).Image.getId();
-          dispatch(loadFeatures(id)).then(() => resolve());
+          const imageId = mapContentTypes(res.items).Image.getId();
+          dispatch(loadFeatures(imageId)).then(() => resolve());
         });
       }
     });
@@ -45,13 +43,9 @@ import { isLoaded as isFeaturesLoaded, load as loadFeatures } from 'redux/module
   })
 )
 export default class Home extends Component {
-
   static propTypes = {
-    //features: PropTypes.,
-  };
-
-  static defaultProps = {
-    features: null
+    features: PropTypes.array,
+    assets: PropTypes.array,
   };
 
   featuresMarkup() {
@@ -61,19 +55,22 @@ export default class Home extends Component {
     } = this.props;
 
     if (!features.items) {
-      return;
+      return null;
     }
 
     return features.items.map((feature) => {
+      let mapped = null;
+
       if (feature.image) {
         const image = assets.getAssetById(feature.image.id);
-
-        return (
+        mapped = (
           <a key={'feature_' + feature.id}>
             <img {...image.getFormattedDetails()}/>
           </a>
         );
       }
+
+      return mapped;
     });
   }
 

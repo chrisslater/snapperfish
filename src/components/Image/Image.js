@@ -17,7 +17,6 @@ export default class Image extends Component {
   };
 
   render() {
-    const theme = this.theme;
     return (
       <img {...this.props}/>
     );

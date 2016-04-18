@@ -19,9 +19,8 @@ import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
 import env from './env';
-import superagent from 'superagent';
 
-//const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+// const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 const targetUrl = 'https://cdn.contentful.com/spaces/' + env.CONTENTFUL_SPACE;
 const pretty = new PrettyError();
 const app = new Express();
@@ -34,8 +33,8 @@ app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 
-function formatUrl (path) {
-  const adjustedPath = path[0] !== '/' ? '/' + path : path;
+function formatUrl(_path) {
+  const adjustedPath = _path[0] !== '/' ? '/' + _path : _path;
   return targetUrl + adjustedPath;
 }
 
@@ -72,7 +71,7 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
   const client = new ApiClient(req, formatUrl, {
-    //access_token: env.CONTENTFUL_ACCESS_TOKEN
+    // access_token: env.CONTENTFUL_ACCESS_TOKEN
   });
   const history = createHistory(req.originalUrl);
 

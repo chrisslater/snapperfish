@@ -1,10 +1,8 @@
 import { expect } from 'chai';
 import Image from '../Image';
 
-describe('Image', function() {
-
-  beforeEach(function() {
-
+describe('Image', () => {
+  beforeEach(() => {
     this.mock = {
       id: '12345',
       file: {
@@ -28,23 +26,22 @@ describe('Image', function() {
       alt: 'This is a mock title',
       title: 'This is a mock title',
     };
-
   });
 
-  afterEach(function () {
+  afterEach(() => {
     delete this.mock;
     delete this.formattedMock;
   });
 
-  describe('#getId()', function () {
-    it('should return the Image id', function () {
+  describe('#getId()', () => {
+    it('should return the Image id', () => {
       const image = new Image(this.mock);
       expect(image.getId()).to.equal('12345');
     });
   });
 
-  describe('#getFormatted()', function () {
-    it('should return a map of image properties', function () {
+  describe('#getFormatted()', () => {
+    it('should return a map of image properties', () => {
       const image = new Image(this.mock);
       const formatted = image.getFormatted();
       expect(formatted).to.deep.equal(this.formattedMock);
