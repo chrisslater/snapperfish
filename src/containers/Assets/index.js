@@ -1,18 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import Assets from 'models/Assets';
-import Asset from 'models/Asset';
 import Image from 'models/Image';
 
-import { load as loadFeatures } from 'redux/modules/features';
-
-export default function assetsDecorator(ChildComponent) {
-  @connect(
-    state => ({
-      _assets: state.assets
-    })
-  )
+function assetsDecorator(ChildComponent) {
   class AssetsContainer extends Component {
+    static propTypes = {
+      _assets: PropTypes.array,
+    };
+
     render() {
       const { _assets } = this.props;
       const assets = new Assets(_assets.map((props) => {
@@ -23,5 +19,9 @@ export default function assetsDecorator(ChildComponent) {
     }
   }
 
-  return AssetsContainer;
-};
+  return connect(state => ({
+    _assets: state.assets
+  }))(AssetsContainer);
+}
+
+export default assetsDecorator;

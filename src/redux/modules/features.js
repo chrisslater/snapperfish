@@ -2,9 +2,6 @@
 const LOAD = 'features/LOAD';
 const LOAD_SUCCESS = 'features/LOAD_SUCCESS';
 const LOAD_FAIL = 'features/LOAD_FAIL';
-const initialState = {
-  isLoaded: false
-};
 
 export function mapFeature(feature: Object): Object {
   const {
@@ -37,7 +34,7 @@ export function mapFeatures(features: Array<Object>): Array {
   return features.map(feature => mapFeature(feature));
 }
 
-export default function reducer(state: Object = initialState, action: Object = {}) {
+export default function reducer(state: Array = [], action: Object = {}) {
   switch (action.type) {
     case LOAD_SUCCESS:
       return mapFeatures(action.result.items);
@@ -47,7 +44,7 @@ export default function reducer(state: Object = initialState, action: Object = {
 }
 
 export function isLoaded(globalState: Object): boolean {
-  if (globalState.features && globalState.features instanceof Features) {
+  if (globalState.features) {
     return true;
   }
 

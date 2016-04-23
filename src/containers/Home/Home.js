@@ -3,19 +3,23 @@ import config from '../../config';
 import Helmet from 'react-helmet';
 import FeaturesContainer from 'containers/Features';
 import AssetsContainer from 'containers/Assets';
-//import { asyncConnect } from 'redux-async-connect';
-//import {connect} from 'react-redux';
 
-//import { load as loadFeatures, Features } from 'redux/modules/features';
-//import Assets from 'redux/modules/assets/models/Assets';
+import Features from 'models/Features';
+import Assets from 'models/Assets';
 
 @FeaturesContainer
 @AssetsContainer
 export default class Home extends Component {
+
+  static propTypes = {
+    features: PropTypes.instanceOf(Features),
+    assets: PropTypes.instanceOf(Assets),
+  };
+
   featuresMarkup(features) {
     return features.getItems().map((feature) => {
+      const image = feature.getImage();
       let mapped = null;
-      let image = feature.getImage();
 
       if (image) {
         mapped = (

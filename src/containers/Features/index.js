@@ -5,18 +5,12 @@ import Features from 'models/Features';
 import Feature from 'models/Feature';
 import { load as loadFeatures } from 'redux/modules/features';
 
-export default function featuresDecorator(ChildComponent) {
-  @asyncConnect([{
-    promise: ({ store: { dispatch } }) => {
-      return Promise.all([dispatch(loadFeatures())]);
-    }
-  }])
-  @connect(
-    state => ({
-      _features: state.features,
-    })
-  )
+function featuresDecorator(ChildComponent) {
   class FeaturesContainer extends Component {
+    static propTypes = {
+      _features: PropTypes.array,
+    };
+
     render() {
       const { _features } = this.props;
 
@@ -28,5 +22,17 @@ export default function featuresDecorator(ChildComponent) {
     }
   }
 
-  return FeaturesContainer;
-};
+  return asyncConnect([{
+    promise: ({ store: { dispatch } }) => {
+      return Promise.all([dispatch(loadFeatures())]);
+    }
+  }])(
+    connect(
+      state => ({
+        _features: state.features,
+      })
+    )(FeaturesContainer)
+  );
+}
+
+export default featuresDecorator;
