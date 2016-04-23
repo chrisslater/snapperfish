@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Themeable} from 'rethemeable';
+import React, { Component } from 'react';
+import { Themeable } from 'rethemeable';
 
 @Themeable
 export default class Button extends Component {

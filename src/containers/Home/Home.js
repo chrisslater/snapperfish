@@ -20,11 +20,11 @@ export default class Home extends Component {
     return features.getItems().map((feature) => {
       const image = feature.getImage();
       let mapped = null;
-
       if (image) {
+        const formatted = image.getFormatted();
         mapped = (
-          <a key={'feature_' + feature.getId()}>
-            <img {...image.getFormatted()}/>
+          <a key={`feature_${feature.getId()}`}>
+            <img src={formatted.src} alt={formatted.alt} />
           </a>
         );
       }
@@ -39,7 +39,7 @@ export default class Home extends Component {
 
     return (
       <div>
-        <Helmet title="Home"/>
+        <Helmet title="Home" />
         <div>
           <div className="container">
             <h1>{config.app.title}</h1>

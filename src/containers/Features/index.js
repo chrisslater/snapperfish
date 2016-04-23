@@ -1,38 +1,26 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Features from 'models/Features';
 import Feature from 'models/Feature';
 import { load as loadFeatures } from 'redux/modules/features';
 
 function featuresDecorator(ChildComponent) {
-  class FeaturesContainer extends Component {
-    static propTypes = {
-      _features: PropTypes.array,
-    };
+  const FeaturesContainer = props => {
+    const { _features } = props;
+    const features = new Features(_features.map(featureProps => new Feature(featureProps)));
+    return (<ChildComponent {...props} features={features} />);
+  };
 
-    render() {
-      const { _features } = this.props;
-
-      const features = new Features(_features.map((props) => {
-        return new Feature(props);
-      }));
-
-      return (<ChildComponent {...this.props} features={features} />);
-    }
-  }
+  FeaturesContainer.propTypes = {
+    _features: PropTypes.array,
+  };
 
   return asyncConnect([{
-    promise: ({ store: { dispatch } }) => {
-      return Promise.all([dispatch(loadFeatures())]);
-    }
-  }])(
-    connect(
-      state => ({
-        _features: state.features,
-      })
-    )(FeaturesContainer)
-  );
+    promise: ({ store: { dispatch } }) => Promise.all([dispatch(loadFeatures())])
+  }])(connect(
+    state => ({ _features: state.features })
+  )(FeaturesContainer));
 }
 
 export default featuresDecorator;

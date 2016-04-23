@@ -1,27 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Assets from 'models/Assets';
 import Image from 'models/Image';
 
 function assetsDecorator(ChildComponent) {
-  class AssetsContainer extends Component {
-    static propTypes = {
-      _assets: PropTypes.array,
-    };
+  const AssetsContainer = function (props) {
+    const { _assets } = props;
+    const assets = new Assets(_assets.map((assetProps) => new Image(assetProps)));
+    return <ChildComponent {...props} assets={assets} />;
+  };
 
-    render() {
-      const { _assets } = this.props;
-      const assets = new Assets(_assets.map((props) => {
-        return new Image(props);
-      }));
+  AssetsContainer.propTypes = {
+    _assets: PropTypes.array,
+  };
 
-      return (<ChildComponent {...this.props} assets={assets} />);
-    }
-  }
-
-  return connect(state => ({
-    _assets: state.assets
-  }))(AssetsContainer);
+  return connect(state => ({ _assets: state.assets }))(AssetsContainer);
 }
 
 export default assetsDecorator;

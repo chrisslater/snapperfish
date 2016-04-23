@@ -4,9 +4,7 @@ class Assets {
   }
 
   getAssetById(id: string) {
-    return this.items.find((asset) => {
-      return (id === asset.id);
-    });
+    return this.items.find((asset) => (id === asset.id));
   }
 }
 

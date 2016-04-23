@@ -7,7 +7,7 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import Helmet from 'react-helmet';
 import config from '../../config';
 
-export default class App extends Component {
+class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
   };
@@ -21,16 +21,16 @@ export default class App extends Component {
 
     return (
       <div className={styles.app}>
-        <Helmet {...config.app.head}/>
+        <Helmet {...config.app.head} />
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
-                <div className={styles.brand}/>
+              <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
+                <div className={styles.brand} />
                 <span>{config.app.title}</span>
               </IndexLink>
             </Navbar.Brand>
-            <Navbar.Toggle/>
+            <Navbar.Toggle />
           </Navbar.Header>
 
           <Navbar.Collapse eventKey={0}>
@@ -41,13 +41,13 @@ export default class App extends Component {
             </Nav>
             <Nav navbar pullRight>
               <NavItem eventKey={3} target="_blank" title="View on Github" href="https://github.com/chrisslater">
-                <i className="fa fa-github"/>
+                <i className="fa fa-github" />
               </NavItem>
               <NavItem eventKey={4} target="_blank" title="View my LinkedIn" href="https://uk.linkedin.com/in/crslater">
-                <i className="fa fa-linkedin"/>
+                <i className="fa fa-linkedin" />
               </NavItem>
               <NavItem eventKey={5} target="_blank" title="View my Twitter" href="https://twitter.com/chrisontheside">
-                <i className="fa fa-twitter"/>
+                <i className="fa fa-twitter" />
               </NavItem>
             </Nav>
           </Navbar.Collapse>
@@ -60,3 +60,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;
