@@ -45,7 +45,7 @@ app.use('/api', (req, res) => {
   });
 
   client
-    .get(req.path, { params: req.params })
+    .get(req.path, { params: req.query })
     .then(body => res.send(body))
     .catch(body => res.send(body));
 });

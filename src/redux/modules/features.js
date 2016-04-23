@@ -6,31 +6,19 @@ const initialState = {
   isLoaded: false
 };
 
-class Feature {
-  constructor(props: Object) {
-    Object.assign(this, props);
-  }
-}
-
-class Features {
-  constructor(features = []) {
-    this.items = features;
-  }
-}
-
-export function mapFeature(feature: Object): Feature {
+export function mapFeature(feature: Object): Object {
   const {
     fields: {
-      photo: image
+      coverImage: image,
+      title,
+      slug
     },
     sys: {
       id: id
     }
   } = feature;
 
-  const props = {};
-
-  props.id = id;
+  const props = { title, slug, id };
 
   if (image) {
     const {
@@ -42,15 +30,14 @@ export function mapFeature(feature: Object): Feature {
     props.image = { id: imageId };
   }
 
-  return new Feature(props);
+  return props;
 }
 
-export function mapFeatures(features: Array<Object>): Features {
-  console.log(features[0]);
-  return new Features(features.map(feature => mapFeature(feature)));
+export function mapFeatures(features: Array<Object>): Array {
+  return features.map(feature => mapFeature(feature));
 }
 
-export default function reducer(state: Object = initialState, action: Object = {}): Object {
+export default function reducer(state: Object = initialState, action: Object = {}) {
   switch (action.type) {
     case LOAD_SUCCESS:
       return mapFeatures(action.result.items);
@@ -67,13 +54,11 @@ export function isLoaded(globalState: Object): boolean {
   return false;
 }
 
-export function load(id: string): Object {
+export function load(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => {
-      return client.get('entries', {
-        content_type: id,
-      });
-    }
+    promise: (client) => client.get('entries', {
+      params: { content_type: 'feature' }
+    })
   };
 }

@@ -1,6 +1,4 @@
 /* @flow */
-import Asset from './models/Asset';
-import Assets from './models/Assets';
 const LOAD_SUCCESS = 'features/LOAD_SUCCESS';
 
 type AssetRaw = {
@@ -23,24 +21,19 @@ type AssetRaw = {
   };
 };
 
-export function mapAsset({ fields, sys }: AssetRaw): Asset {
-  const {
-    id: id
-    } = sys;
-
-  return new Asset(Object.assign({}, { id: id }, fields));
+export function mapAsset({ fields, sys }: AssetRaw): Object {
+  const { id } = sys;
+  return Object.assign({}, { id }, fields);
 }
 
-export function mapAssets(items: Array<Object>): Assets {
-  const assets = items.map(asset => mapAsset(asset));
-  return new Assets(assets);
+export function mapAssets(items: Array<Object>): Array {
+  return items.map(asset => mapAsset(asset));
 }
 
-export default function reducer(state: Object = {}, action: Object = {}): Object {
+export default function reducer(state: Array = [], action: Object = {}) {
   switch (action.type) {
     case LOAD_SUCCESS:
       return mapAssets(action.result.includes.Asset);
-
     default:
       return state;
   }

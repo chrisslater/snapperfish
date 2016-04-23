@@ -17,6 +17,7 @@ class _ApiClient {
           request.set('cookie', req.get('cookie'));
         }
 
+        console.log(_params, params);
         request.query(Object.assign({}, _params, params));
 
         if (data) {

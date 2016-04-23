@@ -13,7 +13,7 @@ class Asset {
       width: this.file.details.image.width,
       height: this.file.details.image.height,
       alt: this.title,
-      title: this.title,
+      title: this.title
     };
   }
 }
