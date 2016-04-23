@@ -4,11 +4,11 @@ import Assets from 'models/Assets';
 import Image from 'models/Image';
 
 function assetsDecorator(ChildComponent) {
-  const AssetsContainer = function (props) {
+  function AssetsContainer(props) {
     const { _assets } = props;
     const assets = new Assets(_assets.map((assetProps) => new Image(assetProps)));
     return <ChildComponent {...props} assets={assets} />;
-  };
+  }
 
   AssetsContainer.propTypes = {
     _assets: PropTypes.array,
