@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = function (config) {
   config.set({
@@ -15,29 +16,38 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'tests.webpack.js': [ 'webpack', 'sourcemap' ]
+      'tests.webpack.js': [ 'webpack', 'sourcemap']
     },
 
-    reporters: [ 'mocha' ],
+    reporters: [ 'mocha', 'coverage', 'coveralls'],
 
     plugins: [
       require("karma-webpack"),
       require("karma-mocha"),
       require("karma-mocha-reporter"),
       require("karma-phantomjs-launcher"),
-      require("karma-sourcemap-loader")
+      require("karma-sourcemap-loader"),
+      require("karma-coverage"),
+      require("karma-coveralls"),
     ],
 
     webpack: {
       devtool: 'inline-source-map',
       module: {
+        preLoaders: [
+          {
+            test: /\.js$/,
+            include: path.resolve('src/'),
+            loader: 'isparta'
+          }
+        ],
         loaders: [
           { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: {limit: 10240} },
           { test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
           { test: /\.json$/, loader: 'json-loader' },
           { test: /\.less$/, loader: 'style!css!less' },
           { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' }
-        ]
+        ],
       },
       resolve: {
         modulesDirectories: [
