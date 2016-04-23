@@ -10,20 +10,15 @@ import {
   NotFound,
 } from 'containers';
 
-export default () => {
+export default function () {
   /**
    * Please keep routes in alphabetical order
    */
   return (
     <Route path="/" component={App}>
-      { /* Home (main) route */ }
-      <IndexRoute component={Home}/>
-
-      { /* Routes */ }
-      <Route path="styleguide" component={StyleGuide}/>
-
-      { /* Catch all route */ }
+      <IndexRoute component={Home} />
+      <Route path="styleguide" component={StyleGuide} />
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );
-};
+}

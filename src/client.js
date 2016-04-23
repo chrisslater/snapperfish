@@ -6,19 +6,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import getRoutes from './routes';
 
-import {Themed} from 'rethemeable';
+import { Themed } from 'rethemeable';
 import Theme from './theme/theme';
 
 function formatUrl(path) {
-  const adjustedPath = path[0] !== '/' ? '/' + path : path;
-  return '/api' + adjustedPath;
+  const adjustedPath = path[0] !== '/' ? `/ + ${path}` : path;
+  return `/api${adjustedPath}`;
 }
 
 const client = new ApiClient(null, formatUrl);
@@ -27,9 +27,11 @@ const dest = document.getElementById('content');
 const store = createStore(history, client, window.__data);
 
 const component = (
-  <Router render={(props) =>
-        <ReduxAsyncConnect {...props} helpers={{client}} filter={item => !item.deferred} />
-      } history={history}>
+  <Router
+    render={(props) =>
+      <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} />
+    } history={history}
+  >
     {getRoutes(store)}
   </Router>
 );
@@ -44,8 +46,15 @@ ReactDOM.render(
 if (process.env.NODE_ENV !== 'production') {
   window.React = React; // enable debugger
 
-  if (!dest || !dest.firstChild || !dest.firstChild.attributes || !dest.firstChild.attributes['data-react-checksum']) {
-    console.error('Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.');
+  if (
+    !dest ||
+    !dest.firstChild ||
+    !dest.firstChild.attributes ||
+    !dest.firstChild.attributes['data-react-checksum']) {
+    console.error(
+      `Server-side React render was discarded.
+      Make sure that your initial render does not contain any client-side code.`
+    );
   }
 }
 

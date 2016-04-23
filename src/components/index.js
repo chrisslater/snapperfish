@@ -4,6 +4,4 @@
  *  ie: import { CounterButton, InfoBar } from 'components';
  *
  */
-
-export GithubButton from './GithubButton/GithubButton';
 export Button from './Button/Button';

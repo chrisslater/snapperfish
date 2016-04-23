@@ -1,4 +1,4 @@
-import {Button} from 'components';
+import { Button } from 'components';
 import ButtonTheme from './Button/Button.scss';
 
 const Theme = {
