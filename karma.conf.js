@@ -22,6 +22,11 @@ module.exports = function (config) {
 
     reporters: [ 'mocha', 'coverage', 'coveralls'],
 
+    coverageReporter: {
+      type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
+      dir: 'coverage/'
+    },
+
     plugins: [
       require("karma-webpack"),
       require("karma-mocha"),
