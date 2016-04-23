@@ -16,4 +16,5 @@ before_script:
 script:
   - npm run lint
   - npm test
+  - bithound check git@github.com:chrisslater/snapperfish.git
 #  - npm run test-node
