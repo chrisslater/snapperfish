@@ -32,8 +32,7 @@
     "start-dev": "better-npm-run start-dev",
     "watch-client": "better-npm-run watch-client",
     "dev": "concurrent --kill-others \"npm run watch-client\" \"npm run start-dev\"",
-    "test": "karma start",
-    "quality-checks": "bithound check git@github.com:chrisslater/snapperfish.git"
+    "test": "karma start"
   },
   "betterScripts": {
     "start-prod": {
@@ -148,7 +147,7 @@
     "bootstrap-sass-loader": "^1.0.9",
     "chai": "^3.3.0",
     "clean-webpack-plugin": "^0.1.6",
-    "concurrently": "^0.1.1",
+    "concurrently": "^2.0.0",
     "contentful": "^3.3.5",
     "css-loader": "^0.23.1",
     "eslint": "^2.8.0",
