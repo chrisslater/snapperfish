@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {Themeable} from 'rethemeable';
+import React, { Component, PropTypes } from 'react';
+import { Themeable } from 'rethemeable';
 
 @Themeable
 export default class Image extends Component {
@@ -17,8 +17,10 @@ export default class Image extends Component {
   };
 
   render() {
+    const { alt } = this.props; // @TODO Linter complains if it cant see this explicitly
+    delete this.props.alt;
     return (
-      <img {...this.props}/>
+      <img alt={alt} { ...this.props } />
     );
   }
 }

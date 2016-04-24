@@ -9,7 +9,7 @@ if (__CLIENT__) {
     returnValue = require('env-development');
   }
 } else {
-  returnValue = require(path.resolve('envConfig', 'env-' + env));
+  returnValue = require(path.resolve('envConfig', `env-${env}`));
 }
 
 export default returnValue;
