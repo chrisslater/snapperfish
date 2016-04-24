@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "unused-ignores": [
+      "react-router",
+      "react-router-redux",
+      "react-dom"
+    ]
+  }
+}
