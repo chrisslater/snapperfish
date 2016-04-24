@@ -117,7 +117,7 @@
     "react-bootstrap": "^0.28.1",
     "react-component-gallery": "^1.2.1",
     "react-dom": "^0.14.1",
-    "react-helmet": "^2.2.0",
+    "react-helmet": "^3.0.2",
     "react-inline-css": "^2.0.0",
     "react-layout-pack": "^0.2.1",
     "react-overlays": "^0.6.0",
