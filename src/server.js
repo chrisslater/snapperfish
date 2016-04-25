@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/server';
 import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
-import httpProxy from 'http-proxy';
+// import httpProxy from 'http-proxy';
 import path from 'path';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
@@ -26,9 +26,9 @@ const targetUrl = `https://cdn.contentful.com/spaces/${env.CONTENTFUL_SPACE}`;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
-const proxy = httpProxy.createProxyServer({
-  target: targetUrl
-});
+// const proxy = httpProxy.createProxyServer({
+//  target: targetUrl
+// });
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
@@ -52,17 +52,17 @@ app.use('/api', (req, res) => {
 });
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
-proxy.on('error', (error, req, res) => {
-  if (error.code !== 'ECONNRESET') {
-    console.error('proxy error', error);
-  }
-  if (!res.headersSent) {
-    res.writeHead(500, { 'content-type': 'application/json' });
-  }
-
-  const json = { error: 'proxy_error', reason: error.message };
-  res.end(JSON.stringify(json));
-});
+// proxy.on('error', (error, req, res) => {
+//  if (error.code !== 'ECONNRESET') {
+//    console.error('proxy error', error);
+//  }
+//  if (!res.headersSent) {
+//    res.writeHead(500, { 'content-type': 'application/json' });
+//  }
+//
+//  const json = { error: 'proxy_error', reason: error.message };
+//  res.end(JSON.stringify(json));
+// });
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) {
