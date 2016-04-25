@@ -19,7 +19,7 @@
       "react-router-bootstrap",
       "piping",
 
-      "compression",
+      "compression"
     ]
   }
 }
