@@ -1,11 +1,19 @@
 {
   "dependencies": {
     "unused-ignores": [
+      "babel-runtime",
+      "babel-core",
+      "babel-loader",
       "react-router",
       "react-router-redux",
       "react-dom",
       "pretty-error",
-
+      "less-loader",
+      "less",
+      "hoist-non-react-statics",
+      "react-redux",
+      "react-helmet",
+      "scroll-behavior",
       "react-router-bootstrap",
       "piping"
     ]
