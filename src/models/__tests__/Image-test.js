@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Image from 'models/Image';
+import Image from '../Image';
 
 describe('Image', function () {
   beforeEach(function () {
