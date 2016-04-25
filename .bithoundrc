@@ -3,7 +3,11 @@
     "unused-ignores": [
       "react-router",
       "react-router-redux",
-      "react-dom"
+      "react-dom",
+      "pretty-error",
+
+      "react-router-bootstrap",
+      "piping"
     ]
   }
 }
