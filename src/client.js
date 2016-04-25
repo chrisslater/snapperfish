@@ -19,7 +19,7 @@ import { Themed } from 'rethemeable';
 import Theme from './theme/theme';
 
 function formatUrl(path) {
-  const adjustedPath = path[0] !== '/' ? `/ + ${path}` : path;
+  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   return `/api${adjustedPath}`;
 }
 
