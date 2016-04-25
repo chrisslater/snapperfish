@@ -22,8 +22,12 @@ module.exports = function (config) {
     reporters: [ 'mocha', 'coverage', 'coveralls'],
 
     coverageReporter: {
-      type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
-      dir: 'coverage/'
+      dir: 'coverage/',
+      reporters: [
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' }
+      ]
     },
 
     plugins: [
@@ -42,7 +46,7 @@ module.exports = function (config) {
         preLoaders: [
           {
             test: /\.js$/,
-            include: path.resolve('src/'),
+            exclude: /(tests\.webpack.js|node_modules|__tests__)/,
             loader: 'isparta'
           }
         ],
