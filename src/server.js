@@ -13,6 +13,7 @@ import PrettyError from 'pretty-error';
 import http from 'http';
 
 import { match } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
@@ -72,9 +73,11 @@ app.use((req, res) => {
   const client = new ApiClient(req, formatUrl, {
     access_token: env.CONTENTFUL_ACCESS_TOKEN
   });
-  const history = createHistory(req.originalUrl);
 
-  const store = createStore(history, client);
+  const memoryHistory = createHistory(req.originalUrl);
+  const store = createStore(client);
+  // Create an enhanced history that syncs navigation events with the store
+  const history = syncHistoryWithStore(memoryHistory, store);
 
   function hydrateOnClient() {
     res.send(

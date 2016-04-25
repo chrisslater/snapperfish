@@ -9,6 +9,8 @@ import ApiClient from './helpers/ApiClient';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
+import { syncHistoryWithStore } from 'react-router-redux';
+
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import getRoutes from './routes';
@@ -22,9 +24,9 @@ function formatUrl(path) {
 }
 
 const client = new ApiClient(null, formatUrl);
-const history = useScroll(() => browserHistory)();
 const dest = document.getElementById('content');
-const store = createStore(history, client, window.__data);
+const store = createStore(client, window.__data);
+const history = syncHistoryWithStore(useScroll(() => browserHistory)(), store);
 
 const component = (
   <Router
