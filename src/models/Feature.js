@@ -1,36 +1,44 @@
+import Image from 'models/Image';
+
+/* @flow */
 class Feature {
+  id: string;
+  title: string;
+  slug: string;
+  image: Object;
+
   constructor(props: Object) {
     Object.assign(this, props);
   }
 
-  getId() {
+  getId(): string {
     return this.id;
   }
 
-  getTitle() {
+  getTitle(): string {
     return this.title;
   }
 
-  getSlug() {
+  getSlug(): string {
     return this.slug;
   }
 
-  getImageId() {
+  getImageId(): string {
     return this.image.id;
   }
 
-  getImage() {
+  getImage(): Object {
     return this.image;
   }
 
-  setImage(image) {
+  setImage(image: Image): void {
     this.image = image;
   }
 
-  attachAssets(assets) {
+  attachAssets(assets): void {
     const image = assets.getAssetById(this.getImageId());
 
-    if (image) {
+    if (image instanceof Image) {
       this.setImage(image);
     }
   }
