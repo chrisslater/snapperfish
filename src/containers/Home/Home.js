@@ -7,6 +7,8 @@ import AssetsContainer from 'containers/Assets';
 import Features from 'models/Features';
 import Assets from 'models/Assets';
 
+import { Features as FeaturesList } from 'components';
+
 @FeaturesContainer
 @AssetsContainer
 export default class Home extends Component {
@@ -15,23 +17,6 @@ export default class Home extends Component {
     features: PropTypes.instanceOf(Features),
     assets: PropTypes.instanceOf(Assets),
   };
-
-  featuresMarkup(features) {
-    return features.getItems().map((feature) => {
-      const image = feature.getImage();
-      let mapped = null;
-      if (image) {
-        const formatted = image.getFormatted();
-        mapped = (
-          <a key={`feature_${feature.getId()}`}>
-            <img src={formatted.src} alt={formatted.alt} />
-          </a>
-        );
-      }
-
-      return mapped;
-    });
-  }
 
   render() {
     const { features, assets } = this.props;
@@ -46,7 +31,7 @@ export default class Home extends Component {
             <h2>{config.app.description}</h2>
           </div>
         </div>
-          {this.featuresMarkup(features)}
+          <FeaturesList features={features} />
       </div>
     );
   }

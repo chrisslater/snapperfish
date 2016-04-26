@@ -42,6 +42,10 @@ class Feature {
       this.setImage(image);
     }
   }
+
+  isFeatured(): bool {
+    return false;
+  }
 }
 
 export default Feature;

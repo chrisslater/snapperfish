@@ -1,8 +1,15 @@
-import { Button } from 'components';
+import {
+  Button,
+  Features,
+} from 'components';
+
+import FeaturesTheme from './Button/Button.scss';
 import ButtonTheme from './Button/Button.scss';
 
 const Theme = {
-  [Button.theme]: ButtonTheme
+  [Features.theme]: FeaturesTheme,
+  [Button.theme]: ButtonTheme,
+
 };
 
 export default Theme;

@@ -6,6 +6,7 @@ import {
 import {
   App,
   Home,
+  Feature,
   StyleGuide,
   NotFound,
 } from 'containers';
@@ -18,6 +19,7 @@ export default function () {
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="styleguide" component={StyleGuide} />
+      <Route path=":slugId" component={Feature}></Route>
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );
