@@ -1,23 +1,28 @@
-import React, { Component, PropTypes } from 'react';
-import config from '../../config';
+import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import FeatureContainer from 'containers/Feature/Feature';
-import AssetsContainer from 'containers/Assets';
+import featureContainer from 'containers/Feature/Feature';
+import assetsContainer from 'containers/Assets';
 
-@FeatureContainer
-@AssetsContainer
-export default class FeaturePage extends Component {
-  render() {
-    const { feature, assets } = this.props;
-    feature.attachAssets(assets);
+import Feature from 'models/Feature';
+import Assets from 'models/Assets';
 
-    return (
+function FeaturePage(props) {
+  const { feature, assets } = props;
+  feature.attachAssets(assets);
+  return (
+    <div>
+      <Helmet title="Feature" />
       <div>
-        <Helmet title="Feature" />
-        <div>
-          <h1>{feature.getTitle()}</h1>
-        </div>
+        <h1>{feature.getTitle()}</h1>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+FeaturePage.propTypes = {
+  feature: PropTypes.instanceOf(Feature).isRequired,
+  assets: PropTypes.instanceOf(Assets).isRequired,
+};
+
+export default featureContainer(assetsContainer(FeaturePage));
+

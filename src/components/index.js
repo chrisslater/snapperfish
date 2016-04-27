@@ -5,4 +5,4 @@
  *
  */
 export Button from './Button/Button';
-export Features from './Features/Features';
+export FeaturesGrid from './FeaturesGrid/FeaturesGrid';

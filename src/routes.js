@@ -19,7 +19,7 @@ export default function () {
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="styleguide" component={StyleGuide} />
-      <Route path=":slug" component={FeaturePage}></Route>
+      <Route path=":slug" component={FeaturePage} />
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );

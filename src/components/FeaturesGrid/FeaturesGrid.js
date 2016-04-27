@@ -2,13 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Themeable } from 'rethemeable';
 import { GridList, GridTile } from 'material-ui/GridList';
-
+import Features from 'models/Features';
 
 @Themeable
-export default class Features extends Component {
+class FeaturesGrid extends Component {
 
   static defaultProps = {
     src: '//https://cdn0.vox-cdn.com/images/verge/default-avatar.v9899025.gif',
+  };
+
+  static propTypes = {
+    features: PropTypes.instanceOf(Features),
   };
 
   featuresMarkup(features) {
@@ -26,8 +30,8 @@ export default class Features extends Component {
               cols={feature.isFeatured() ? 2 : 1}
               rows={feature.isFeatured() ? 2 : 1}
             >
-            <img src={formatted.src} alt={formatted.alt} />
-          </GridTile>
+              <img src={formatted.src} alt={formatted.alt} />
+            </GridTile>
           </Link>
         );
       }
@@ -49,3 +53,5 @@ export default class Features extends Component {
     );
   }
 }
+
+export default FeaturesGrid;
