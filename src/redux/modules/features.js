@@ -61,13 +61,12 @@ export function load(): Object {
 }
 
 export function loadFeature(slug): Object {
-  console.log(slug);
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('entries', {
       params: {
         content_type: 'feature',
-        'fields.slug': 'testfeatureurl'
+        'fields.slug': slug
       }
     })
   };

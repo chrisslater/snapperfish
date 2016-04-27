@@ -1,6 +1,8 @@
 var Express = require('express');
 var webpack = require('webpack');
 
+console.log(process.env);
+
 var config = require('../src/config');
 var webpackConfig = require('./dev.config');
 var compiler = webpack(webpackConfig);

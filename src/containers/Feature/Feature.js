@@ -2,24 +2,39 @@ import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import Feature from 'models/Feature';
-import { load, loadFeature } from 'redux/modules/features';
+import { loadFeature } from 'redux/modules/features';
 
 function featureDecorator(ChildComponent) {
   @asyncConnect([{
     promise: ({ store: { dispatch, getState } }) => {
-      console.log('Feature State', getState());
-      const slug = getState().routing.locationBeforeTransitions.pathname.substring(1);
-      Promise.all([dispatch(loadFeature(slug))]);
+      let slug = getState().routing.locationBeforeTransitions.pathname;
+
+      if (slug[0] === '/') {
+        slug = slug.substring(1);
+      }
+
+      return Promise.all([dispatch(loadFeature(slug))]);
     }
   }])
   @connect(
-    state => ({ _features: state.features })
+    state => {
+      return {_features: state.features}
+    }
   )
   class FeatureContainer extends Component {
     render() {
-      const { _currentFeature } = this.props;
-      const feature = new Feature(_currentFeature);
-      return <ChildComponent {...this.props} feature={feature} />
+      const { _features, params: { slug } } = this.props;
+
+      if (_features.length < 1) {
+        return null;
+      }
+
+      const matchedFeature = _features.find(feature => {
+        return feature.slug === slug;
+      });
+
+
+      return <ChildComponent {...this.props} feature={new Feature(matchedFeature)} />
     }
   }
 

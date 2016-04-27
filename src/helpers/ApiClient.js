@@ -18,13 +18,18 @@ class _ApiClient {
           request.set('cookie', req.get('cookie'));
         }
 
-        request.query(Object.assign({}, _params, params));
+        request.query(_params);
+        request.query(params);
 
         if (data) {
           request.send(data);
         }
 
+        console.log('yuck');
+
         request.end((err, { body } = {}) => {
+          console.log('response', err, body);
+
           if (err) {
             reject(body || err);
           } else {

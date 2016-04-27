@@ -19,7 +19,7 @@ function featuresDecorator(ChildComponent) {
 
   return asyncConnect([{
     promise: ({ store: { dispatch } }) => {
-      Promise.all([dispatch(loadFeatures())]);
+      return Promise.all([dispatch(loadFeatures())]);
     }
   }])(connect(
     state => ({ _features: state.features })
