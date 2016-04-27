@@ -8,7 +8,7 @@ function featureDecorator(ChildComponent) {
   function FeatureContainer(props) {
     const { _features, params: { slug } } = props;
     const matchedFeature = _features.find(feature => feature.slug === slug);
-    return (<ChildComponent { ...this.props } feature={new Feature(matchedFeature)} />);
+    return (<ChildComponent { ...props } feature={new Feature(matchedFeature)} />);
   }
 
   FeatureContainer.propTypes = {
