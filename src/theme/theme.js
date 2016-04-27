@@ -1,13 +1,13 @@
 import {
   Button,
-  Features,
+  FeaturesGrid,
 } from 'components';
 
-import FeaturesTheme from './Features/Features.scss';
+import FeaturesGridTheme from './FeaturesGrid/FeaturesGrid.scss';
 import ButtonTheme from './Button/Button.scss';
 
 const Theme = {
-  [Features.theme]: FeaturesTheme,
+  [FeaturesGrid.theme]: FeaturesGridTheme,
   [Button.theme]: ButtonTheme,
 
 };

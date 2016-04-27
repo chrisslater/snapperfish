@@ -22,7 +22,7 @@ class FeaturesGrid extends Component {
       if (image) {
         const formatted = image.getFormatted();
         mapped = (
-          <Link to={feature.getSlug()}>
+          <Link key={feature.getId()} to={feature.getSlug()}>
             <GridTile
               key={feature.getId()}
               title={feature.getTitle()}
