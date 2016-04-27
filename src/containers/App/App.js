@@ -37,7 +37,7 @@ class App extends Component {
         <div>
           <Helmet {...config.app.head} />
           <AppBar
-            title="Title"
+            title={'Home'}
             onLeftIconButtonTouchTap={this.handleOpen}
           />
           <Drawer
@@ -47,7 +47,7 @@ class App extends Component {
             onRequestChange={(open) => this.setState({open})}
           >
             <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-              <div className={styles.brand}/>
+              <div className={styles.brand} />
               <span>{config.app.title}</span>
             </IndexLink>
             <MenuItem onTouchTap={this.handleClose}>

@@ -3,7 +3,7 @@ import {
   Features,
 } from 'components';
 
-import FeaturesTheme from './Button/Button.scss';
+import FeaturesTheme from './Features/Features.scss';
 import ButtonTheme from './Button/Button.scss';
 
 const Theme = {

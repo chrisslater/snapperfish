@@ -5,6 +5,7 @@ import Features from 'models/Features';
 import Feature from 'models/Feature';
 import { load as loadFeatures } from 'redux/modules/features';
 
+
 function featuresDecorator(ChildComponent) {
   const FeaturesContainer = props => {
     const { _features } = props;
@@ -17,7 +18,9 @@ function featuresDecorator(ChildComponent) {
   };
 
   return asyncConnect([{
-    promise: ({ store: { dispatch } }) => Promise.all([dispatch(loadFeatures())])
+    promise: ({ store: { dispatch } }) => {
+      Promise.all([dispatch(loadFeatures())]);
+    }
   }])(connect(
     state => ({ _features: state.features })
   )(FeaturesContainer));
