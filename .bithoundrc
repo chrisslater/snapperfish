@@ -19,7 +19,14 @@
       "react-router-bootstrap",
       "piping",
 
-      "compression"
+      "compression",
+
+      "url-loader",
+      "material-ui",
+      "file-loader",
+      "serialize-javascript",
+      "serve-favicon",
+      "react-tap-event-plugin"
     ]
   }
 }
