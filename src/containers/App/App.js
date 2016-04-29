@@ -20,7 +20,6 @@ require('theme/global.scss');
 injectTapEventPlugin();
 
 class App extends Component {
-
   state = {
     open: false
   };
@@ -46,7 +45,6 @@ class App extends Component {
             onRequestChange={(open) => this.setState({ open })}
           >
             <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-              <div className={styles.brand} />
               <span>{config.app.title}</span>
             </IndexLink>
             <MenuItem onTouchTap={this.handleClose}>

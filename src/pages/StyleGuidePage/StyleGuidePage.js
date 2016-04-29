@@ -4,7 +4,7 @@ import { Button } from 'components';
 
 const StyleGuide = function StyleGuide() {
   return (
-    <div className="container">
+    <div>
       <h1>Style Guide</h1>
       <Helmet title="Style Guide" />
       <Button />

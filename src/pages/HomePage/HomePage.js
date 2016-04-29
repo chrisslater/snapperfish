@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
 import config from '../../config';
 import Helmet from 'react-helmet';
-import featuresContainer from 'containers/Features';
-import assetsContainer from 'containers/Assets';
+import featuresContainer from 'containers/Features/Features';
+import assetsContainer from 'containers/Assets/Assets';
 
 import Features from 'models/Features';
 import Assets from 'models/Assets';
 
 import { FeaturesGrid } from 'components';
 
-function Home(props) {
+function HomePage(props) {
   const { features, assets } = props;
   features.attachAssets(assets);
 
@@ -25,10 +25,10 @@ function Home(props) {
   );
 }
 
-Home.propTypes = {
+HomePage.propTypes = {
   features: PropTypes.instanceOf(Features),
   assets: PropTypes.instanceOf(Assets),
 };
 
-export default featuresContainer(assetsContainer(Home));
+export default featuresContainer(assetsContainer(HomePage));
 

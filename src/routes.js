@@ -3,13 +3,13 @@ import {
   IndexRoute,
   Route
 } from 'react-router';
+import { App } from 'containers';
 import {
-  App,
-  Home,
+  HomePage,
   FeaturePage,
-  StyleGuide,
-  NotFound,
-} from 'containers';
+  StyleGuidePage,
+  NotFoundPage,
+} from 'pages';
 
 export default function () {
   /**
@@ -17,10 +17,10 @@ export default function () {
    */
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="styleguide" component={StyleGuide} />
+      <IndexRoute component={HomePage} />
+      <Route path="styleguide" component={StyleGuidePage} />
       <Route path=":slug" component={FeaturePage} />
-      <Route path="*" component={NotFound} status={404} />
+      <Route path="*" component={NotFoundPage} status={404} />
     </Route>
   );
 }

@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import featureContainer from 'containers/Feature/Feature';
-import assetsContainer from 'containers/Assets';
+import {
+  featureContainer,
+  assetsContainer
+} from 'containers';
 
 import Feature from 'models/Feature';
 import Assets from 'models/Assets';
