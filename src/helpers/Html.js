@@ -53,12 +53,12 @@ function Html(props) {
           /* ideally one could also include here the style
            for the current page (Home.scss, About.scss, etc) */
         }
-        {/*{Object.keys(assets.styles).length === 0 ?
+        {Object.keys(assets.styles).length === 0 ?
          <style
            dangerouslySetInnerHTML={{
-             __html: require('../containers/App/App.scss')._style
+             __html: require('theme/global.scss')._style + require('../containers/App/App.scss')._style
             }}
-          /> : null}*/}
+          /> : null}
       </head>
       <body>
         <div

@@ -11,6 +11,9 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
+// @TODO Figure out why I need to have this in a component, rather than just Html.js
+require('theme/global.scss');
+
 /* @TODO Needed for onTouchTap, remove when forfilled
  * http://stackoverflow.com/a/34015469/988941
  */
