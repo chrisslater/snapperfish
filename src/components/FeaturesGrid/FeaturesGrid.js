@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Themeable } from 'rethemeable';
 import { GridList, GridTile } from 'material-ui/GridList';
 import Features from 'models/Features';
+import { Image } from 'components';
 
 @Themeable
 class FeaturesGrid extends Component {
@@ -30,7 +31,7 @@ class FeaturesGrid extends Component {
               cols={feature.isFeatured() ? 2 : 1}
               rows={feature.isFeatured() ? 2 : 1}
             >
-              <img src={formatted.src} alt={formatted.alt} />
+              <Image {...formatted} />
             </GridTile>
           </Link>
         );

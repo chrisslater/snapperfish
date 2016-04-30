@@ -18,9 +18,10 @@ export default class Image extends Component {
 
   render() {
     const { alt } = this.props; // @TODO Linter complains if it cant see this explicitly
-    delete this.props.alt;
+    const props = Object.assign({}, this.props);
+    delete props.alt;
     return (
-      <img alt={alt} { ...this.props } />
+      <img alt={alt} { ...props } />
     );
   }
 }

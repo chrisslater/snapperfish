@@ -4,6 +4,7 @@ import Image from 'models/Image';
 class Feature {
   id: string;
   title: string;
+  body: string;
   slug: string;
   image: Object;
 
@@ -17,6 +18,10 @@ class Feature {
 
   getTitle(): string {
     return this.title;
+  }
+
+  getBody(): string {
+    return this.body;
   }
 
   getSlug(): string {

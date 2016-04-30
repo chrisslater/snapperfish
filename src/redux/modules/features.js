@@ -8,14 +8,15 @@ export function mapFeature(feature: Object): Object {
     fields: {
       coverImage: image,
       title,
-      slug
+      slug,
+      body
     },
     sys: {
       id: id
     }
   } = feature;
 
-  const props = { title, slug, id };
+  const props = { title, slug, id, body };
 
   if (image) {
     const {
