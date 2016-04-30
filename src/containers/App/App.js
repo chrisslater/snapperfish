@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import NestedStatus from 'react-nested-status';
 
 // @TODO Figure out why I need to have this in a component, rather than just Html.js
 require('theme/global.scss');
@@ -31,34 +32,36 @@ class App extends Component {
     const styles = require('./App.scss');
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div>
-          <Helmet {...config.app.head} />
-          <AppBar
-            title={'Home'}
-            onLeftIconButtonTouchTap={this.handleOpen}
-          />
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.state.open}
-            onRequestChange={(open) => this.setState({ open })}
-          >
-            <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-              <span>{config.app.title}</span>
-            </IndexLink>
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to={'/'}>Home</Link>
-            </MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to={'/styleguide'}>Style Guide</Link>
-            </MenuItem>
-          </Drawer>
-          <div className={styles.appContent}>
-            {this.props.children}
+      <NestedStatus code={200}>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <div>
+            <Helmet {...config.app.head} />
+            <AppBar
+              title={'Home'}
+              onLeftIconButtonTouchTap={this.handleOpen}
+            />
+            <Drawer
+              docked={false}
+              width={200}
+              open={this.state.open}
+              onRequestChange={(open) => this.setState({ open })}
+            >
+              <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
+                <span>{config.app.title}</span>
+              </IndexLink>
+              <MenuItem onTouchTap={this.handleClose}>
+                <Link to={'/'}>Home</Link>
+              </MenuItem>
+              <MenuItem onTouchTap={this.handleClose}>
+                <Link to={'/styleguide'}>Style Guide</Link>
+              </MenuItem>
+            </Drawer>
+            <div className={styles.appContent}>
+              {this.props.children}
+            </div>
           </div>
-        </div>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </NestedStatus>
     );
   }
 }

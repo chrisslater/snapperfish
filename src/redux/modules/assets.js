@@ -33,6 +33,9 @@ export function mapAssets(items: Array<Object>): Array {
 export default function reducer(state: Array = [], action: Object = {}) {
   switch (action.type) {
     case LOAD_SUCCESS:
+      if (!action.result.includes) {
+        return state;
+      }
       return mapAssets(action.result.includes.Asset);
     default:
       return state;

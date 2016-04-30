@@ -6,7 +6,12 @@ import Image from 'models/Image';
 function assetsDecorator(ChildComponent) {
   function AssetsContainer(props) {
     const { _assets } = props;
-    const assets = new Assets(_assets.map((assetProps) => new Image(assetProps)));
+    let assets = [];
+
+    if (_assets.length > 0) {
+      assets = new Assets(_assets.map((assetProps) => new Image(assetProps)));
+    }
+
     return <ChildComponent {...props} assets={assets} />;
   }
 

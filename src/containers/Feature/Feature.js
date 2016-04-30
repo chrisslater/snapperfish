@@ -3,10 +3,16 @@ import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import Feature from 'models/Feature';
 import { loadFeature } from 'redux/modules/features';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 function featureDecorator(ChildComponent) {
   function FeatureContainer(props) {
     const { _features, params: { slug } } = props;
+
+    if (_features.length < 1) {
+      return (<NotFoundPage />);
+    }
+
     const matchedFeature = _features.find(feature => feature.slug === slug);
     return (<ChildComponent { ...props } feature={new Feature(matchedFeature)} />);
   }

@@ -18,6 +18,7 @@ import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
+import NestedStatus from 'react-nested-status';
 
 import env from './env';
 
@@ -110,16 +111,16 @@ app.use((req, res) => {
           </Provider>
         );
 
-        res.status(200);
-
         global.navigator = { userAgent: req.headers['user-agent'] };
 
-        res.send(
+        const markup = (
           `<!DOCTYPE html>
           ${ReactDOM.renderToString(
             <Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />
           )}`
         );
+        const status = NestedStatus.rewind();
+        res.status(status).send(markup);
       });
     } else {
       res.status(404).send('Not found');

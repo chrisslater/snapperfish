@@ -34,4 +34,3 @@ FeaturePage.propTypes = {
 };
 
 export default featureContainer(assetsContainer(FeaturePage));
-
