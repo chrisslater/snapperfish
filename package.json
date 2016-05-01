@@ -25,8 +25,8 @@
   "main": "bin/server.js",
   "scripts": {
     "start": "concurrently --kill-others \"npm run start-prod\"",
-    "start-prod": "better-npm-run start-prod",
-    "build": "better-npm-run build",
+    "start-prod": "NODE_PATH=./src PORT=8080 NODE_ENV=production node ./bin/server.js",
+    "build": "NODE_ENV=production webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc.yml src",
     "start-dev": "better-npm-run start-dev",
@@ -43,14 +43,6 @@
         "PORT": 8080
       }
     },
-    "start-prod-api": {
-      "command": "node ./bin/api.js",
-      "env": {
-        "NODE_PATH": "./api",
-        "NODE_ENV": "production",
-        "APIPORT": 3030
-      }
-    },
     "start-dev": {
       "command": "node ./bin/server.js",
       "env": {
@@ -59,21 +51,12 @@
         "PORT": 3000
       }
     },
-    "start-dev-api": {
-      "command": "node ./bin/api.js",
-      "env": {
-        "NODE_PATH": "./api",
-        "NODE_ENV": "development",
-        "APIPORT": 3030
-      }
-    },
     "watch-client": {
       "command": "node webpack/webpack-dev-server.js",
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
-        "PORT": 3000,
-        "APIPORT": 3030
+        "PORT": 3000
       }
     },
     "build": {
