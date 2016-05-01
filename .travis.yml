@@ -5,6 +5,7 @@ node_js:
 #  - "4.0"
 #  - "4"
   - "5"
+  - "5.5"
   - "stable"
 
 sudo: false
