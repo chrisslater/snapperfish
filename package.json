@@ -108,9 +108,8 @@
     "serve-favicon": "^2.3.0",
     "superagent": "^1.4.0",
     "url-loader": "^0.5.7",
-    "webpack-isomorphic-tools": "^2.2.24"
-  },
-  "devDependencies": {
+    "webpack-isomorphic-tools": "^2.2.24",
+    
     "autoprefixer": "^6.3.6",
     "babel-eslint": "^6.0.2",
     "babel-plugin-react-transform": "^2.0.0",
