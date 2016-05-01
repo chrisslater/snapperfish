@@ -25,8 +25,8 @@
   "main": "bin/server.js",
   "scripts": {
     "start": "concurrently --kill-others \"npm run start-prod\"",
-    "start-prod": "NODE_PATH=./src PORT=8080 NODE_ENV=production node ./bin/server.js",
-    "build": "NODE_ENV=production webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
+    "start-prod": "better-npm-run start-prod",
+    "build": "better-npm-run build",
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc.yml src",
     "start-dev": "better-npm-run start-dev",
