@@ -31,9 +31,9 @@ function featureDecorator(ChildComponent) {
       }
 
       return Promise.all([dispatch(loadFeature(slug))]);
-    }
+    },
   }])(connect(
-    state => ({ _features: state.features })
+    state => ({ _features: state.features }),
   )(FeatureContainer));
 }
 

@@ -22,7 +22,7 @@ injectTapEventPlugin();
 
 class App extends Component {
   state = {
-    open: false
+    open: false,
   };
 
   handleOpen = () => this.setState({ open: true });
@@ -71,7 +71,7 @@ App.propTypes = {
 };
 
 App.contextTypes = {
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
 };
 
 export default App;

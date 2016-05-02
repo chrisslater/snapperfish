@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   IndexRoute,
-  Route
+  Route,
 } from 'react-router';
 import { App } from 'containers';
 import {

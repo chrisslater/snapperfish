@@ -43,7 +43,7 @@ function formatUrl(_path) {
 // Proxy to API server
 app.use('/api', (req, res) => {
   const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN
+    access_token: env.CONTENTFUL_ACCESS_TOKEN,
   });
 
   client
@@ -72,7 +72,7 @@ app.use((req, res) => {
     webpackIsomorphicTools.refresh();
   }
   const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN
+    access_token: env.CONTENTFUL_ACCESS_TOKEN,
   });
 
   const memoryHistory = createHistory(req.originalUrl);
@@ -95,7 +95,7 @@ app.use((req, res) => {
   match({
     history,
     routes: getRoutes(store),
-    location: req.originalUrl
+    location: req.originalUrl,
   }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search);

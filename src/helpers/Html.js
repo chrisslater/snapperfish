@@ -57,7 +57,7 @@ function Html(props) {
           <style
             dangerouslySetInnerHTML={{
               __html: require('theme/global.scss')._style +
-              require('../containers/App/App.scss')._style
+              require('../containers/App/App.scss')._style,
             }}
           /> : null}
       </head>
@@ -79,7 +79,7 @@ function Html(props) {
 Html.propTypes = {
   assets: PropTypes.object,
   component: PropTypes.node,
-  store: PropTypes.object
+  store: PropTypes.object,
 };
 
 export default Html;

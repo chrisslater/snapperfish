@@ -1,11 +1,9 @@
 /* @flow */
 import React, { Component, PropTypes } from 'react';
-import { Themeable } from 'rethemeable';
+import { Themeable as themeable } from 'rethemeable';
 import { markdown } from 'markdown';
 
 class Feature extends Component {
-  theme: Object;
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string,
@@ -15,7 +13,7 @@ class Feature extends Component {
 
   };
 
-  getBody(body, theme) {
+  getBody(body: string, theme: Object) {
     if (body) {
       return (
         <div
@@ -24,7 +22,10 @@ class Feature extends Component {
         />
       );
     }
+
+    return null;
   }
+  theme: Object;
 
   render() {
     const theme = this.theme;
@@ -38,4 +39,4 @@ class Feature extends Component {
   }
 }
 
-export default Themeable(Feature);
+export default themeable(Feature);

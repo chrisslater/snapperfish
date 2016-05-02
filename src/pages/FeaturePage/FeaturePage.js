@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import {
   featureContainer,
-  assetsContainer
+  assetsContainer,
 } from 'containers';
 
 import { Image } from 'components';
