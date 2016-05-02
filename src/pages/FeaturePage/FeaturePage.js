@@ -5,31 +5,24 @@ import {
   assetsContainer,
 } from 'containers';
 
-import { Image } from 'components';
 import Feature from 'models/Feature';
 import Assets from 'models/Assets';
+
+import { Feature as FeatureComponent } from 'components';
 
 function FeaturePage(props) {
   const { feature, assets } = props;
   feature.attachAssets(assets);
-  const formatted = feature.getImage().getFormatted();
-  let body;
-  const featureBody = feature.getBody();
+  const formatted = {};
 
-  if (featureBody) {
-    body = (<div dangerouslySetInnerHTML={{ __html: markdown.toHTML(featureBody) }} />);
-  }
+  formatted.image = feature.getImage().getFormatted();
+  formatted.title = feature.getTitle();
+  formatted.body = feature.getBody();
 
   return (
     <div>
       <Helmet title="Feature" />
-      <div>
-        <div>
-          <Image src={formatted.src} alt={formatted.alt} />
-        </div>
-        <h1>{feature.getTitle()}</h1>
-        {body}
-      </div>
+      <FeatureComponent {...formatted} />
     </div>
   );
 }
