@@ -17,11 +17,12 @@ export default class Image extends Component {
   };
 
   render() {
+    const theme = this.theme;
     const { alt } = this.props; // @TODO Linter complains if it cant see this explicitly
     const props = Object.assign({}, this.props);
     delete props.alt;
     return (
-      <img alt={alt} { ...props } />
+      <img className={theme.self} alt={alt} { ...props } />
     );
   }
 }

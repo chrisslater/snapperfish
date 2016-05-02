@@ -11,12 +11,12 @@ import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import { syncHistoryWithStore } from 'react-router-redux';
 
+import { Themed } from 'rethemeable';
+import theme from 'theme/theme';
+
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import getRoutes from './routes';
-
-import { Themed } from 'rethemeable';
-import Theme from './theme/theme';
 
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
@@ -40,7 +40,9 @@ const component = (
 
 ReactDOM.render(
   <Provider store={store} key="provider">
-    {component}
+    <Themed theme={theme}>
+      {component}
+    </Themed>
   </Provider>,
   dest
 );
@@ -64,7 +66,7 @@ if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
     <Provider store={store} key="provider">
-      <Themed theme={Theme}>
+      <Themed theme={theme}>
         <div>
           {component}
           <DevTools />
