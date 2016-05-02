@@ -1,16 +1,36 @@
 {
   "dependencies": {
     "unused-ignores": [
+      "concurrently",
+      "better-npm-run",
+      "babel-eslint",
       "babel-core",
       "babel-runtime",
       "babel-loader",
       "react-router",
       "react-router-redux",
       "react-dom",
+      "redbox-react",
       "pretty-error",
+      "react-transform-hmr",
 
+      "react-a11y",
+      "eslint",
+      "eslint-config-airbnb",
+      "eslint-plugin-jsx-a11y",
+      "eslint-plugin-react",
+      "eslint-plugin-flow-vars",
+
+
+      "postcss-loader",
+      "style-loader",
+      "json-loader",
+      "css-loader",
+      "sass-loader",
       "less-loader",
       "less",
+      "normalize.css",
+      "markdown",
 
       "hoist-non-react-statics",
       "react-redux",

@@ -26,6 +26,7 @@ rules:
 
 plugins:
   - react
+  - jsx-a11y
   - flow-vars
   - import
 
