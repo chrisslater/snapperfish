@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import config from '../../config';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+import { Themeable as themeable } from 'rethemeable';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -11,9 +12,6 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import NestedStatus from 'react-nested-status';
-
-// @TODO Figure out why I need to have this in a component, rather than just Html.js
-require('theme/global.scss');
 
 /* @TODO Needed for onTouchTap, remove when forfilled
  * http://stackoverflow.com/a/34015469/988941
@@ -29,7 +27,7 @@ class App extends Component {
   handleClose = () => this.setState({ open: false });
 
   render() {
-    const styles = require('./App.scss');
+    const theme = this.theme;
 
     return (
       <NestedStatus code={200}>
@@ -56,7 +54,7 @@ class App extends Component {
                 <Link to={'/styleguide'}>Style Guide</Link>
               </MenuItem>
             </Drawer>
-            <div className={styles.appContent}>
+            <div className={theme.content}>
               {this.props.children}
             </div>
           </div>
@@ -74,4 +72,4 @@ App.contextTypes = {
   store: PropTypes.object.isRequired,
 };
 
-export default App;
+export default themeable(App);

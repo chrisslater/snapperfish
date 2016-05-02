@@ -8,7 +8,9 @@ import {
 import Feature from 'models/Feature';
 import Assets from 'models/Assets';
 
-import { Feature as FeatureComponent } from 'components';
+import {
+  Feature as FeatureComponent,
+} from 'components';
 
 function FeaturePage(props) {
   const { feature, assets } = props;

@@ -1,0 +1,10 @@
+@import '../variables';
+
+.content {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: $padding;
+  max-width: $max-width;
+}

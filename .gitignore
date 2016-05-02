@@ -1,7 +1,7 @@
 .idea/
 .vscode/
 node_modules/
-dist/
+static/dist/
 *.iml
 webpack-assets.json
 webpack-stats.json
