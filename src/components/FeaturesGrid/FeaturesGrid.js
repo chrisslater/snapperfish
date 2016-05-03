@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import { GridList, GridTile } from 'material-ui/GridList';
 import Features from 'models/Features';
-import { Themeable as themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 
 class FeaturesGrid extends Component {
   static defaultProps = {

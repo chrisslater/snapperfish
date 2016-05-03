@@ -11,7 +11,7 @@ import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import { Themed } from 'rethemeable';
+import { ApplyTheme } from 'rethemeable';
 import theme from 'theme/theme';
 
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
@@ -40,9 +40,9 @@ const component = (
 
 ReactDOM.render(
   <Provider store={store} key="provider">
-    <Themed theme={theme}>
+    <ApplyTheme theme={theme}>
       {component}
-    </Themed>
+    </ApplyTheme>
   </Provider>,
   dest
 );
@@ -66,12 +66,12 @@ if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
     <Provider store={store} key="provider">
-      <Themed theme={theme}>
+      <ApplyTheme theme={theme}>
         <div>
           {component}
           <DevTools />
         </div>
-      </Themed>
+      </ApplyTheme>
     </Provider>,
     dest
   );

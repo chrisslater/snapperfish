@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 
-@Themeable
+@themeable
 export default class Image extends Component {
 
   static propTypes = {

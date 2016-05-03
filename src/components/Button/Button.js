@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 
-@Themeable
+@themeable
 export default class Button extends Component {
   render() {
     const theme = this.theme;

@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component, PropTypes } from 'react';
-import { Themeable as themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 import { markdown } from 'markdown';
 import { Image } from 'components';
 

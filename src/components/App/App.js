@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import config from '../../config';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { Themeable as themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
