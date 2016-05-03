@@ -7,7 +7,10 @@ import assetsContainer from 'containers/Assets/Assets';
 import Features from 'models/Features';
 import Assets from 'models/Assets';
 
-import { FeaturesGrid } from 'components';
+import {
+  Dimensions,
+  FeaturesGrid,
+} from 'components';
 
 function HomePage(props) {
   const { features, assets } = props;
@@ -20,7 +23,9 @@ function HomePage(props) {
         <h1>{config.app.title}</h1>
         <h2>{config.app.description}</h2>
       </div>
-      <FeaturesGrid features={features} />
+      <Dimensions>
+        <FeaturesGrid features={features} />
+      </Dimensions>
     </div>
   );
 }

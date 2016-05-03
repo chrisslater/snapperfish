@@ -1,22 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Themeable } from 'rethemeable';
+
 import { GridList, GridTile } from 'material-ui/GridList';
 import Features from 'models/Features';
-import { Image } from 'components';
+import { themeable } from 'rethemeable';
 
-@Themeable
 class FeaturesGrid extends Component {
-
   static defaultProps = {
     src: '//https://cdn0.vox-cdn.com/images/verge/default-avatar.v9899025.gif',
   };
 
   static propTypes = {
     features: PropTypes.instanceOf(Features),
+    containerWidth: PropTypes.number,
   };
 
-  featuresMarkup(features) {
+  featuresMarkup(features, theme) {
     return features.getItems().map((feature) => {
       const image = feature.getImage();
       let mapped = null;
@@ -30,8 +29,12 @@ class FeaturesGrid extends Component {
               titlePosition="bottom"
               cols={feature.isFeatured() ? 2 : 1}
               rows={feature.isFeatured() ? 2 : 1}
+              className={theme.background}
+              style={{
+                backgroundImage: `url(${formatted.src})`,
+              }}
             >
-              <Image {...formatted} />
+              {/* <Image {...formatted} /> */}
             </GridTile>
           </Link>
         );
@@ -42,17 +45,25 @@ class FeaturesGrid extends Component {
   }
 
   render() {
-    const { features } = this.props;
+    const { features, containerWidth } = this.props;
+    const theme = this.theme;
+
+    let colWidth = 1;
+
+    if (containerWidth > 700) {
+      colWidth = 2;
+    }
+
     return (
       <GridList
-        cols={2}
-        cellHeight={400}
+        cols={colWidth}
+        cellHeight={300}
         padding={1}
       >
-        {this.featuresMarkup(features)}
+        {this.featuresMarkup(features, theme)}
       </GridList>
     );
   }
 }
 
-export default FeaturesGrid;
+export default themeable(FeaturesGrid);

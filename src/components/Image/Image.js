@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Themeable } from 'rethemeable';
+import { themeable } from 'rethemeable';
 
-@Themeable
+@themeable
 export default class Image extends Component {
 
   static propTypes = {
@@ -17,11 +17,12 @@ export default class Image extends Component {
   };
 
   render() {
+    const theme = this.theme;
     const { alt } = this.props; // @TODO Linter complains if it cant see this explicitly
     const props = Object.assign({}, this.props);
     delete props.alt;
     return (
-      <img alt={alt} { ...props } />
+      <img className={theme.self} alt={alt} { ...props } />
     );
   }
 }

@@ -9,11 +9,11 @@ export function mapFeature(feature: Object): Object {
       coverImage: image,
       title,
       slug,
-      body
+      body,
     },
     sys: {
-      id: id
-    }
+      id: id,
+    },
   } = feature;
 
   const props = { title, slug, id, body };
@@ -22,7 +22,7 @@ export function mapFeature(feature: Object): Object {
     const {
       sys: {
         id: imageId,
-      }
+      },
     } = image;
 
     props.image = { id: imageId };
@@ -56,8 +56,8 @@ export function load(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('entries', {
-      params: { content_type: 'feature' }
-    })
+      params: { content_type: 'feature' },
+    }),
   };
 }
 
@@ -67,8 +67,8 @@ export function loadFeature(slug): Object {
     promise: (client) => client.get('entries', {
       params: {
         content_type: 'feature',
-        'fields.slug': slug
-      }
-    })
+        'fields.slug': slug,
+      },
+    }),
   };
 }

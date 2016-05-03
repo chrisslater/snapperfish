@@ -13,7 +13,7 @@ rules:
   import/namespace: 0
   import/no-unresolved: 0
   import/no-named-as-default: 2
-  comma-dangle: 0
+  comma-dangle: 1
   indent: [ 2, 2, { SwitchCase: 1 } ]
   no-console: 0
   no-alert: 0
@@ -26,6 +26,7 @@ rules:
 
 plugins:
   - react
+  - jsx-a11y
   - flow-vars
   - import
 
