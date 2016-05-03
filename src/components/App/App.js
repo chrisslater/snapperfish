@@ -13,6 +13,9 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import NestedStatus from 'react-nested-status';
 
+import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
+
 /* @TODO Needed for onTouchTap, remove when forfilled
  * http://stackoverflow.com/a/34015469/988941
  */
@@ -25,6 +28,10 @@ class App extends Component {
 
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
+  handleMenuItemClick = (path) => {
+    this.props.history.push(path);
+    this.handleClose();
+  };
 
   render() {
     const theme = this.theme;
@@ -47,11 +54,11 @@ class App extends Component {
               <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
                 <span>{config.app.title}</span>
               </IndexLink>
-              <MenuItem onTouchTap={this.handleClose}>
-                <Link to={'/'}>Home</Link>
+              <MenuItem onTouchTap={() => this.handleMenuItemClick('/')}>
+                Home
               </MenuItem>
-              <MenuItem onTouchTap={this.handleClose}>
-                <Link to={'/styleguide'}>Style Guide</Link>
+              <MenuItem onTouchTap={() => this.handleMenuItemClick('/styleguide')}>
+                Style Guide
               </MenuItem>
             </Drawer>
             <div className={theme.content}>

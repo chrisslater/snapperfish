@@ -40,6 +40,10 @@ class Feature {
     this.image = image;
   }
 
+  getPublishDate() {
+    return this.publishDate;
+  }
+
   attachAssets(assets): void {
     const image = assets.getAssetById(this.getImageId());
 

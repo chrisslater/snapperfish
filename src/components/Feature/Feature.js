@@ -7,6 +7,7 @@ import { Image } from 'components';
 class Feature extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    publishDate: PropTypes.string.isRequired,
     image: React.PropTypes.shape({
       src: React.PropTypes.string,
       alt: React.PropTypes.string,
@@ -42,14 +43,16 @@ class Feature extends Component {
       title,
       image,
       body,
+      publishDate,
     } = this.props;
 
     return (
-      <div>
-        <h1>{title}</h1>
+      <article>
         {this.getImage(image)}
+        <h1>{title}</h1>
+        <time dateTime={publishDate}>{publishDate}</time>
         {this.getBody(body, theme)}
-      </div>
+      </article>
     );
   }
 }

@@ -20,6 +20,7 @@ function FeaturePage(props) {
   formatted.image = feature.getImage().getFormatted();
   formatted.title = feature.getTitle();
   formatted.body = feature.getBody();
+  formatted.publishDate = feature.getPublishDate();
 
   return (
     <div>

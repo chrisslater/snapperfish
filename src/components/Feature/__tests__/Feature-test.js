@@ -61,5 +61,15 @@ describe('Feature component', function () {
         expect(body).to.equal(undefined);
       });
     });
+
+    describe('publishDate prop', function () {
+      it('should render date on the page', function () {
+        this.mockProps.publishDate = '2015-05-02';
+        const component = TestUtils.renderIntoDocument(<Feature {...this.mockProps} />);
+        const el = TestUtils.scryRenderedDOMComponentsWithTag(component, 'time')[0];
+        expect(el.getAttribute('datetime')).to.equal('2015-05-02');
+        expect(el.innerHTML).to.equal('2015-05-02');
+      });
+    });
   });
 });

@@ -11,7 +11,8 @@ describe('Feature', function () {
       slug: 'mocked-up-slug',
       image: {
         id: 'abc12356'
-      }
+      },
+      publishDate: '2015-05-02',
     };
   });
 
@@ -37,6 +38,13 @@ describe('Feature', function () {
     it('should return the feature slug', function () {
       const feature = new Feature(this.mockFeature);
       expect(feature.getSlug()).to.equal(this.mockFeature.slug);
+    });
+  });
+
+  describe('#getPublishDate()', function () {
+    it('should return the publishDate', function () {
+      const feature = new Feature(this.mockFeature);
+      expect(feature.getPublishDate()).to.equal(this.mockFeature.publishDate);
     });
   });
 

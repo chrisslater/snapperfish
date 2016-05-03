@@ -10,13 +10,20 @@ export function mapFeature(feature: Object): Object {
       title,
       slug,
       body,
+      publishDate,
     },
     sys: {
       id: id,
     },
   } = feature;
 
-  const props = { title, slug, id, body };
+  const props = {
+    title,
+    slug,
+    id,
+    body,
+    publishDate,
+  };
 
   if (image) {
     const {
