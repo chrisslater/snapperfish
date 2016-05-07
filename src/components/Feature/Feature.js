@@ -49,9 +49,11 @@ class Feature extends Component {
     return (
       <article>
         {this.getImage(image)}
-        <h1>{title}</h1>
-        <time dateTime={publishDate}>{publishDate}</time>
-        {this.getBody(body, theme)}
+        <div className={theme.content}>
+          <h1>{title}</h1>
+          <time dateTime={publishDate}>{publishDate}</time>
+          {this.getBody(body, theme)}
+        </div>
       </article>
     );
   }

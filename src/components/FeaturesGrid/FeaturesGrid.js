@@ -22,7 +22,10 @@ class FeaturesGrid extends Component {
       if (image) {
         const formatted = image.getFormatted();
         mapped = (
-          <Link key={feature.getId()} to={feature.getSlug()}>
+          <Link
+            key={feature.getId()}
+            to={feature.getSlug()}
+          >
             <GridTile
               key={feature.getId()}
               title={feature.getTitle()}
@@ -33,9 +36,8 @@ class FeaturesGrid extends Component {
               style={{
                 backgroundImage: `url(${formatted.src})`,
               }}
-            >
-              {/* <Image {...formatted} /> */}
-            </GridTile>
+            />
+
           </Link>
         );
       }
@@ -51,14 +53,14 @@ class FeaturesGrid extends Component {
     let colWidth = 1;
 
     if (containerWidth > 700) {
-      colWidth = 2;
+      // @TODO reset this colWidth = 2;
     }
 
     return (
       <GridList
         cols={colWidth}
-        cellHeight={300}
-        padding={1}
+        cellHeight={400}
+        padding={10}
       >
         {this.featuresMarkup(features, theme)}
       </GridList>

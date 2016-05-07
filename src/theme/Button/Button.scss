@@ -3,13 +3,3 @@
   border: none;
   padding: 5px 15px;
 }
-
-.self:before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  display: block;
-  position: relative;
-  background-image: linear-gradient(0, black, black);
-  background-position: 0 0;
-}

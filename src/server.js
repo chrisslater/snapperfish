@@ -112,6 +112,7 @@ app.use((req, res) => {
         );
 
         global.navigator = { userAgent: req.headers['user-agent'] };
+        // global.navigator = { userAgent: 'all' };
 
         const markup = (
           `<!DOCTYPE html>

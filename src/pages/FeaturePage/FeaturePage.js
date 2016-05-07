@@ -10,6 +10,7 @@ import Assets from 'models/Assets';
 
 import {
   Feature as FeatureComponent,
+  Menu,
 } from 'components';
 
 function FeaturePage(props) {
@@ -25,6 +26,7 @@ function FeaturePage(props) {
   return (
     <div>
       <Helmet title="Feature" />
+      <Menu title={formatted.title} />
       <FeatureComponent {...formatted} />
     </div>
   );

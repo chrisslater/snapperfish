@@ -10,6 +10,9 @@ import Assets from 'models/Assets';
 import {
   Dimensions,
   FeaturesGrid,
+  Hero,
+  Menu,
+  LayoutContainer,
 } from 'components';
 
 function HomePage(props) {
@@ -19,13 +22,18 @@ function HomePage(props) {
   return (
     <div>
       <Helmet title="Home" />
-      <div className="container">
-        <h1>{config.app.title}</h1>
-        <h2>{config.app.description}</h2>
-      </div>
-      <Dimensions>
-        <FeaturesGrid features={features} />
-      </Dimensions>
+      <Menu />
+      <Hero>
+        <LayoutContainer>
+          <h1>{config.app.title}</h1>
+          <h2>{config.app.description}</h2>
+        </LayoutContainer>
+      </Hero>
+      <LayoutContainer>
+        <Dimensions>
+          <FeaturesGrid features={features} />
+        </Dimensions>
+      </LayoutContainer>
     </div>
   );
 }
