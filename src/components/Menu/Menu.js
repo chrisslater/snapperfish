@@ -61,6 +61,11 @@ class LayoutContainer extends Component {
               Home
             </a>
           </MenuItem>
+          <MenuItem onTouchTap={() => this.handleMenuItemClick('/blog')}>
+            <a href={'/blog'} onClick={this.disabledOnClick} className={theme.link}>
+              Blog
+            </a>
+          </MenuItem>
           <MenuItem onTouchTap={() => this.handleMenuItemClick('/styleguide')}>
             <a href={'/styleguide'} onClick={this.disabledOnClick} className={theme.link}>
               Style Guide

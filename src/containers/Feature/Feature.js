@@ -9,9 +9,13 @@ function featureDecorator(ChildComponent) {
   function FeatureContainer(props) {
     const { _features, params: { slug } } = props;
 
+    console.log(_features, slug);
+
     if (_features.length < 1) {
       return (<NotFoundPage />);
     }
+
+
 
     const matchedFeature = _features.find(feature => feature.slug === slug);
     return (<ChildComponent { ...props } feature={new Feature(matchedFeature)} />);
@@ -23,13 +27,15 @@ function featureDecorator(ChildComponent) {
   };
 
   return asyncConnect([{
-    promise: ({ store: { dispatch, getState } }) => {
-      let slug = getState().routing.locationBeforeTransitions.pathname;
-
-      if (slug[0] === '/') {
-        slug = slug.substring(1);
-      }
-
+    promise: (props) => {
+      const {
+        store: {
+          dispatch
+        },
+        params: {
+          slug
+        }
+      } = props;
       return Promise.all([dispatch(loadFeature(slug))]);
     },
   }])(connect(

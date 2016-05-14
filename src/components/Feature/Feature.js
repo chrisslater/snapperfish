@@ -54,8 +54,11 @@ class Feature extends Component {
     const formattedPublishDate = moment(publishDate).format('MMMM Do, YYYY');
     return (
       <article>
-        {this.getImage(image)}
+
         <div className={theme.content}>
+          <div className={theme.imageContainer}>
+            {this.getImage(image, theme)}
+          </div>
           <h1
             style={{
               color: muiTheme.palette.primary1Color,

@@ -1,5 +1,9 @@
 @import "../variables";
 
+.imageContainer {
+  margin-bottom: $padding;
+}
+
 .content {
   max-width: $max-width-paragraph;
   width: 100%;
