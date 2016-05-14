@@ -14,3 +14,7 @@ export Footer from './Footer/Footer';
 export Hero from './Hero/Hero';
 export LayoutContainer from './LayoutContainer/LayoutContainer';
 export Menu from './Menu/Menu';
+
+// Profile
+export Profile from './Profile/Profile';
+export BusinessCard from './BusinessCard/BusinessCard';

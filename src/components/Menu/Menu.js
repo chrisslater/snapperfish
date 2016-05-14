@@ -11,11 +11,13 @@ import Divider from 'material-ui/Divider';
 class LayoutContainer extends Component {
   static propTypes = {
     title: PropTypes.string,
+    depth: PropTypes.number,
     children: PropTypes.array,
   };
 
   static defaultProps = {
     title: '',
+    depth: 1,
   }
 
   state = {
@@ -35,14 +37,12 @@ class LayoutContainer extends Component {
 
   render() {
     const theme = this.theme;
-    // style={{ position: 'fixed' }}
     return (
       <div>
         <AppBar
           title={this.props.title}
           onLeftIconButtonTouchTap={this.handleOpen}
-          zDepth={0}
-
+          zDepth={this.props.depth}
         />
         <Drawer
           docked={false}

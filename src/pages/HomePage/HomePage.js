@@ -8,21 +8,19 @@ import Features from 'models/Features';
 import Assets from 'models/Assets';
 
 import {
-  Dimensions,
-  FeaturesGrid,
   Hero,
   Menu,
+  Profile,
   LayoutContainer,
 } from 'components';
 
 function HomePage(props) {
   const { features, assets } = props;
   features.attachAssets(assets);
-
   return (
     <div>
       <Helmet title="Home" />
-      <Menu />
+      <Menu depth={0} />
       <Hero>
         <LayoutContainer>
           <h1>{config.app.title}</h1>
@@ -30,9 +28,8 @@ function HomePage(props) {
         </LayoutContainer>
       </Hero>
       <LayoutContainer>
-        <Dimensions>
-          <FeaturesGrid features={features} />
-        </Dimensions>
+
+        <Profile />
       </LayoutContainer>
     </div>
   );

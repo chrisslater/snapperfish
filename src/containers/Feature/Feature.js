@@ -15,8 +15,6 @@ function featureDecorator(ChildComponent) {
       return (<NotFoundPage />);
     }
 
-
-
     const matchedFeature = _features.find(feature => feature.slug === slug);
     return (<ChildComponent { ...props } feature={new Feature(matchedFeature)} />);
   }
@@ -30,11 +28,11 @@ function featureDecorator(ChildComponent) {
     promise: (props) => {
       const {
         store: {
-          dispatch
+          dispatch,
         },
         params: {
-          slug
-        }
+          slug,
+        },
       } = props;
       return Promise.all([dispatch(loadFeature(slug))]);
     },
