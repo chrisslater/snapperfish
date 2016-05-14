@@ -7,3 +7,11 @@
   margin-right: auto;
   padding: $padding;
 }
+
+.date {
+  display: block;
+  content: '';
+  height: 2px;
+  margin-top: $padding;
+  margin-bottom: $padding;
+}

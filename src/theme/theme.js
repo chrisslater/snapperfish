@@ -5,9 +5,10 @@ import {
   Hero,
   Button,
   FeaturesGrid,
-  Feature,
+  Menu,
   Image,
 } from 'components';
+import { _Feature as Feature } from 'components/Feature/Feature';
 import AppTheme from './App/App.scss';
 import LayoutContainerTheme from './LayoutContainer/LayoutContainer.scss';
 import FooterTheme from './Footer/Footer.scss';
@@ -16,6 +17,7 @@ import FeatureTheme from './Feature/Feature.scss';
 import ButtonTheme from './Button/Button.scss';
 import ImageTheme from './Image/Image.scss';
 import HeroTheme from './Hero/Hero.scss';
+import MenuTheme from './Menu/Menu.scss';
 
 require('./global.scss');
 require('./typography.scss');
@@ -29,6 +31,7 @@ const theme = {
   [Feature.theme]: FeatureTheme,
   [Button.theme]: ButtonTheme,
   [Image.theme]: ImageTheme,
+  [Menu.theme]: MenuTheme,
 };
 
 export default theme;

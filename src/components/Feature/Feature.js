@@ -3,7 +3,10 @@ import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
 import { markdown } from 'markdown';
 import { Image } from 'components';
+import moment from 'moment';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
+@themeable
 class Feature extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -13,6 +16,7 @@ class Feature extends Component {
       alt: React.PropTypes.string,
     }),
     body: PropTypes.string,
+    muiTheme: PropTypes.object,
   };
 
   getImage(image) {
@@ -44,14 +48,32 @@ class Feature extends Component {
       image,
       body,
       publishDate,
+      muiTheme,
     } = this.props;
 
+    const formattedPublishDate = moment(publishDate).format('MMMM Do, YYYY');
     return (
       <article>
         {this.getImage(image)}
         <div className={theme.content}>
-          <h1>{title}</h1>
-          <time dateTime={publishDate}>{publishDate}</time>
+          <h1
+            style={{
+              color: muiTheme.palette.primary1Color,
+            }}
+          >
+            {title}
+          </h1>
+          <time
+            dateTime={publishDate}
+          >
+            {formattedPublishDate}
+            <i
+              className={theme.date}
+              style={{
+                borderLeft: `4em solid ${muiTheme.palette.primary1Color}`
+              }}
+            />
+          </time>
           {this.getBody(body, theme)}
         </div>
       </article>
@@ -59,4 +81,6 @@ class Feature extends Component {
   }
 }
 
-export default themeable(Feature);
+
+export const _Feature = Feature;
+export default muiThemeable()(Feature);

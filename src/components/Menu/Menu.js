@@ -1,13 +1,11 @@
-
-
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
 import config from '../../config';
-
-import { IndexLink, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 
 @themeable
 class LayoutContainer extends Component {
@@ -31,8 +29,12 @@ class LayoutContainer extends Component {
     this.handleClose();
   };
 
+  disabledOnClick = (event) => {
+    event.preventDefault();
+  };
+
   render() {
-    // const theme = this.theme;
+    const theme = this.theme;
     // style={{ position: 'fixed' }}
     return (
       <div>
@@ -48,14 +50,21 @@ class LayoutContainer extends Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({ open })}
         >
-          <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-            <span>{config.app.title}</span>
-          </IndexLink>
           <MenuItem onTouchTap={() => this.handleMenuItemClick('/')}>
-            Home
+            <a href={'/'} onClick={this.disabledOnClick} className={theme.link}>
+              {config.app.title}
+            </a>
+          </MenuItem>
+          <Divider />
+          <MenuItem onTouchTap={() => this.handleMenuItemClick('/')}>
+            <a href={'/'} onClick={this.disabledOnClick} className={theme.link}>
+              Home
+            </a>
           </MenuItem>
           <MenuItem onTouchTap={() => this.handleMenuItemClick('/styleguide')}>
-            Style Guide
+            <a href={'/styleguide'} onClick={this.disabledOnClick} className={theme.link}>
+              Style Guide
+            </a>
           </MenuItem>
         </Drawer>
       </div>
