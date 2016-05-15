@@ -40,7 +40,9 @@ class Skills extends Component {
     skills: PropTypes.array.isRequired,
   };
 
-  renderSkill(skill) {
+  theme: Object;
+
+  renderSkill(skill: Object) {
     return (
       <li key={`${skill.name}_${skill.level}`}>
         <div>

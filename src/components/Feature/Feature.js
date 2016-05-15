@@ -17,7 +17,7 @@ class Feature extends Component {
     body: PropTypes.string.isRequired,
   };
 
-  getImage(image) {
+  getImage(image: Object) {
     if (typeof image === 'object' && (image.src && image.alt)) {
       return <Image src={image.src} alt={image.alt} />;
     }
@@ -25,7 +25,7 @@ class Feature extends Component {
     return null;
   }
 
-  getBody(body, theme: Object) {
+  getBody(body: String, theme: Object) {
     if (body) {
       return (
         <div

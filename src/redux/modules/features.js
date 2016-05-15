@@ -3,10 +3,47 @@ const LOAD = 'features/LOAD';
 const LOAD_SUCCESS = 'features/LOAD_SUCCESS';
 const LOAD_FAIL = 'features/LOAD_FAIL';
 
-export function mapFeature(feature: Object): Object {
-  const {
+type FeatureRaw = {
+  sys: {
+    id: string;
+  };
+  fields: {
+    title: string;
+    slug: string;
+    coverImage: {
+      sys: {
+        id: string;
+      };
+    };
+    body: string;
+    publishDate: string;
+    author: {
+      sys: {
+        id: string;
+      };
+    };
+  };
+};
+
+type Feature = {
+  title: string;
+  slug: string;
+  id: string;
+  body: string;
+  publishDate: string;
+  image: {
+    id: string;
+  };
+};
+
+export function mapFeature(feature: FeatureRaw): Feature {
+  let {
     fields: {
-      coverImage: image,
+      coverImage: {
+        sys: {
+          id: imageId,
+        },
+      },
       title,
       slug,
       body,
@@ -23,26 +60,19 @@ export function mapFeature(feature: Object): Object {
     id,
     body,
     publishDate,
+    image: {
+      id: imageId
+    }
   };
-
-  if (image) {
-    const {
-      sys: {
-        id: imageId,
-      },
-    } = image;
-
-    props.image = { id: imageId };
-  }
 
   return props;
 }
 
-export function mapFeatures(features: Array<Object>): Array {
+export function mapFeatures(features: Array<Object>): Array<Object> {
   return features.map(feature => mapFeature(feature));
 }
 
-export default function reducer(state: Array = [], action: Object = {}) {
+export default function reducer(state: Array<Object> = [], action: Object = {}): Array<Object> {
   switch (action.type) {
     case LOAD_SUCCESS:
       return mapFeatures(action.result.items);
@@ -68,7 +98,7 @@ export function load(): Object {
   };
 }
 
-export function loadFeature(slug): Object {
+export function loadFeature(slug: string): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('entries', {
