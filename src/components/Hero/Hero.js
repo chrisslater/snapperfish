@@ -9,8 +9,14 @@ class Hero extends Component {
 
   render() {
     const theme = this.theme;
+    const image = require('./darth_vader1.jpg');
     return (
-      <div className={theme.self}>
+      <div
+        className={theme.self}
+        style={{
+          backgroundImage: `url(${image})`,
+        }}
+      >
         {this.props.children}
       </div>
     );

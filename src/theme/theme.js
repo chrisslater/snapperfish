@@ -26,8 +26,6 @@ import BusinessCardTheme from './BusinessCard/BusinessCard.scss';
 require('./global.scss');
 require('./typography.scss');
 
-console.log(BusinessCard, BusinessCardTheme);
-
 const theme = {
   [App.theme]: AppTheme,
   [LayoutContainer.theme]: LayoutContainerTheme,

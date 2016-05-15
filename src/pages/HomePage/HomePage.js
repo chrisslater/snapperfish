@@ -20,17 +20,14 @@ function HomePage(props) {
   return (
     <div>
       <Helmet title="Home" />
-      <Menu depth={0} />
+      <Menu depth={0} isFixed />
       <Hero>
         <LayoutContainer>
           <h1>{config.app.title}</h1>
           <h2>{config.app.description}</h2>
         </LayoutContainer>
       </Hero>
-      <LayoutContainer>
-
-        <Profile />
-      </LayoutContainer>
+      <Profile />
     </div>
   );
 }

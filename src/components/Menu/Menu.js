@@ -8,10 +8,11 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 
 @themeable
-class LayoutContainer extends Component {
+class Menu extends Component {
   static propTypes = {
     title: PropTypes.string,
     depth: PropTypes.number,
+    isFixed: PropTypes.boolean,
     children: PropTypes.array,
   };
 
@@ -37,12 +38,25 @@ class LayoutContainer extends Component {
 
   render() {
     const theme = this.theme;
+    const {
+      title,
+      depth,
+      isFixed,
+    } = this.props;
+
+    const appBarProps = {};
+
+    if (isFixed) {
+      appBarProps.className = theme.appBarFixed;
+    }
+
     return (
       <div>
         <AppBar
-          title={this.props.title}
+          title={title}
           onLeftIconButtonTouchTap={this.handleOpen}
-          zDepth={this.props.depth}
+          zDepth={depth}
+          {...appBarProps}
         />
         <Drawer
           docked={false}
@@ -77,4 +91,4 @@ class LayoutContainer extends Component {
   }
 }
 
-export default LayoutContainer;
+export default Menu;
