@@ -3,6 +3,7 @@ import { themeable } from 'rethemeable';
 import {
   LayoutContainer,
   BusinessCard,
+  Skills,
 } from 'components';
 
 @themeable
@@ -28,7 +29,7 @@ class Profile extends Component {
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
           </p>
-
+          <Skills />
         </LayoutContainer>
       </div>
     );

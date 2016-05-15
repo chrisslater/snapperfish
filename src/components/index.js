@@ -18,3 +18,4 @@ export Menu from './Menu/Menu';
 // Profile
 export Profile from './Profile/Profile';
 export BusinessCard from './BusinessCard/BusinessCard';
+export Skills from './Skills/Skills';
