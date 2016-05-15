@@ -2,8 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import Card from 'material-ui/Card';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
 import {
   Image,
 } from 'components';
@@ -12,7 +10,7 @@ import {
 class BusinessCard extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     address: PropTypes.string,
     phone: PropTypes.string,
@@ -23,7 +21,7 @@ class BusinessCard extends Component {
     const theme = this.theme;
     const {
       name,
-      role,
+      position,
       email,
       address,
       phone,
@@ -33,42 +31,42 @@ class BusinessCard extends Component {
     return (
       <Card
         itemScope
-        itemType='http://schema.org/Person'
+        itemType="http://schema.org/Person"
       >
         <div className={theme.main}>
           <div className={theme.picture}>
             <Image
-              itemProp='image'
+              itemProp="image"
               src={'http://placekitten.com/200/300'}
-              alt={''}
+              alt={'Chris enjoying the sun'}
             />
           </div>
           <div className={theme.info}>
             <div className={theme.head}>
-
-              <h1 className={theme.name}>
-                <span className={theme.hello}>Hello</span> I'm <strong itemprop='name'>{name}</strong>
+              <h1 className={theme.title}>
+                <span className={theme.hello}>Hello</span>
+                I'm <strong itemProp="name" className={theme.name}>{name}</strong>
               </h1>
-              <div className={theme.role}>{role}</div>
+              <div className={theme.position}>{position}</div>
             </div>
             <ul className={theme.list}>
               <li className={theme.list_item}>
-                <strong className={theme.list_item_label}>
+                <span className={theme.list_item_label}>
                   Email
-                </strong>
+                </span>
                 <span
-                  itemProp='email'
+                  itemProp="email"
                   className={theme.list_item_value}
                 >
                   {email}
                 </span>
               </li>
               <li className={theme.list_item}>
-                <strong className={theme.list_item_label}>Address</strong>
-                <address itemProp='address' className={theme.list_item_value}>{address}</address>
+                <span className={theme.list_item_label}>Address</span>
+                <address itemProp="address" className={theme.list_item_value}>{address}</address>
               </li>
               <li className={theme.list_item}>
-                <strong className={theme.list_item_label}>Phone</strong>
+                <span className={theme.list_item_label}>Phone</span>
                 <div className={theme.list_item_value}>{phone}</div>
               </li>
 

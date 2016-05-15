@@ -1,6 +1,10 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-const theme = {};
-
+import vars from './variables';
+const theme = {
+  palette: {
+    primary1Color: vars['--primary1Color'],
+  },
+};
 
 /**
  * @TODO - find out how to use { userAgent: 'all' },

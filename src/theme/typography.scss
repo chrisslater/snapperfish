@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 @import './variables';
 
+
+
 html,
 body {
   font-size: $font-size-base;
@@ -45,7 +47,7 @@ body {
 
 .body {
   max-width: $max-width-paragraph;
-  font-size: 0.875em;
+  font-size: $font-size-body;
   line-height: 1.5;
   letter-spacing: 0.01em;
   margin-top: 0;

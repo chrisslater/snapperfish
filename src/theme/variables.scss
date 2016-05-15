@@ -3,8 +3,10 @@
  *
  *  Available options for Bootstrap:
  *  http://getbootstrap.com/customize/
- *
+ *@import "~normalize.css";
  */
+
+
 
 $max-width: 760px;
 $max-width-paragraph: 760px;
@@ -28,4 +30,5 @@ $font-color-light: rgba(255, 255, 255, 0.87);
 $footer-background: rgb(33, 33, 33);
 
 $font-size-base: 100%;
+$font-size-body: 0.875em;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;

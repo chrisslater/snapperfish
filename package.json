@@ -133,9 +133,6 @@
     "webpack": "^1.12.9",
     "webpack-isomorphic-tools": "^2.2.24"
   },
-  "peerDependencies": {
-    "react": "^15.0.2"
-  },
   "devDependencies": {
     "babel-eslint": "^6.0.2",
     "chai": "^3.3.0",
@@ -163,6 +160,8 @@
     "react-addons-test-utils": "^15.0.1",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
+    "sass-to-js-var-loader": "0.0.2",
+    "sass-vars-to-js": "^0.8.3",
     "sinon": "^1.17.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.5.0"

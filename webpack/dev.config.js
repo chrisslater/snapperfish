@@ -8,6 +8,9 @@ var assetsPath = path.resolve(__dirname, '../static/dist');
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
 var autoprefixer = require('autoprefixer');
+var customProperties = require('postcss-custom-properties');
+
+
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
@@ -93,7 +96,10 @@ module.exports = {
       { test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240' }
     ]
   },
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] }),
+    customProperties({ variables: require('../src/theme/variables.js') })
+  ],
   progress: true,
   resolve: {
     alias: {
