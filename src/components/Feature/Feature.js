@@ -73,7 +73,7 @@ class Feature extends Component {
             <i
               className={theme.date}
               style={{
-                borderLeft: `4em solid ${muiTheme.palette.primary1Color}`
+                borderLeft: `4em solid ${muiTheme.palette.primary1Color}`,
               }}
             />
           </time>

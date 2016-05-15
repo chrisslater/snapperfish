@@ -59,7 +59,7 @@
 .list {
   margin-top: 16px;
   padding: 36px 0;
-  border-top: solid 1px var(--primary3Color);
+  border-top: solid 1px var(--borderColor);
 
   &_item {
     position: relative;
@@ -74,11 +74,35 @@
   &_item_value {
     display: inline-block;
     padding-left: 90px;
+    font-style: normal;
     color: var(--accent3Color);
   }
 }
 
 .footer {
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
+  background-color: var(--primary1Color);
+}
+
+.iconButton {
+  color: var(--alternateTextColor) !important;
+
+}
+
+.iconButtonHover {
+  opacity: 0.87;
+}
+
+.iconButtonHover:hover {
+  opacity: 1;
+}
+
+.hiddenIconText {
+  text-indent: -1000000px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

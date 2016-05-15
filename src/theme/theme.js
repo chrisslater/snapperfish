@@ -8,9 +8,9 @@ import {
   Menu,
   Image,
   Profile,
+  BusinessCard,
 } from 'components';
 import { _Feature as Feature } from 'components/Feature/Feature';
-import { _BusinessCard as BusinessCard } from 'components/BusinessCard/BusinessCard';
 import AppTheme from './App/App.scss';
 import LayoutContainerTheme from './LayoutContainer/LayoutContainer.scss';
 import FooterTheme from './Footer/Footer.scss';

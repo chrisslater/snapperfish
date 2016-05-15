@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
-import muiThemeable from 'material-ui/styles/muiThemeable';
-import Card from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
+import IconButton from 'material-ui/IconButton';
 import {
   Image,
 } from 'components';
@@ -14,6 +14,8 @@ class BusinessCard extends Component {
     email: PropTypes.string.isRequired,
     address: PropTypes.string,
     phone: PropTypes.string,
+    githubUrl: PropTypes.string,
+    twitterUrl: PropTypes.string,
     muiTheme: PropTypes.object.isRequired,
   };
 
@@ -25,11 +27,12 @@ class BusinessCard extends Component {
       email,
       address,
       phone,
-      muiTheme,
+      githubUrl,
+      twitterUrl,
     } = this.props;
 
     return (
-      <Card
+      <Paper
         itemScope
         itemType="http://schema.org/Person"
       >
@@ -73,18 +76,31 @@ class BusinessCard extends Component {
             </ul>
           </div>
         </div>
-        <div
-          className={theme.footer}
-          style={{
-            backgroundColor: `${muiTheme.palette.primary1Color}`
-          }}
-        >
-          Footer
+        <div className={theme.footer}>
+          <IconButton
+            className={theme.iconButtonHover}
+            iconClassName={`fa fa-github ${theme.iconButton}`}
+          >
+            <a
+              href={githubUrl}
+              target="_blank"
+              className={theme.hiddenIconText}
+            >Go to Github</a>
+          </IconButton>
+          <IconButton
+            className={theme.iconButtonHover}
+            iconClassName={`fa fa-twitter ${theme.iconButton}`}
+          >
+            <a
+              href={twitterUrl}
+              className={theme.hiddenIconText}
+              target="_blank"
+            >Go to Twitter</a>
+          </IconButton>
         </div>
-      </Card>
+      </Paper>
     );
   }
 }
 
-export default muiThemeable()(BusinessCard);
-export const _BusinessCard = BusinessCard;
+export default BusinessCard;
