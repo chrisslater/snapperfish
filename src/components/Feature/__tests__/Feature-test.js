@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import Feature from '../Feature';
-import TestUtils from 'react-addons-test-utils';
 import { Image } from 'components';
 import shallowWithContext from 'testing/shallowWithContext';
-import mountWithContext from 'testing/mountWithContext';
 
 describe('Component', function () {
   describe('<Feature />', function () {
