@@ -10,8 +10,8 @@ import {
   Profile,
   BusinessCard,
   Skills,
+  Feature,
 } from 'components';
-import { _Feature as Feature } from 'components/Feature/Feature';
 import AppTheme from './App/App.scss';
 import LayoutContainerTheme from './LayoutContainer/LayoutContainer.scss';
 import FooterTheme from './Footer/Footer.scss';

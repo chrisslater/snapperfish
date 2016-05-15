@@ -4,6 +4,10 @@
   margin-bottom: $padding;
 }
 
+.title {
+  color: var(--primary1Color);
+}
+
 .content {
   max-width: $max-width-paragraph;
   width: 100%;
@@ -12,10 +16,12 @@
   padding: $padding;
 }
 
-.date {
+.date:after {
   display: block;
   content: '';
-  height: 2px;
+  height: 0;
+  width: 4em;
   margin-top: $padding;
   margin-bottom: $padding;
+  border-bottom: 2px solid var(--primary1Color);
 }

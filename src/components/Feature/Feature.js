@@ -4,7 +4,6 @@ import { themeable } from 'rethemeable';
 import { markdown } from 'markdown';
 import { Image } from 'components';
 import moment from 'moment';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 
 @themeable
 class Feature extends Component {
@@ -15,8 +14,7 @@ class Feature extends Component {
       src: React.PropTypes.string,
       alt: React.PropTypes.string,
     }),
-    body: PropTypes.string,
-    muiTheme: PropTypes.object,
+    body: PropTypes.string.isRequired,
   };
 
   getImage(image) {
@@ -48,34 +46,25 @@ class Feature extends Component {
       image,
       body,
       publishDate,
-      muiTheme,
     } = this.props;
 
     const formattedPublishDate = moment(publishDate).format('MMMM Do, YYYY');
     return (
       <article>
-
         <div className={theme.content}>
           <div className={theme.imageContainer}>
             {this.getImage(image, theme)}
           </div>
           <h1
-            style={{
-              color: muiTheme.palette.primary1Color,
-            }}
+            className={theme.title}
           >
             {title}
           </h1>
           <time
             dateTime={publishDate}
+            className={theme.date}
           >
             {formattedPublishDate}
-            <i
-              className={theme.date}
-              style={{
-                borderLeft: `4em solid ${muiTheme.palette.primary1Color}`,
-              }}
-            />
           </time>
           {this.getBody(body, theme)}
         </div>
@@ -84,6 +73,4 @@ class Feature extends Component {
   }
 }
 
-
-export const _Feature = Feature;
-export default muiThemeable()(Feature);
+export default Feature;

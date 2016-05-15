@@ -9,8 +9,6 @@ function featureDecorator(ChildComponent) {
   function FeatureContainer(props) {
     const { _features, params: { slug } } = props;
 
-    console.log(_features, slug);
-
     if (_features.length < 1) {
       return (<NotFoundPage />);
     }

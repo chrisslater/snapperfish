@@ -61,7 +61,7 @@ class Skills extends Component {
     const { skills } = this.props;
     let skillsMarkup = null;
 
-    if (skills) {
+    if (Array.isArray(skills) && skills.length > 0) {
       skillsMarkup = (
         <Paper>
           <ul>
