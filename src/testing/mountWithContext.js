@@ -3,10 +3,10 @@ import { mount } from 'enzyme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 const muiTheme = getMuiTheme();
 
-const mountWithContext = (node, context = {}) => {
+function mountWithContext(node, context = {}) {
   return mount(node, {
     context: { muiTheme, ...context },
   });
-};
+}
 
 export default mountWithContext;
