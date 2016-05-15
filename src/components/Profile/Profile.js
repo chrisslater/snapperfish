@@ -6,6 +6,11 @@ import {
   Skills,
 } from 'components';
 
+const skills = [{
+  name: 'Javascript',
+  level: 0.75,
+}];
+
 @themeable
 class Profile extends Component {
   render() {
@@ -29,7 +34,7 @@ class Profile extends Component {
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
           </p>
-          <Skills />
+          <Skills skills={skills} />
         </LayoutContainer>
       </div>
     );
