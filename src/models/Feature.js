@@ -1,6 +1,17 @@
+/* @flow */
 import Image from 'models/Image';
 
-/* @flow */
+/**
+ * A Feature is effectively a mini blog post
+ * at the moment and this is the interface of hydrated api properties
+ * and utils for the UI.
+ * @example
+ * let props = {
+ *   id: "123456",
+ *   title: "Readable title describing the feature"
+ * };
+ * let feature = new Feature(props);
+ */
 class Feature {
   id: string;
   title: string;
@@ -8,10 +19,21 @@ class Feature {
   slug: string;
   image: Object;
 
-  constructor(props: Object) {
+  /**
+   * This is the constructor, currently it automatically binds fed in
+   * props on the the class.
+   * @param {Object} props Object of properties.
+   * @param {string} props.id - This is the Features unique identifier.
+   * @param {string} props.title - This is the readable title.
+   */
+  constructor(props: Object): void {
     Object.assign(this, props);
   }
 
+/**
+ * The Features ID string
+ * @return {string} The ID string
+ */
   getId(): string {
     return this.id;
   }
