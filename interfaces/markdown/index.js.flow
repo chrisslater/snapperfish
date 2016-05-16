@@ -1,5 +1,0 @@
-declare module "markdown" {
-  declare var markdown: {
-    toHTML(markdown: String): String;
-  }
-}
