@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
+import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import {
@@ -9,6 +10,7 @@ import {
 @themeable
 class BusinessCard extends Component {
   static propTypes = {
+    containerWidth: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -16,12 +18,12 @@ class BusinessCard extends Component {
     phone: PropTypes.string,
     githubUrl: PropTypes.string,
     twitterUrl: PropTypes.string,
-    muiTheme: PropTypes.object.isRequired,
   };
 
   render() {
     const theme = this.theme;
     const {
+      containerWidth,
       name,
       position,
       email,
@@ -30,13 +32,23 @@ class BusinessCard extends Component {
       githubUrl,
       twitterUrl,
     } = this.props;
+    let divide = false;
+
+    if (containerWidth > 684) {
+      divide = true;
+    }
+
+    const mainClasses = classNames({
+      [theme.main]: true,
+      [theme.mainDivide]: divide,
+    });
 
     return (
       <Paper
         itemScope
         itemType="http://schema.org/Person"
       >
-        <div className={theme.main}>
+        <div className={mainClasses}>
           <div className={theme.picture}>
             <Image
               itemProp="image"

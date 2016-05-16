@@ -8,7 +8,14 @@
   padding: $padding;
 }
 
-.center {
+.centered {
   text-align: center;
+}
+
+.extended {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 

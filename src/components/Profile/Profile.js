@@ -5,6 +5,7 @@ import {
   LayoutContainer,
   BusinessCard,
   Skills,
+  Dimensions,
 } from 'components';
 
 const skills = [{
@@ -33,24 +34,20 @@ class Profile extends Component {
     const theme = this.theme;
     return (
       <div className={theme.self}>
-        <div
-          style={{
-            width: '100%',
-            maxWidth: '960px',
-            margin: '0 auto',
-          }}
-        >
-          <BusinessCard
-            name={'Chris Slater'}
-            position={'Developer and startup entrepreneur'}
-            email={'contact@snapper.fish'}
-            address={'Example Address, London, EG16 3RZ'}
-            phone={'+44 78663 34466'}
-            githubUrl={'https://github.com/chrisslater'}
-            twitterUrl={'https://twitter.com/ChrisOnTheSide'}
-          />
-        </div>
-        <LayoutContainer center>
+        <LayoutContainer isExtended>
+          <Dimensions>
+            <BusinessCard
+              name={'Chris Slater'}
+              position={'Developer and startup entrepreneur'}
+              email={'contact@snapper.fish'}
+              address={'Example Address, London, EG16 3RZ'}
+              phone={'+44 78663 34466'}
+              githubUrl={'https://github.com/chrisslater'}
+              twitterUrl={'https://twitter.com/ChrisOnTheSide'}
+            />
+          </Dimensions>
+        </LayoutContainer>
+        <LayoutContainer isCentered>
           <a>Download resume</a>
           <p className={theme.welcome}>
             Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
@@ -61,7 +58,9 @@ class Profile extends Component {
         </LayoutContainer>
         <LayoutContainer>
           <h2 className={theme.sectionHeadline}>Professional Skills</h2>
-          <Skills skills={skills} />
+          <Dimensions>
+            <Skills skills={skills} />
+          </Dimensions>
         </LayoutContainer>
 
 

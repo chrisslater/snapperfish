@@ -1,7 +1,7 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
-
+import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress';
 
@@ -38,8 +38,8 @@ function getLevelValue(level) {
 class Skills extends Component {
   static propTypes = {
     skills: PropTypes.array.isRequired,
+    containerWidth: PropTypes.number.isRequired,
   };
-
   theme: Object;
 
   renderSkill(skill: Object, theme: Object) {
@@ -64,13 +64,27 @@ class Skills extends Component {
 
   render() {
     const theme = this.theme;
-    const { skills } = this.props;
+    const {
+      skills,
+      containerWidth,
+    } = this.props;
     let skillsMarkup = null;
 
     if (Array.isArray(skills) && skills.length > 0) {
+      let columns = 1;
+
+      if (containerWidth > 499) {
+        columns = 2;
+      }
+
+      const skillsClasses = {
+        [theme.skills]: true,
+        [theme.skillsMultiple]: columns > 1,
+      };
+
       skillsMarkup = (
         <Paper>
-          <ul className={theme.skills}>
+          <ul className={classNames(skillsClasses)}>
             {skills.map(skill => this.renderSkill(skill, theme))}
           </ul>
         </Paper>

@@ -40,11 +40,23 @@
 
 .main {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.mainDivide {
   padding: 57px 50px 15px 50px;
+  > .picture {
+    flex-basis: 30%;
+  }
+
+  > .info {
+    flex-basis: 70%;
+  }
 }
 
 .picture {
   padding: 20px;
+  flex-basis: 100%;
 }
 
 .info {
@@ -80,7 +92,6 @@
 }
 
 .footer {
-  padding: 8px 0;
   text-align: center;
   background-color: var(--primary1Color);
 }

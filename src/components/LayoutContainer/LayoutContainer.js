@@ -6,18 +6,21 @@ import classNames from 'classnames';
 class LayoutContainer extends Component {
   static propTypes = {
     children: PropTypes.array,
-    center: PropTypes.boolean,
+    isCentered: PropTypes.boolean,
+    isExtended: PropTypes.boolean,
   };
 
   render() {
     const theme = this.theme;
     const {
       children,
-      center,
+      isCentered,
+      isExtended,
     } = this.props;
     const classes = {
       [theme.self]: true,
-      [theme.center]: center,
+      [theme.centered]: isCentered,
+      [theme.extended]: isExtended,
     };
 
     return (
