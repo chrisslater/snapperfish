@@ -14,6 +14,10 @@ describe('Component', function () {
         },
         body: '',
         publishDate: '',
+        image: {
+          src: 'http://snapper.fish/test.jpg',
+          alt: 'Test alt tag',
+        },
       };
     });
 
@@ -23,10 +27,6 @@ describe('Component', function () {
 
     describe('Image', function () {
       it('should render an image with matching props', function () {
-        this.mockProps.image = {
-          src: 'http://snapper.fish/test.jpg',
-          alt: 'Test alt tag',
-        };
         const component = shallowWithContext(<Feature {...this.mockProps} />);
         const image = component.find(Image);
         expect(image).to.have.length(1);
@@ -35,6 +35,7 @@ describe('Component', function () {
       });
 
       it('should not render an image if no props are given', function () {
+        delete this.mockProps.image;
         const component = shallowWithContext(<Feature {...this.mockProps} />);
         const image = component.find(Image);
         expect(image).to.have.length(0);

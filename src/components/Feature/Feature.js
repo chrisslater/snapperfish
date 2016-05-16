@@ -25,7 +25,7 @@ class Feature extends Component {
     return null;
   }
 
-  getBody(body: String, theme: Object) {
+  getBody(body: string, theme: Object) {
     if (body) {
       return (
         <div
