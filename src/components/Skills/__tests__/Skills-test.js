@@ -7,7 +7,12 @@ import shallowWithContext from 'testing/shallowWithContext';
 describe('Component', function() {
   describe('<Skills />', function () {
     it('should render null if no skills are given', function () {
-      const wrapper = shallowWithContext(<Skills skills={[]} />);
+      const wrapper = shallowWithContext(
+        <Skills
+          skills={[]}
+          containerWidth={300}
+        />
+      );
       expect(wrapper.node).to.be.null;
     });
 
@@ -17,7 +22,12 @@ describe('Component', function() {
         level: 0.75,
       }];
 
-      const wrapper = shallowWithContext(<Skills skills={mockSkills} />);
+      const wrapper = shallowWithContext(
+        <Skills
+          skills={mockSkills}
+          containerWidth={300}
+        />
+      );
       expect(wrapper.find(LinearProgress)).to.have.length(1);
     });
   });
