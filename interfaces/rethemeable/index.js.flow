@@ -1,0 +1,3 @@
+declare module "rethemeable" {
+  declare function themeable(node:Object): void;
+};
