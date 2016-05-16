@@ -42,19 +42,22 @@ class Skills extends Component {
 
   theme: Object;
 
-  renderSkill(skill: Object) {
+  renderSkill(skill: Object, theme: Object) {
     return (
-      <li key={`${skill.name}_${skill.level}`}>
-        <div>
-          <div>
-            <span>{skill.name}</span>
-            <span>{getLevelValue(skill.level)}</span>
-          </div>
-          <LinearProgress
-            mode="determinate"
-            value={skill.level * 100}
-          />
+      <li key={`${skill.name}_${skill.level}`} className={theme.skill}>
+        <div className={theme.header}>
+          <span className={theme.name}>
+            {skill.name}
+          </span>
+          <span className={theme.level}>
+            {getLevelValue(skill.level)}
+          </span>
         </div>
+        <LinearProgress
+
+          mode="determinate"
+          value={skill.level * 100}
+        />
       </li>
     );
   }
@@ -67,8 +70,8 @@ class Skills extends Component {
     if (Array.isArray(skills) && skills.length > 0) {
       skillsMarkup = (
         <Paper>
-          <ul>
-            {skills.map(skill => this.renderSkill(skill))}
+          <ul className={theme.skills}>
+            {skills.map(skill => this.renderSkill(skill, theme))}
           </ul>
         </Paper>
       );

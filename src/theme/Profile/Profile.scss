@@ -1,3 +1,18 @@
+@import '../typography';
+
 .self {
   margin-top: -185px;
+}
+
+.bigbox {
+
+}
+
+.welcome {
+  @extend .title;
+}
+
+.sectionHeadline {
+  @extend .display;
+  text-align: center;
 }

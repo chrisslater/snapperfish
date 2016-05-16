@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { themeable } from 'rethemeable';
+
 import {
   LayoutContainer,
   BusinessCard,
@@ -7,8 +8,23 @@ import {
 } from 'components';
 
 const skills = [{
-  name: 'Javascript',
+  name: 'React',
+  level: 0.9,
+}, {
+  name: 'Node',
+  level: 0.8,
+}, {
+  name: 'Backbone',
   level: 0.75,
+}, {
+  name: 'Symfony',
+  level: 0.6,
+}, {
+  name: 'Drupal',
+  level: 0.5,
+}, {
+  name: 'Unity',
+  level: 0.3,
 }];
 
 @themeable
@@ -17,7 +33,13 @@ class Profile extends Component {
     const theme = this.theme;
     return (
       <div className={theme.self}>
-        <LayoutContainer>
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '960px',
+            margin: '0 auto',
+          }}
+        >
           <BusinessCard
             name={'Chris Slater'}
             position={'Developer and startup entrepreneur'}
@@ -27,15 +49,22 @@ class Profile extends Component {
             githubUrl={'https://github.com/chrisslater'}
             twitterUrl={'https://twitter.com/ChrisOnTheSide'}
           />
+        </div>
+        <LayoutContainer center>
           <a>Download resume</a>
-          <p>
+          <p className={theme.welcome}>
             Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
             Experienced with all stages of the development cycle for dynamic web projects.
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
           </p>
+        </LayoutContainer>
+        <LayoutContainer>
+          <h2 className={theme.sectionHeadline}>Professional Skills</h2>
           <Skills skills={skills} />
         </LayoutContainer>
+
+
       </div>
     );
   }

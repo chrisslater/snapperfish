@@ -37,7 +37,7 @@ type Feature = {
 };
 
 export function mapFeature(feature: FeatureRaw): Feature {
-  let {
+  const {
     fields: {
       coverImage: {
         sys: {
@@ -61,8 +61,8 @@ export function mapFeature(feature: FeatureRaw): Feature {
     body,
     publishDate,
     image: {
-      id: imageId
-    }
+      id: imageId,
+    },
   };
 
   return props;
