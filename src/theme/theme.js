@@ -1,6 +1,6 @@
 import {
   App,
-  LayoutContainer,
+  Layout,
   Footer,
   Hero,
   Button,
@@ -13,7 +13,7 @@ import {
   Feature,
 } from 'components';
 import AppTheme from './App/App.scss';
-import LayoutContainerTheme from './LayoutContainer/LayoutContainer.scss';
+import LayoutTheme from './Layout/Layout.scss';
 import FooterTheme from './Footer/Footer.scss';
 import FeaturesGridTheme from './FeaturesGrid/FeaturesGrid.scss';
 import FeatureTheme from './Feature/Feature.scss';
@@ -30,7 +30,7 @@ require('./typography.scss');
 
 const theme = {
   [App.theme]: AppTheme,
-  [LayoutContainer.theme]: LayoutContainerTheme,
+  [Layout.theme]: LayoutTheme,
   [Hero.theme]: HeroTheme,
   [Footer.theme]: FooterTheme,
   [FeaturesGrid.theme]: FeaturesGridTheme,
