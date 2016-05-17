@@ -38,6 +38,10 @@ class Feature {
     return this.id;
   }
 
+  /**
+   * The Features ID string
+   * @return {string} a readable title, think blog title stylie
+   */
   getTitle(): string {
     return this.title;
   }

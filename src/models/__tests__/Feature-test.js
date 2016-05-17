@@ -4,6 +4,7 @@ import Assets from  '../Assets';
 import Image from '../Image';
 
 describe('Model', function () {
+  /** @test {Feature} */
   describe('Feature', function () {
     beforeEach(function () {
       this.mockFeature = {
@@ -21,6 +22,7 @@ describe('Model', function () {
       this.mockFeature = undefined;
     });
 
+    /** @test {Feature#getId()} */
     describe('#getId()', function () {
       it('should return the feature id', function () {
         const feature = new Feature(this.mockFeature);
@@ -28,6 +30,7 @@ describe('Model', function () {
       });
     });
 
+    /** @test {Feature#getTitle()} */
     describe('#getTitle()', function () {
       it('should return the feature title', function () {
         const feature = new Feature(this.mockFeature);

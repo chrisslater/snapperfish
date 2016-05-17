@@ -8,4 +8,4 @@ webpack-stats.json
 npm-debug.log
 envConfig/
 coverage/
-esdoc/
+static/docs/
