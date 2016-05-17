@@ -8,24 +8,26 @@ import Features from 'models/Features';
 import Assets from 'models/Assets';
 
 import {
-  Dimensions,
-  FeaturesGrid,
+  Hero,
+  Menu,
+  Profile,
+  Layout,
 } from 'components';
 
 function HomePage(props) {
   const { features, assets } = props;
   features.attachAssets(assets);
-
   return (
     <div>
       <Helmet title="Home" />
-      <div className="container">
-        <h1>{config.app.title}</h1>
-        <h2>{config.app.description}</h2>
-      </div>
-      <Dimensions>
-        <FeaturesGrid features={features} />
-      </Dimensions>
+      <Menu depth={0} isFixed />
+      <Hero>
+        <Layout>
+          <h1>{config.app.title}</h1>
+          <h2>{config.app.description}</h2>
+        </Layout>
+      </Hero>
+      <Profile />
     </div>
   );
 }

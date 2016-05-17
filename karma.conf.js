@@ -44,19 +44,29 @@ module.exports = function (config) {
       devtool: 'inline-source-map',
       module: {
         preLoaders: [
-          {
-            test: /\.js$/,
-            exclude: /(tests\.webpack.js|node_modules|__tests__)/,
-            loader: 'isparta'
-          }
+          //{
+          //  test: /\.js$/,
+          //  exclude: /(tests\.webpack.js|node_modules|__tests__)/,
+          //  loader: 'isparta'
+          //}
         ],
         loaders: [
           { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: {limit: 10240} },
-          { test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel'
+          },
           { test: /\.json$/, loader: 'json-loader' },
           { test: /\.less$/, loader: 'style!css!less' },
           { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' }
         ],
+      },
+      externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
       },
       resolve: {
         modulesDirectories: [

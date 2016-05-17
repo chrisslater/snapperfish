@@ -6,6 +6,7 @@ import {
 import { App } from 'components';
 import {
   HomePage,
+  BlogPage,
   FeaturePage,
   StyleGuidePage,
   NotFoundPage,
@@ -19,7 +20,8 @@ export default function () {
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
       <Route path="styleguide" component={StyleGuidePage} />
-      <Route path=":slug" component={FeaturePage} />
+      <Route path="blog" component={BlogPage} />
+      <Route path="blog/:slug" component={FeaturePage} />
       <Route path="*" component={NotFoundPage} status={404} />
     </Route>
   );

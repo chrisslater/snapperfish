@@ -1,0 +1,27 @@
+@import "../variables";
+
+.imageContainer {
+  margin-bottom: $padding;
+}
+
+.title {
+  color: var(--primary1Color);
+}
+
+.content {
+  max-width: $max-width-paragraph;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $padding;
+}
+
+.date:after {
+  display: block;
+  content: '';
+  height: 0;
+  width: 4em;
+  margin-top: $padding;
+  margin-bottom: $padding;
+  border-bottom: 2px solid var(--primary1Color);
+}

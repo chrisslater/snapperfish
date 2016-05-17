@@ -1,7 +1,15 @@
 @import "~normalize.css";
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
-html,
 body {
-  font-family: 'Roboto', Helvetica Neue, Helvetica, Arial, sans-serif;
+  background-color: #efefef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
 }

@@ -23,13 +23,15 @@ function featureDecorator(ChildComponent) {
   };
 
   return asyncConnect([{
-    promise: ({ store: { dispatch, getState } }) => {
-      let slug = getState().routing.locationBeforeTransitions.pathname;
-
-      if (slug[0] === '/') {
-        slug = slug.substring(1);
-      }
-
+    promise: (props) => {
+      const {
+        store: {
+          dispatch,
+        },
+        params: {
+          slug,
+        },
+      } = props;
       return Promise.all([dispatch(loadFeature(slug))]);
     },
   }])(connect(

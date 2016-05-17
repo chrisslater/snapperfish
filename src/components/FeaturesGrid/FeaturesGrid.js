@@ -7,22 +7,27 @@ import { themeable } from 'rethemeable';
 
 class FeaturesGrid extends Component {
   static defaultProps = {
+    urlPrefix: '',
     src: '//https://cdn0.vox-cdn.com/images/verge/default-avatar.v9899025.gif',
   };
 
   static propTypes = {
+    urlPrefix: PropTypes.string,
     features: PropTypes.instanceOf(Features),
     containerWidth: PropTypes.number,
   };
 
-  featuresMarkup(features, theme) {
+  featuresMarkup(features, urlPrefix, theme) {
     return features.getItems().map((feature) => {
       const image = feature.getImage();
       let mapped = null;
       if (image) {
         const formatted = image.getFormatted();
         mapped = (
-          <Link key={feature.getId()} to={feature.getSlug()}>
+          <Link
+            key={feature.getId()}
+            to={`${urlPrefix}${feature.getSlug()}`}
+          >
             <GridTile
               key={feature.getId()}
               title={feature.getTitle()}
@@ -33,9 +38,8 @@ class FeaturesGrid extends Component {
               style={{
                 backgroundImage: `url(${formatted.src})`,
               }}
-            >
-              {/* <Image {...formatted} /> */}
-            </GridTile>
+            />
+
           </Link>
         );
       }
@@ -45,22 +49,26 @@ class FeaturesGrid extends Component {
   }
 
   render() {
-    const { features, containerWidth } = this.props;
+    const {
+      urlPrefix,
+      features,
+      containerWidth,
+    } = this.props;
     const theme = this.theme;
 
     let colWidth = 1;
 
     if (containerWidth > 700) {
-      colWidth = 2;
+      // @TODO reset this colWidth = 2;
     }
 
     return (
       <GridList
         cols={colWidth}
-        cellHeight={300}
-        padding={1}
+        cellHeight={400}
+        padding={10}
       >
-        {this.featuresMarkup(features, theme)}
+        {this.featuresMarkup(features, urlPrefix, theme)}
       </GridList>
     );
   }

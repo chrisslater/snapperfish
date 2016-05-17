@@ -23,7 +23,7 @@ import NestedStatus from 'react-nested-status';
 import env from './env';
 
 // const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
-const targetUrl = `https://cdn.contentful.com/spaces/${env.CONTENTFUL_SPACE}`;
+const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -112,6 +112,7 @@ app.use((req, res) => {
         );
 
         global.navigator = { userAgent: req.headers['user-agent'] };
+        // global.navigator = { userAgent: 'all' };
 
         const markup = (
           `<!DOCTYPE html>

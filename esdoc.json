@@ -1,0 +1,21 @@
+{
+  "source": "./src",
+  "destination": "./static/docs",
+  "plugins": [
+    {
+      "name": "esdoc-es7-plugin"
+    }
+  ],
+  "coverage": true,
+  "test": {
+    "type": "mocha",
+    "source": "./src"
+  },
+
+  "manual": {
+    "installation": [
+      "./manual/installation/installation.md",
+      "./manual/installation/javascript.md"
+    ]
+  }
+}

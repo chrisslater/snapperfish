@@ -1,0 +1,13 @@
+@import '../variables';
+
+.self {
+  text-align: center;
+  margin-bottom: $padding;
+  padding: 80px $padding*2 190px;
+  background-color: var(--primary1Color);
+  color: white;
+
+  // Temp styles on hero
+  background-size: cover;
+  background-position: 14px -136px;
+}

@@ -3,11 +3,14 @@
  *
  *  Available options for Bootstrap:
  *  http://getbootstrap.com/customize/
- *
+ *@import "~normalize.css";
  */
 
-$max-width: 1200px;
-$padding: 10px;
+
+
+$max-width: 760px;
+$max-width-paragraph: 760px;
+$padding: 12px;
 
 // Custom Colors
 $cyan: #33e0ff;
@@ -21,7 +24,11 @@ $brand-warning: #f0ad4e;
 $brand-danger: #d9534f;
 $brand-info: #5bc0de;
 
-$text-color: #333;
+$font-color: rgba(0, 0, 0, 0.87);
+$font-color-light: rgba(255, 255, 255, 0.87);
 
-$font-size-base: 14px;
+$footer-background: rgb(33, 33, 33);
+
+$font-size-base: 100%;
+$font-size-body: 0.875em;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;

@@ -10,6 +10,7 @@ import Assets from 'models/Assets';
 
 import {
   Feature as FeatureComponent,
+  Menu,
 } from 'components';
 
 function FeaturePage(props) {
@@ -20,10 +21,12 @@ function FeaturePage(props) {
   formatted.image = feature.getImage().getFormatted();
   formatted.title = feature.getTitle();
   formatted.body = feature.getBody();
+  formatted.publishDate = feature.getPublishDate();
 
   return (
     <div>
       <Helmet title="Feature" />
+      <Menu title={formatted.title} />
       <FeatureComponent {...formatted} />
     </div>
   );

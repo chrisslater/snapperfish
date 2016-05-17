@@ -10,3 +10,12 @@ export FeaturesGrid from './FeaturesGrid/FeaturesGrid';
 export Feature from './Feature/Feature';
 export Image from './Image/Image';
 export Dimensions from './Dimensions/Dimensions';
+export Footer from './Footer/Footer';
+export Hero from './Hero/Hero';
+export Layout from './Layout/Layout';
+export Menu from './Menu/Menu';
+
+// Profile
+export Profile from './Profile/Profile';
+export BusinessCard from './BusinessCard/BusinessCard';
+export Skills from './Skills/Skills';

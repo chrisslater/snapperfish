@@ -1,3 +1,9 @@
+@import '../variables';
+
 .background {
   background-size: cover;
+}
+
+.gridTile {
+  margin-bottom: $padding;
 }
