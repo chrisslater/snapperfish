@@ -15,7 +15,9 @@ describe('Component', function() {
         };
 
         const layout  = mount(
-          <LayoutContainer theme={theme}>
+          <LayoutContainer
+            theme={theme}
+          >
             <div>child</div>
           </LayoutContainer>
         );

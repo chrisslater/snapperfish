@@ -5,9 +5,13 @@ import classNames from 'classnames';
 @themeable
 class LayoutContainer extends Component {
   static propTypes = {
-    children: PropTypes.array,
-    isCentered: PropTypes.boolean,
-    isExtended: PropTypes.boolean,
+    children: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+
+    ]),
+    isCentered: PropTypes.bool,
+    isExtended: PropTypes.bool,
   };
 
   render() {
