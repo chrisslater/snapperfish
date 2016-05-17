@@ -47,14 +47,21 @@ class Feature extends Component {
       body,
       publishDate,
     } = this.props;
+    let imageMarkup;
+
+    if (image) {
+      imageMarkup = (
+        <div className={theme.imageContainer}>
+          {this.getImage(image, theme)}
+        </div>
+      );
+    }
 
     const formattedPublishDate = moment(publishDate).format('MMMM Do, YYYY');
     return (
       <article>
         <div className={theme.content}>
-          <div className={theme.imageContainer}>
-            {this.getImage(image, theme)}
-          </div>
+          {imageMarkup}
           <h1
             className={theme.title}
           >
