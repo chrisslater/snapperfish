@@ -40,7 +40,8 @@
       "command": "node ./bin/server.js",
       "env": {
         "NODE_PATH": "./src",
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PORT": "8080"
       }
     },
     "start-dev": {
@@ -86,6 +87,7 @@
     "babel-register": "^6.3.13",
     "babel-runtime": "^6.3.19",
     "better-npm-run": "0.0.8",
+    "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.6",
     "compression": "^1.6.0",
     "concurrently": "^2.0.0",
@@ -139,7 +141,6 @@
     "babel-eslint": "^6.0.2",
     "chai": "^3.3.0",
     "cheerio": "^0.20.0",
-    "classnames": "^2.2.5",
     "enzyme": "^2.3.0",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^8.0.0",
