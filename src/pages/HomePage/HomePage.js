@@ -11,7 +11,7 @@ import {
   Hero,
   Menu,
   Profile,
-  LayoutContainer,
+  Layout,
 } from 'components';
 
 function HomePage(props) {
@@ -22,10 +22,10 @@ function HomePage(props) {
       <Helmet title="Home" />
       <Menu depth={0} isFixed />
       <Hero>
-        <LayoutContainer>
+        <Layout>
           <h1>{config.app.title}</h1>
           <h2>{config.app.description}</h2>
-        </LayoutContainer>
+        </Layout>
       </Hero>
       <Profile />
     </div>

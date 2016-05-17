@@ -1,13 +1,13 @@
 import React from 'react';
 import { expect } from 'chai';
-import LayoutContainer from '../LayoutContainer';
+import Layout from '../Layout';
 import shallowWithContext from 'testing/shallowWithContext';
 import { mount } from 'enzyme';
 
 describe('Component', function() {
-  /** @test {LayoutContainer} **/
-  describe('<LayoutContainer />', function () {
-    /** @test {LayoutContainer#render()} **/
+  /** @test {Layout} **/
+  describe('<Layout />', function () {
+    /** @test {Layout#render()} **/
     describe('#render()', function () {
       it('should render default class', function () {
         const theme = {
@@ -15,11 +15,11 @@ describe('Component', function() {
         };
 
         const layout  = mount(
-          <LayoutContainer
+          <Layout
             theme={theme}
           >
             <div>child</div>
-          </LayoutContainer>
+          </Layout>
         );
 
         expect(layout.find('.test-class')).has.length(1);
@@ -33,12 +33,12 @@ describe('Component', function() {
         };
 
         const layout  = mount(
-          <LayoutContainer
+          <Layout
             theme={theme}
             isExtended
           >
             <div>child</div>
-          </LayoutContainer>
+          </Layout>
         );
 
         expect(layout.find('.test-class.test-extended')).has.length(1);
@@ -51,12 +51,12 @@ describe('Component', function() {
         };
 
         const layout  = mount(
-          <LayoutContainer
+          <Layout
             theme={theme}
             isCentered
           >
             <div>child</div>
-          </LayoutContainer>
+          </Layout>
         );
 
         expect(layout.find('.test-class.test-centered')).has.length(1);

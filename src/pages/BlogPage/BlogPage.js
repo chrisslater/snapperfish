@@ -10,7 +10,7 @@ import {
   Dimensions,
   FeaturesGrid,
   Menu,
-  LayoutContainer,
+  Layout,
 } from 'components';
 
 function HomePage(props) {
@@ -23,14 +23,14 @@ function HomePage(props) {
     <div>
       <Helmet title={title} />
       <Menu title={title} />
-      <LayoutContainer>
+      <Layout>
         <Dimensions>
           <FeaturesGrid
             urlPrefix={'blog/'}
             features={features}
           />
         </Dimensions>
-      </LayoutContainer>
+      </Layout>
     </div>
   );
 }

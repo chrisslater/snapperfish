@@ -3,7 +3,7 @@ import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 
 @themeable
-class LayoutContainer extends Component {
+class Layout extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([
       PropTypes.object,
@@ -35,4 +35,4 @@ class LayoutContainer extends Component {
   }
 }
 
-export default LayoutContainer;
+export default Layout;

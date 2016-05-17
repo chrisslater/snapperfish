@@ -31,7 +31,7 @@
     "lint": "eslint -c .eslintrc.yml src",
     "start-dev": "better-npm-run start-dev",
     "watch-client": "better-npm-run watch-client",
-    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\" \"npm run doc\"",
+    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "test": "karma start",
     "doc": "esdoc -c esdoc.json"
   },

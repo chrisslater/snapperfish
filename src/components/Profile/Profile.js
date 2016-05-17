@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { themeable } from 'rethemeable';
 
 import {
-  LayoutContainer,
+  Layout,
   BusinessCard,
   Skills,
   Dimensions,
@@ -34,7 +34,7 @@ class Profile extends Component {
     const theme = this.theme;
     return (
       <div className={theme.self}>
-        <LayoutContainer isExtended>
+        <Layout isExtended>
           <Dimensions>
             <BusinessCard
               name={'Chris Slater'}
@@ -46,8 +46,8 @@ class Profile extends Component {
               twitterUrl={'https://twitter.com/ChrisOnTheSide'}
             />
           </Dimensions>
-        </LayoutContainer>
-        <LayoutContainer isCentered>
+        </Layout>
+        <Layout isCentered>
           <a>Download resume</a>
           <p className={theme.welcome}>
             Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
@@ -55,13 +55,13 @@ class Profile extends Component {
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
           </p>
-        </LayoutContainer>
-        <LayoutContainer>
+        </Layout>
+        <Layout>
           <h2 className={theme.sectionHeadline}>Professional Skills</h2>
           <Dimensions>
             <Skills skills={skills} />
           </Dimensions>
-        </LayoutContainer>
+        </Layout>
 
 
       </div>

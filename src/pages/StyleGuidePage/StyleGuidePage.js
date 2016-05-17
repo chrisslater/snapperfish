@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import {
-  LayoutContainer,
+  Layout,
   Button,
   Menu,
 } from 'components';
@@ -13,7 +13,7 @@ const StyleGuide = function StyleGuide() {
     <div>
       <Helmet title="Style Guide" />
       <Menu title={'Style Guide'} />
-      <LayoutContainer>
+      <Layout>
         <h1>Style Guide</h1>
         <h1>Header one</h1>
         <h2>Header two</h2>
@@ -52,7 +52,7 @@ const StyleGuide = function StyleGuide() {
         <h2>Buttons</h2>
 
         <Button />
-      </LayoutContainer>
+      </Layout>
     </div>
   );
 };
