@@ -9,3 +9,4 @@ npm-debug.log
 envConfig/
 coverage/
 static/docs/
+.env
