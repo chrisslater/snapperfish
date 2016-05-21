@@ -1,5 +1,5 @@
 import type { Image } from './Image';
-export type FeatureRaw = {
+export type PostRaw = {
   _id: string;
   title: string;
   slug: string;
@@ -12,7 +12,7 @@ export type FeatureRaw = {
   },
   publishedDate: string;
 };
-export type Feature = {
+export type Post = {
   title: string,
   slug: string,
   id: string,

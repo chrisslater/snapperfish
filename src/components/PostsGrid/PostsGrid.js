@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import { GridList, GridTile } from 'material-ui/GridList';
-import Features from 'models/Features';
+import Post from 'models/Post';
 import { themeable } from 'rethemeable';
 
-class FeaturesGrid extends Component {
+class PostsGrid extends Component {
   static defaultProps = {
     urlPrefix: '',
     src: '//https://cdn0.vox-cdn.com/images/verge/default-avatar.v9899025.gif',
@@ -13,27 +13,27 @@ class FeaturesGrid extends Component {
 
   static propTypes = {
     urlPrefix: PropTypes.string,
-    features: PropTypes.instanceOf(Features),
+    posts: PropTypes.arrayOf(Post),
     containerWidth: PropTypes.number,
   };
 
-  featuresMarkup(features, urlPrefix, theme) {
-    return features.getItems().map((feature) => {
-      const image = feature.getImage();
+  postsMarkup(posts, urlPrefix, theme) {
+    return posts.map(post => {
+      const image = post.getImage();
       let mapped = null;
       if (image) {
         const formatted = image.getFormatted();
         mapped = (
           <Link
-            key={feature.getId()}
-            to={`${urlPrefix}${feature.getSlug()}`}
+            key={post.getId()}
+            to={`${urlPrefix}${post.getSlug()}`}
           >
             <GridTile
-              key={feature.getId()}
-              title={feature.getTitle()}
+              key={post.getId()}
+              title={post.getTitle()}
               titlePosition="bottom"
-              cols={feature.isFeatured() ? 2 : 1}
-              rows={feature.isFeatured() ? 2 : 1}
+              cols={post.isFeatured() ? 2 : 1}
+              rows={post.isFeatured() ? 2 : 1}
               className={theme.background}
               style={{
                 backgroundImage: `url(${formatted.src})`,
@@ -51,7 +51,7 @@ class FeaturesGrid extends Component {
   render() {
     const {
       urlPrefix,
-      features,
+      posts,
       containerWidth,
     } = this.props;
     const theme = this.theme;
@@ -68,10 +68,10 @@ class FeaturesGrid extends Component {
         cellHeight={400}
         padding={10}
       >
-        {this.featuresMarkup(features, urlPrefix, theme)}
+        {this.postsMarkup(posts, urlPrefix, theme)}
       </GridList>
     );
   }
 }
 
-export default themeable(FeaturesGrid);
+export default themeable(PostsGrid);

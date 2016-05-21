@@ -6,8 +6,8 @@
  */
 export App from './App/App';
 export Button from './Button/Button';
-export FeaturesGrid from './FeaturesGrid/FeaturesGrid';
-export Feature from './Feature/Feature';
+export PostsGrid from './PostsGrid/PostsGrid';
+export Post from './Post/Post';
 export Image from './Image/Image';
 export Dimensions from './Dimensions/Dimensions';
 export Footer from './Footer/Footer';

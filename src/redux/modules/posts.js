@@ -1,11 +1,11 @@
 // @flow
-import type { FeatureRaw, Feature } from 'types/Feature';
-const LOAD = 'features/LOAD';
-const LOAD_SUCCESS = 'features/LOAD_SUCCESS';
-const LOAD_SINGLE_SUCCESS = 'features/LOAD_SINGLE_SUCCESS';
-const LOAD_FAIL = 'features/LOAD_FAIL';
+import type { PostRaw, Post } from 'types/Post';
+const LOAD = 'posts/LOAD';
+const LOAD_SUCCESS = 'posts/LOAD_SUCCESS';
+const LOAD_SINGLE_SUCCESS = 'posts/LOAD_SINGLE_SUCCESS';
+const LOAD_FAIL = 'posts/LOAD_FAIL';
 
-export function mapFeature(feature: FeatureRaw): Feature {
+export function mapPost(post: PostRaw): Post {
   const {
     _id: id,
     title,
@@ -14,10 +14,10 @@ export function mapFeature(feature: FeatureRaw): Feature {
     content: {
       brief: {
         html: body,
-      }
+      },
     },
     publishedDate,
-  } = feature;
+  } = post;
 
   const props = {
     title,
@@ -31,16 +31,16 @@ export function mapFeature(feature: FeatureRaw): Feature {
   return props;
 }
 
-export function mapFeatures(features: Array<Object>): Array<Object> {
-  return features.map(feature => mapFeature(feature));
+export function mapPosts(posts: Array<Object>): Array<Object> {
+  return posts.map(post => mapPost(post));
 }
 
 export default function reducer(state: Array<Object> = [], action: Object = {}): Array<Object> {
   switch (action.type) {
     case LOAD_SUCCESS:
-      return mapFeatures(action.result.results);
+      return mapPosts(action.result.results);
     case LOAD_SINGLE_SUCCESS:
-      return [mapFeature(action.result.post)];
+      return [mapPost(action.result.post)];
     default:
       return state;
   }
@@ -54,7 +54,7 @@ export function isLoaded(globalState: Object): boolean {
   return false;
 }
 
-export function load(): Object {
+export function loadFeatures(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('posts'),

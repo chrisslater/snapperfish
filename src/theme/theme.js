@@ -4,19 +4,19 @@ import {
   Footer,
   Hero,
   Button,
-  FeaturesGrid,
+  PostsGrid,
   Menu,
   Image,
   Profile,
   BusinessCard,
   Skills,
-  Feature,
+  Post,
 } from 'components';
 import AppTheme from './App/App.scss';
 import LayoutTheme from './Layout/Layout.scss';
 import FooterTheme from './Footer/Footer.scss';
-import FeaturesGridTheme from './FeaturesGrid/FeaturesGrid.scss';
-import FeatureTheme from './Feature/Feature.scss';
+import PostsGridTheme from './PostsGrid/PostsGrid.scss';
+import PostTheme from './Post/Post.scss';
 import ButtonTheme from './Button/Button.scss';
 import ImageTheme from './Image/Image.scss';
 import HeroTheme from './Hero/Hero.scss';
@@ -33,8 +33,8 @@ const theme = {
   [Layout.theme]: LayoutTheme,
   [Hero.theme]: HeroTheme,
   [Footer.theme]: FooterTheme,
-  [FeaturesGrid.theme]: FeaturesGridTheme,
-  [Feature.theme]: FeatureTheme,
+  [PostsGrid.theme]: PostsGridTheme,
+  [Post.theme]: PostTheme,
   [Button.theme]: ButtonTheme,
   [Image.theme]: ImageTheme,
   [Menu.theme]: MenuTheme,

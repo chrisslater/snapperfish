@@ -1,19 +1,18 @@
 /* @flow */
 import Image from 'models/Image';
-import type { Feature as FeatureType } from 'types/Feature';
+import type { Post as PostType } from 'types/Post';
 
 /**
- * A Feature is effectively a mini blog post
- * at the moment and this is the interface of hydrated api properties
+ * Post interface of hydrated api properties
  * and utils for the UI.
  * @example
  * let props = {
  *   id: "123456",
  *   title: "Readable title describing the feature"
  * };
- * let feature = new Feature(props);
+ * let post = new Post(props);
  */
-class Feature {
+class Post {
   id: string;
   title: string;
   body: string;
@@ -28,7 +27,7 @@ class Feature {
    * @param {string} props.id - This is the Features unique identifier.
    * @param {string} props.title - This is the readable title.
    */
-  constructor(props: FeatureType): void {
+  constructor(props: PostType): void {
     Object.assign(this, props, {
       image: new Image(props.image),
     });
@@ -74,17 +73,9 @@ class Feature {
     return this.publishedDate;
   }
 
-  attachAssets(assets): void {
-    const image = assets.getAssetById(this.getImageId());
-
-    if (image instanceof Image) {
-      this.setImage(image);
-    }
-  }
-
   isFeatured(): bool {
     return false;
   }
 }
 
-export default Feature;
+export default Post;

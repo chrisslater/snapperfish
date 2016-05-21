@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as reduxAsyncConnect } from 'redux-async-connect';
-import features from './features';
+import posts from './posts';
 
 export default combineReducers({
   reduxAsyncConnect,
-  features,
+  posts,
   routing: routerReducer,
 });

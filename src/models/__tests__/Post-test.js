@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import Feature from '../Feature';
+import Post from '../Post';
 import Assets from  '../Assets';
 import Image from '../Image';
 
 describe('Model', function () {
-  /** @test {Feature} */
-  describe('Feature', function () {
+  /** @test {Post} */
+  describe('Post', function () {
     beforeEach(function () {
       this.mockFeature = {
         id: 'abc4444',
@@ -45,10 +45,10 @@ describe('Model', function () {
       });
     });
 
-    describe('#getPublishDate()', function () {
-      it('should return the publishDate', function () {
+    describe('#getPublishedDate()', function () {
+      it('should return the publishedDate', function () {
         const feature = new Feature(this.mockFeature);
-        expect(feature.getPublishDate()).to.equal(this.mockFeature.publishDate);
+        expect(feature.getPublishDate()).to.equal(this.mockFeature.publishedDate);
       });
     });
 

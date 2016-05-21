@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import featuresContainer from 'containers/Features/Features';
-import Features from 'models/Features';
+import postsContainer from 'containers/Posts/Posts';
+import Posts from 'models/Posts';
 import {
   Dimensions,
-  FeaturesGrid,
+  PostsGrid,
   Menu,
   Layout,
 } from 'components';
 
 function BlogPage(props) {
-  const { features } = props;
+  const { posts } = props;
   const title = 'Blog';
 
   return (
@@ -19,9 +19,9 @@ function BlogPage(props) {
       <Menu title={title} />
       <Layout>
         <Dimensions>
-          <FeaturesGrid
+          <PostsGrid
             urlPrefix={'blog/'}
-            features={features}
+            posts={posts.getItems()}
           />
         </Dimensions>
       </Layout>
@@ -30,8 +30,8 @@ function BlogPage(props) {
 }
 
 BlogPage.propTypes = {
-  features: PropTypes.instanceOf(Features),
+  posts: PropTypes.instanceOf(Posts),
 };
 
-export default featuresContainer(BlogPage);
+export default postsContainer(BlogPage);
 
