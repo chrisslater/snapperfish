@@ -1,11 +1,7 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import featuresContainer from 'containers/Features/Features';
-import assetsContainer from 'containers/Assets/Assets';
-
 import Features from 'models/Features';
-import Assets from 'models/Assets';
-
 import {
   Dimensions,
   FeaturesGrid,
@@ -13,10 +9,8 @@ import {
   Layout,
 } from 'components';
 
-function HomePage(props) {
-  const { features, assets } = props;
-  features.attachAssets(assets);
-
+function BlogPage(props) {
+  const { features } = props;
   const title = 'Blog';
 
   return (
@@ -35,10 +29,9 @@ function HomePage(props) {
   );
 }
 
-HomePage.propTypes = {
+BlogPage.propTypes = {
   features: PropTypes.instanceOf(Features),
-  assets: PropTypes.instanceOf(Assets),
 };
 
-export default featuresContainer(assetsContainer(HomePage));
+export default featuresContainer(BlogPage);
 

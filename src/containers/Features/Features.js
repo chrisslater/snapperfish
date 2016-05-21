@@ -9,7 +9,9 @@ import { load as loadFeatures } from 'redux/modules/features';
 function featuresDecorator(ChildComponent) {
   const FeaturesContainer = props => {
     const { _features } = props;
-    const features = new Features(_features.map(featureProps => new Feature(featureProps)));
+    const features = new Features(
+      _features.map(featureProps => new Feature(featureProps))
+    );
     return (<ChildComponent {...props} features={features} />);
   };
 

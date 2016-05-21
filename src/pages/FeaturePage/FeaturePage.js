@@ -1,12 +1,7 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import {
-  featureContainer,
-  assetsContainer,
-} from 'containers';
-
+import { featureContainer } from 'containers';
 import Feature from 'models/Feature';
-import Assets from 'models/Assets';
 
 import {
   Feature as FeatureComponent,
@@ -14,14 +9,13 @@ import {
 } from 'components';
 
 function FeaturePage(props) {
-  const { feature, assets } = props;
-  feature.attachAssets(assets);
+  const { feature } = props;
   const formatted = {};
 
   formatted.image = feature.getImage().getFormatted();
   formatted.title = feature.getTitle();
   formatted.body = feature.getBody();
-  formatted.publishDate = feature.getPublishDate();
+  formatted.publishedDate = feature.getPublishedDate();
 
   return (
     <div>
@@ -34,7 +28,6 @@ function FeaturePage(props) {
 
 FeaturePage.propTypes = {
   feature: PropTypes.instanceOf(Feature).isRequired,
-  assets: PropTypes.instanceOf(Assets).isRequired,
 };
 
-export default featureContainer(assetsContainer(FeaturePage));
+export default featureContainer(FeaturePage);

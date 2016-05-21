@@ -11,7 +11,11 @@
   "env": {
     "development": {
       "plugins": [
-        "typecheck",
+        ["typecheck", {
+          "disable": {
+            "production": true
+          }
+        }],
         ["react-transform", {
             "transforms": [{
                 "transform": "react-transform-catch-errors",

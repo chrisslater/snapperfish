@@ -13,7 +13,7 @@ describe('Component', function () {
           body: 'body',
         },
         body: '',
-        publishDate: '',
+        publishedDate: '',
         image: {
           src: 'http://snapper.fish/test.jpg',
           alt: 'Test alt tag',
@@ -66,7 +66,7 @@ describe('Component', function () {
       });
     });
 
-    describe('publishDate prop', function () {
+    describe('publishedDate prop', function () {
       it('should render date on the page', function () {
         this.mockProps.publishDate = '2015-05-02';
         const component = shallowWithContext(<Feature {...this.mockProps} />);

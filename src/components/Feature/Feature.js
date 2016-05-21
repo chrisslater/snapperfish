@@ -1,7 +1,6 @@
 /* @flow */
 import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
-import { markdown } from 'markdown';
 import { Image } from 'components';
 import moment from 'moment';
 
@@ -9,7 +8,7 @@ import moment from 'moment';
 class Feature extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    publishDate: PropTypes.string.isRequired,
+    publishedDate: PropTypes.string.isRequired,
     image: React.PropTypes.shape({
       src: React.PropTypes.string,
       alt: React.PropTypes.string,
@@ -30,7 +29,7 @@ class Feature extends Component {
       return (
         <div
           className={theme.body}
-          dangerouslySetInnerHTML={{ __html: markdown.toHTML(body) }}
+          dangerouslySetInnerHTML={{ __html: body }}
         />
       );
     }
@@ -45,7 +44,7 @@ class Feature extends Component {
       title,
       image,
       body,
-      publishDate,
+      publishedDate,
     } = this.props;
     let imageMarkup;
 
@@ -57,7 +56,7 @@ class Feature extends Component {
       );
     }
 
-    const formattedPublishDate = moment(publishDate).format('MMMM Do, YYYY');
+    const formattedPublishedDate = moment(publishedDate).format('MMMM Do, YYYY');
     return (
       <article>
         <div className={theme.content}>
@@ -68,10 +67,10 @@ class Feature extends Component {
             {title}
           </h1>
           <time
-            dateTime={publishDate}
+            dateTime={publishedDate}
             className={theme.date}
           >
-            {formattedPublishDate}
+            {formattedPublishedDate}
           </time>
           {this.getBody(body, theme)}
         </div>

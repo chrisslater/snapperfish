@@ -1,5 +1,6 @@
 /* @flow */
 import Image from 'models/Image';
+import type { Feature as FeatureType } from 'types/Feature';
 
 /**
  * A Feature is effectively a mini blog post
@@ -17,7 +18,8 @@ class Feature {
   title: string;
   body: string;
   slug: string;
-  image: Object;
+  image: Image;
+  publishedDate: string;
 
   /**
    * This is the constructor, currently it automatically binds fed in
@@ -26,8 +28,10 @@ class Feature {
    * @param {string} props.id - This is the Features unique identifier.
    * @param {string} props.title - This is the readable title.
    */
-  constructor(props: Object): void {
-    Object.assign(this, props);
+  constructor(props: FeatureType): void {
+    Object.assign(this, props, {
+      image: new Image(props.image),
+    });
   }
 
 /**
@@ -66,8 +70,8 @@ class Feature {
     this.image = image;
   }
 
-  getPublishDate() {
-    return this.publishDate;
+  getPublishedDate() {
+    return this.publishedDate;
   }
 
   attachAssets(assets): void {
