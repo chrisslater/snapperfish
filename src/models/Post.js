@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import Image from 'models/Image';
 import type { Post as PostType } from 'types/Post';
 
@@ -34,7 +34,7 @@ class Post {
   }
 
 /**
- * The Features ID string
+ * An ID as a string
  * @return {string} The ID string
  */
   getId(): string {

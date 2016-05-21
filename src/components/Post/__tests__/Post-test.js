@@ -52,8 +52,8 @@ describe('Component', function () {
     });
 
     describe('body prop', function () {
-      it('should render markdown if body exists', function () {
-        this.mockProps.body = '##Test header';
+      it('should render html as string if body exists', function () {
+        this.mockProps.body = '<h2>Test header</h2>';
         const component = shallowWithContext(<Post {...this.mockProps} />);
         const body = component.find('.body');
         expect(body.node.props.dangerouslySetInnerHTML.__html).to.equal('<h2>Test header</h2>');
@@ -68,7 +68,7 @@ describe('Component', function () {
 
     describe('publishedDate prop', function () {
       it('should render date on the page', function () {
-        this.mockProps.publishDate = '2015-05-02';
+        this.mockProps.publishedDate = '2015-05-02';
         const component = shallowWithContext(<Post {...this.mockProps} />);
         const time = component.find('time');
         expect(time.node.props.dateTime).to.equal('2015-05-02');

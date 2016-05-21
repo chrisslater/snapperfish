@@ -6,17 +6,9 @@ describe('Model', function () {
     beforeEach(function () {
       this.mock = {
         id: '12345',
-        file: {
-          contentType: 'jpeg',
-          url: '//www.snapper.fish/test-image.jpg',
-          details: {
-            image: {
-              height: 400,
-              width: 800,
-            },
-            size: 3000,
-          },
-        },
+        url: '//www.snapper.fish/test-image.jpg',
+        height: 400,
+        width: 800,
         title: 'This is a mock title',
       };
 

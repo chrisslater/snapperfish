@@ -1,69 +1,81 @@
 import { expect } from 'chai';
 import Post from '../Post';
-import Assets from  '../Assets';
 import Image from '../Image';
+
+// id: string;
+// title: string;
+// body: string;
+// slug: string;
+// image: Image;
+// publishedDate: string;
+//
+// public_id: string,
+// url: string,
+// height: number,
+// width: number,
+// format: string,
+
+//public_id: string,
+//  url: string,
+//  height: number,
+//  width: number,
+//  format: string,
 
 describe('Model', function () {
   /** @test {Post} */
   describe('Post', function () {
     beforeEach(function () {
-      this.mockFeature = {
+      this.mock = {
         id: 'abc4444',
         title: 'This is a title',
         slug: 'mocked-up-slug',
         image: {
-          id: 'abc12356'
+          public_id: '12345',
+          url: 'http://test.local/foo.jpg',
+          alt: 'alt',
+          title: 'title',
+          height: 400,
+          width: 400,
+          format: 'jpg',
         },
-        publishDate: '2015-05-02',
+        body: '<h1>Post title</h1>',
+        publishedDate: '2015-05-02',
       };
     });
 
     afterEach(function () {
-      this.mockFeature = undefined;
+      this.mock = undefined;
     });
 
-    /** @test {Feature#getId()} */
+    /** @test {Post#getId()} */
     describe('#getId()', function () {
-      it('should return the feature id', function () {
-        const feature = new Feature(this.mockFeature);
-        expect(feature.getId()).to.equal(this.mockFeature.id);
+      it('should return an id', function () {
+        const post = new Post(this.mock);
+        expect(post.getId()).to.equal(this.mock.id);
       });
     });
 
-    /** @test {Feature#getTitle()} */
+    /** @test {Post#getTitle()} */
     describe('#getTitle()', function () {
-      it('should return the feature title', function () {
-        const feature = new Feature(this.mockFeature);
-        expect(feature.getTitle()).to.equal(this.mockFeature.title);
+      it('should return the a title', function () {
+        const post = new Post(this.mock);
+        expect(post.getTitle()).to.equal(this.mock.title);
       });
     });
 
+    /** @test {Post#getSlug()} */
     describe('#getSlug()', function () {
-      it('should return the feature slug', function () {
-        const feature = new Feature(this.mockFeature);
-        expect(feature.getSlug()).to.equal(this.mockFeature.slug);
+      it('should return a slug', function () {
+        const post = new Post(this.mock);
+        expect(post.getSlug()).to.equal(this.mock.slug);
       });
     });
 
+    /** @test {Post#getPublishedDate()} */
     describe('#getPublishedDate()', function () {
       it('should return the publishedDate', function () {
-        const feature = new Feature(this.mockFeature);
-        expect(feature.getPublishDate()).to.equal(this.mockFeature.publishedDate);
-      });
-    });
-
-    describe('#attachAssets(assets: Assets)', function () {
-      it('should find and attach assets', function () {
-        const _assets = [];
-        const mockImage = {
-          id: 'abc12356',
-        };
-
-        _assets.push(new Image(mockImage));
-        const assets = new Assets(_assets);
-        const feature = new Feature(this.mockFeature);
-        feature.attachAssets(assets);
-        expect(feature.getImage()).to.be.instanceof(Image);
+        const post = new Post(this.mock);
+        expect(post.getPublishedDate()).to.equal(this.mock.publishedDate);
       });
     });
   });

@@ -1,4 +1,3 @@
-import type { Image } from './Image';
 export type PostRaw = {
   _id: string;
   title: string;
@@ -13,10 +12,19 @@ export type PostRaw = {
   publishedDate: string;
 };
 export type Post = {
-  title: string,
-  slug: string,
-  id: string,
-  body: string,
-  publishedDate: string,
-  image: Image,
+  id: string;
+  slug: string;
+  title: string;
+  body: string;
+  publishedDate: string;
+  // @TODO: Figure out why I can't use image type directly instead of explicitly declaring each property
+  image: {
+    public_id: string;
+    url: string;
+    alt: string;
+    title: string;
+    height: number;
+    width: number;
+    format: string;
+  };
 };
