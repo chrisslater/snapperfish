@@ -23,7 +23,8 @@ import NestedStatus from 'react-nested-status';
 import env from './env';
 
 // const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
-const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
+//const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
+const targetUrl = env.API_URL;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -43,7 +44,7 @@ function formatUrl(_path) {
 // Proxy to API server
 app.use('/api', (req, res) => {
   const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN,
+    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
   });
 
   client

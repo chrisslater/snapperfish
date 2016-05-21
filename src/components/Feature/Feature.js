@@ -18,8 +18,8 @@ class Feature extends Component {
   };
 
   getImage(image: Object) {
-    if (typeof image === 'object' && (image.src && image.alt)) {
-      return <Image src={image.src} alt={image.alt} />;
+    if (typeof image === 'object' && (image.src)) {
+      return <Image src={image.src} alt={image.alt || ''} />;
     }
 
     return null;
