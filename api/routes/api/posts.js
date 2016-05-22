@@ -6,6 +6,8 @@ var Post = keystone.list('Post');
  * List Posts
  */
 exports.list = function(req, res) {
+
+  console.log('Great success!');
 	Post.paginate({
 		page: req.query.page || 1,
 		perPage: 10,

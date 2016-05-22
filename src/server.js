@@ -19,63 +19,29 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import NestedStatus from 'react-nested-status';
-
 import env from './env';
 
-// const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
-//const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
-const targetUrl = env.API_URL; // 'http://localhost:5000/api'
 const pretty = new PrettyError();
 const app = new Express();
-const server = new http.Server(app);
-// const proxy = httpProxy.createProxyServer({
-//  target: targetUrl
-// });
 
-
-
-
-app.all('/kapi/*', (req, res, next) => {
-
-  console.log('kapi', req.url);
-
-  req.url = req.url.replace('/kapi', '/api');
-  console.log(req.url);
+app.all('/api/*', (req, res, next) => {
+  console.log('api', req.url);
+  req.url = req.url.replace('/api', '/backend');
+  console.log('api-after', req.url);
   next('route');
 });
 
-
+function formatUrl(_path) {
+  const adjustedPath = _path[0] !== '/' ? `/${_path}` : _path;
+  return '/backend' + adjustedPath;
+}
 
 const _keystone = require('../keystone');
 const keystone = _keystone(app);
 
-
-
-
-
-
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
-
-function formatUrl(_path) {
-  const adjustedPath = _path[0] !== '/' ? `/${_path}` : _path;
-  return targetUrl + adjustedPath;
-}
-
-// Proxy to API server
-//app.use('/kapi', (req, res) => {
-//  const client = new ApiClient(req, formatUrl, {
-//    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
-//  });
-//
-//  client
-//    .get(req.path, { params: req.query })
-//    .then(body => res.send(body))
-//    .catch(body => res.send(body));
-//});
-
-
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {
@@ -90,15 +56,13 @@ function formatUrl(_path) {
 //  res.end(JSON.stringify(json));
 // });
 
-app.use(/^\/(?!keystone|api).*/,(req, res) => {
+app.use(/^\/(?!keystone|backend).*/,(req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
-  const client = new ApiClient(req, formatUrl, {
-    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
-  });
+  const client = new ApiClient(req, formatUrl, {});
 
   const memoryHistory = createHistory(req.originalUrl);
   const store = createStore(client);
@@ -154,22 +118,4 @@ app.use(/^\/(?!keystone|api).*/,(req, res) => {
   });
 });
 
-//if (config.port) {
-//  server.listen(config.port, (err) => {
-//    if (err) {
-//      console.error(err);
-//    }
-//// console.info(
-////  '----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort
-//// );
-//    console.info(
-//      '==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port
-//    );
-//  });
-//} else {
-//  console.error('==>     ERROR: No PORT environment variable has been specified');
-//}
-//keystone.routes(app);
 keystone.start();
-
-

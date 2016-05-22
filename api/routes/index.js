@@ -35,8 +35,8 @@ var routes = {
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// View
-	app.get('/api/posts', keystone.middleware.api, routes.api.posts.list);
-	app.get('/api/posts/:slug', keystone.middleware.api, routes.api.posts.get);
+	app.get('/backend/posts', keystone.middleware.api, routes.api.posts.list);
+	app.get('/backend/posts/:slug', keystone.middleware.api, routes.api.posts.get);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
