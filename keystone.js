@@ -5,7 +5,6 @@ const keystone = require('keystone');
 const flash = require('connect-flash');
 //const serve = require('serve-static');
 
-
 module.exports = function (app) {
 //Session and flash are required by keystone
   app.use(flash());
@@ -14,8 +13,6 @@ module.exports = function (app) {
   //  resave: false,
   //  saveUninitialized: true
   //}));
-
-  var mongoose = require('mongoose');
 
   keystone.app = app;
   keystone.mongoose = require('mongoose');

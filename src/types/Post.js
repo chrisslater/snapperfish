@@ -23,7 +23,10 @@ export type Post = {
   title: string;
   body: string;
   publishedDate: string;
-  // @TODO: Figure out why I can't use image type directly instead of explicitly declaring each property
+  /*
+   * @TODO: Figure out why I can't use image type directly
+   * instead of explicitly declaring each property
+   */
   image: {
     public_id: string;
     url: string;

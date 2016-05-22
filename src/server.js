@@ -25,16 +25,9 @@ const pretty = new PrettyError();
 const app = new Express();
 
 app.all('/api/*', (req, res, next) => {
-  console.log('api', req.url);
   req.url = req.url.replace('/api', '/backend');
-  console.log('api-after', req.url);
   next('route');
 });
-
-function formatUrl(_path) {
-  const adjustedPath = _path[0] !== '/' ? `/${_path}` : _path;
-  return '/backend' + adjustedPath;
-}
 
 const _keystone = require('../keystone');
 const keystone = _keystone(app);
@@ -62,7 +55,14 @@ app.use(/^\/(?!keystone|backend).*/,(req, res) => {
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
-  const client = new ApiClient(req, formatUrl, {});
+
+  function formatUrl(path) {
+    const apiPart = '/backend';
+    const adjustedPath = path[0] !== '/' ? `/${path}` : path;
+    return `${req.protocol}://${req.get('host')}${apiPart}${adjustedPath}`;
+  }
+
+  const client = new ApiClient(req, formatUrl);
 
   const memoryHistory = createHistory(req.originalUrl);
   const store = createStore(client);
