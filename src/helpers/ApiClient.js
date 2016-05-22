@@ -28,10 +28,8 @@ class _ApiClient {
         request.end((err, { body } = {}) => {
 
           if (err) {
-            console.log('error', body, err);
             reject(body || err);
           } else {
-            console.log('error', body);
             resolve(body);
           }
         });

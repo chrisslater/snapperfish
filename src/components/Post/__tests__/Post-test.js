@@ -5,6 +5,7 @@ import { Image } from 'components';
 import shallowWithContext from 'testing/shallowWithContext';
 
 describe('Component', function () {
+  /** @test {Post} **/
   describe('<Post />', function () {
     beforeEach(function () {
       this.mockProps = {
@@ -25,6 +26,7 @@ describe('Component', function () {
       this.mockProps = undefined;
     });
 
+    /** @test {Post#getImage()} **/
     describe('Image', function () {
       it('should render an image with matching props', function () {
         const component = shallowWithContext(<Post {...this.mockProps} />);

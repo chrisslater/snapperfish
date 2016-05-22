@@ -4,8 +4,11 @@ import { themeable } from 'rethemeable';
 import { Image } from 'components';
 import moment from 'moment';
 
+/**
+ * Post Component
+ */
 @themeable
-class Feature extends Component {
+class Post extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     publishedDate: PropTypes.string.isRequired,
@@ -16,7 +19,12 @@ class Feature extends Component {
     body: PropTypes.string.isRequired,
   };
 
-  getImage(image: Object) {
+  /**
+   * Create image Component from image object
+   * @param {Object} image
+   * @returns {Element}
+   */
+  getImage(image: Object): typeof React.Component {
     if (typeof image === 'object' && (image.src)) {
       return <Image src={image.src} alt={image.alt || ''} />;
     }
@@ -24,7 +32,13 @@ class Feature extends Component {
     return null;
   }
 
-  getBody(body: string, theme: Object) {
+  /**
+   * Format body section
+   * @param {string} body HTML markup as string
+   * @param {Object} [theme={}]
+   * @returns {Element}
+   */
+  getBody(body: string, theme: Object = {}) {
     if (body) {
       return (
         <div
@@ -38,6 +52,16 @@ class Feature extends Component {
   }
 
   theme: Object;
+
+  /**
+   * @param {Object} props
+   * @param {string} props.title
+   * @param {Object} props.image
+   * @param {string} props.image.src
+   * @param {string} props.image.alt
+   * @param {Date} props.publisedDate
+   * @returns {Element}
+   */
   render() {
     const theme = this.theme;
     const {
@@ -79,4 +103,4 @@ class Feature extends Component {
   }
 }
 
-export default Feature;
+export default Post;

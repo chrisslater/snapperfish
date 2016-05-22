@@ -8,7 +8,9 @@ import type { Post as PostType } from 'types/Post';
  * @example
  * let props = {
  *   id: "123456",
- *   title: "Readable title describing the feature"
+ *   title: "Readable title describing the feature",
+ *   slug: "readable-title",
+ *   body: "<p>Some paragraph text</p>"
  * };
  * let post = new Post(props);
  */
@@ -49,10 +51,17 @@ class Post {
     return this.title;
   }
 
+  /**
+   * HTML body as a string
+   * @return {string} Returns html as a string
+   */
   getBody(): string {
     return this.body;
   }
 
+  /**
+   * @return {string}
+   */
   getSlug(): string {
     return this.slug;
   }
@@ -61,20 +70,18 @@ class Post {
     return this.image.id;
   }
 
+  /**
+   * @return {Object}
+   */
   getImage(): Object {
     return this.image;
   }
 
-  setImage(image: Image): void {
-    this.image = image;
-  }
-
-  getPublishedDate() {
+  /**
+   * @return {Date} Date as string
+   */
+  getPublishedDate(): string {
     return this.publishedDate;
-  }
-
-  isFeatured(): bool {
-    return false;
   }
 }
 

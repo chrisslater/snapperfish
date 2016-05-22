@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
 import classNames from 'classnames';
@@ -18,7 +18,12 @@ const levels = [
   },
 ];
 
-function getLevelValue(level) {
+/**
+ * Matches the level number with the String value
+ * @param {number} level
+ * @returns {string}
+ */
+function getLevelValue(level: number): string {
   let value;
   let i = 0;
   let found = false;
@@ -42,7 +47,16 @@ class Skills extends Component {
   };
   theme: Object;
 
-  renderSkill(skill: Object, theme: Object) {
+
+  /**
+   * Create the markup up for an individual skill
+   * @param {Object} skill
+   * @param {string} skill.name
+   * @param {number} skill.level
+   * @param {Object} [theme={}] Optional overriding theme object
+   * @returns {Element}
+   */
+  renderSkill(skill: Object, theme: Object = {}) {
     return (
       <li key={`${skill.name}_${skill.level}`} className={theme.skill}>
         <div className={theme.header}>
@@ -54,7 +68,6 @@ class Skills extends Component {
           </span>
         </div>
         <LinearProgress
-
           mode="determinate"
           value={skill.level * 100}
         />
@@ -62,6 +75,12 @@ class Skills extends Component {
     );
   }
 
+  /**
+   * @param {Object} props
+   * @param {Array} props.skills Array of skill objects Array<Skill>
+   * @param {Object} props.theme Optional theme overrides
+   * @returns {Element}
+   */
   render() {
     const theme = this.theme;
     const {
