@@ -20,7 +20,7 @@ import getRoutes from './routes';
 
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  return `/api${adjustedPath}`;
+  return `/kapi${adjustedPath}`;
 }
 
 const client = new ApiClient(null, formatUrl);

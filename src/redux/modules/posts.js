@@ -54,14 +54,14 @@ export function isLoaded(globalState: Object): boolean {
   return false;
 }
 
-export function loadFeatures(): Object {
+export function loadPosts(): Object {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('posts'),
   };
 }
 
-export function loadFeature(slug: string): Object {
+export function loadPost(slug: string): Object {
   return {
     types: [LOAD, LOAD_SINGLE_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get(`posts/${slug}`),

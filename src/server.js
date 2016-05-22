@@ -24,7 +24,7 @@ import env from './env';
 
 // const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 //const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
-//const targetUrl = env.API_URL;
+const targetUrl = env.API_URL; // 'http://localhost:5000/api'
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -35,7 +35,14 @@ const server = new http.Server(app);
 
 
 
+app.all('/kapi/*', (req, res, next) => {
 
+  console.log('kapi', req.url);
+
+  req.url = req.url.replace('/kapi', '/api');
+  console.log(req.url);
+  next('route');
+});
 
 
 
@@ -57,7 +64,7 @@ function formatUrl(_path) {
 }
 
 // Proxy to API server
-//app.use('/api', (req, res) => {
+//app.use('/kapi', (req, res) => {
 //  const client = new ApiClient(req, formatUrl, {
 //    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
 //  });
@@ -67,6 +74,8 @@ function formatUrl(_path) {
 //    .then(body => res.send(body))
 //    .catch(body => res.send(body));
 //});
+
+
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {

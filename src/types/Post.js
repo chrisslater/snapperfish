@@ -2,7 +2,13 @@ export type PostRaw = {
   _id: string;
   title: string;
   slug: string;
-  image: Image;
+  image: {
+    public_id: string;
+    url: string;
+    height: number;
+    width: number;
+    format: string;
+  };
   content: {
     brief: {
       html: string;
@@ -21,8 +27,6 @@ export type Post = {
   image: {
     public_id: string;
     url: string;
-    alt: string;
-    title: string;
     height: number;
     width: number;
     format: string;

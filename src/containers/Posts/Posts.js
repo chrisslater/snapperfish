@@ -3,7 +3,7 @@ import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import Posts from 'models/Posts';
 import Post from 'models/Post';
-import { loadFeatures } from 'redux/modules/posts';
+import { loadPosts } from 'redux/modules/posts';
 
 function postsDecorator(ChildComponent) {
   const PostsContainer = props => {
@@ -19,7 +19,7 @@ function postsDecorator(ChildComponent) {
   };
 
   return asyncConnect([{
-    promise: ({ store: { dispatch } }) => Promise.all([dispatch(loadFeatures())]),
+    promise: ({ store: { dispatch } }) => Promise.all([dispatch(loadPosts())]),
   }])(connect(
     state => ({ _posts: state.posts })
   )(PostsContainer));

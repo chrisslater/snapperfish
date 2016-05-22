@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 import Post from 'models/Post';
-import { loadFeature } from 'redux/modules/posts';
+import { loadPost } from 'redux/modules/posts';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 
 function postDecorator(ChildComponent) {
@@ -32,7 +32,7 @@ function postDecorator(ChildComponent) {
           slug,
         },
       } = props;
-      return Promise.all([dispatch(loadFeature(slug))]);
+      return Promise.all([dispatch(loadPost(slug))]);
     },
   }])(connect(
     state => ({ _posts: state.posts })
