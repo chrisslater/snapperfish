@@ -32,6 +32,21 @@ const server = new http.Server(app);
 //  target: targetUrl
 // });
 
+
+
+
+
+
+
+
+const _keystone = require('../keystone');
+const keystone = _keystone(app);
+
+
+
+
+
+
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
@@ -66,7 +81,7 @@ app.use('/api', (req, res) => {
 //  res.end(JSON.stringify(json));
 // });
 
-app.use((req, res) => {
+app.use(/^\/(?!keystone).*/,(req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
@@ -130,18 +145,22 @@ app.use((req, res) => {
   });
 });
 
-if (config.port) {
-  server.listen(config.port, (err) => {
-    if (err) {
-      console.error(err);
-    }
-// console.info(
-//  '----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort
-// );
-    console.info(
-      '==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port
-    );
-  });
-} else {
-  console.error('==>     ERROR: No PORT environment variable has been specified');
-}
+//if (config.port) {
+//  server.listen(config.port, (err) => {
+//    if (err) {
+//      console.error(err);
+//    }
+//// console.info(
+////  '----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort
+//// );
+//    console.info(
+//      '==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port
+//    );
+//  });
+//} else {
+//  console.error('==>     ERROR: No PORT environment variable has been specified');
+//}
+//keystone.routes(app);
+keystone.start();
+
+
