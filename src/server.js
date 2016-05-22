@@ -24,7 +24,7 @@ import env from './env';
 
 // const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 //const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
-const targetUrl = env.API_URL;
+//const targetUrl = env.API_URL;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -57,16 +57,16 @@ function formatUrl(_path) {
 }
 
 // Proxy to API server
-app.use('/api', (req, res) => {
-  const client = new ApiClient(req, formatUrl, {
-    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
-  });
-
-  client
-    .get(req.path, { params: req.query })
-    .then(body => res.send(body))
-    .catch(body => res.send(body));
-});
+//app.use('/api', (req, res) => {
+//  const client = new ApiClient(req, formatUrl, {
+//    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
+//  });
+//
+//  client
+//    .get(req.path, { params: req.query })
+//    .then(body => res.send(body))
+//    .catch(body => res.send(body));
+//});
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {
@@ -81,14 +81,14 @@ app.use('/api', (req, res) => {
 //  res.end(JSON.stringify(json));
 // });
 
-app.use(/^\/(?!keystone).*/,(req, res) => {
+app.use(/^\/(?!keystone|api).*/,(req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
   const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN,
+    //access_token: env.CONTENTFUL_ACCESS_TOKEN,
   });
 
   const memoryHistory = createHistory(req.originalUrl);
