@@ -26,8 +26,8 @@ describe('Component', function () {
       this.mockProps = undefined;
     });
 
-    /** @test {Post#getImage()} **/
     describe('Image', function () {
+      /** @test {Post#getImage()} **/
       it('should render an image with matching props', function () {
         const component = shallowWithContext(<Post {...this.mockProps} />);
         const image = component.find(Image);
@@ -36,6 +36,7 @@ describe('Component', function () {
         expect(image.node.props.alt).to.equal(this.mockProps.image.alt);
       });
 
+      /** @test {Post#getImage()} **/
       it('should not render an image if no props are given', function () {
         delete this.mockProps.image;
         const component = shallowWithContext(<Post {...this.mockProps} />);
@@ -43,6 +44,7 @@ describe('Component', function () {
         expect(image).to.have.length(0);
       });
     });
+
 
     describe('title prop', function () {
       it('should render a h1 title', function () {
@@ -54,6 +56,7 @@ describe('Component', function () {
     });
 
     describe('body prop', function () {
+      /** @test {Post#getBody()} **/
       it('should render html as string if body exists', function () {
         this.mockProps.body = '<h2>Test header</h2>';
         const component = shallowWithContext(<Post {...this.mockProps} />);
@@ -61,6 +64,7 @@ describe('Component', function () {
         expect(body.node.props.dangerouslySetInnerHTML.__html).to.equal('<h2>Test header</h2>');
       });
 
+      /** @test {Post#getBody()} **/
       it('should not render if body is undefined', function () {
         const component = shallowWithContext(<Post {...this.mockProps} />);
         const body = component.find('.body');
@@ -69,6 +73,7 @@ describe('Component', function () {
     });
 
     describe('publishedDate prop', function () {
+      /** @test {Post#getPublishedDate()} **/
       it('should render date on the page', function () {
         this.mockProps.publishedDate = '2015-05-02';
         const component = shallowWithContext(<Post {...this.mockProps} />);

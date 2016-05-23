@@ -26,7 +26,6 @@ class _ApiClient {
         }
 
         request.end((err, { body } = {}) => {
-
           if (err) {
             reject(body || err);
           } else {

@@ -22,14 +22,10 @@ class Post extends Component {
   /**
    * Create image Component from image object
    * @param {Object} image
-   * @returns {Element}
+   * @returns {Image}
    */
-  getImage(image: Object): typeof React.Component {
-    if (typeof image === 'object' && (image.src)) {
-      return <Image src={image.src} alt={image.alt || ''} />;
-    }
-
-    return null;
+  getImage(image: Object): typeof Image {
+    return <Image src={image.src} alt={image.alt} />;
   }
 
   /**
@@ -39,16 +35,12 @@ class Post extends Component {
    * @returns {Element}
    */
   getBody(body: string, theme: Object = {}) {
-    if (body) {
-      return (
-        <div
-          className={theme.body}
-          dangerouslySetInnerHTML={{ __html: body }}
-        />
-      );
-    }
-
-    return null;
+    return (
+      <div
+        className={theme.body}
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+    );
   }
 
   theme: Object;
@@ -70,14 +62,20 @@ class Post extends Component {
       body,
       publishedDate,
     } = this.props;
-    let imageMarkup;
 
-    if (image) {
+    let imageMarkup;
+    let bodyMarkup;
+
+    if (image && image.src) {
       imageMarkup = (
         <div className={theme.imageContainer}>
           {this.getImage(image, theme)}
         </div>
       );
+    }
+
+    if (body) {
+      bodyMarkup = this.getBody(body, theme);
     }
 
     const formattedPublishedDate = moment(publishedDate).format('MMMM Do, YYYY');
@@ -96,7 +94,7 @@ class Post extends Component {
           >
             {formattedPublishedDate}
           </time>
-          {this.getBody(body, theme)}
+          {bodyMarkup}
         </div>
       </article>
     );

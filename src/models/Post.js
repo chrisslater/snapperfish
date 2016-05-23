@@ -10,7 +10,11 @@ import type { Post as PostType } from 'types/Post';
  *   id: "123456",
  *   title: "Readable title describing the feature",
  *   slug: "readable-title",
- *   body: "<p>Some paragraph text</p>"
+ *   body: "<p>Some paragraph text</p>",
+ *   image: {
+ *     src: "http://test.local/image.jpg",
+ *     alt: "test image"
+ *   }
  * };
  * let post = new Post(props);
  */
@@ -64,10 +68,6 @@ class Post {
    */
   getSlug(): string {
     return this.slug;
-  }
-
-  getImageId(): string {
-    return this.image.id;
   }
 
   /**

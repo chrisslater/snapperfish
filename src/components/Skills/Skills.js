@@ -24,7 +24,7 @@ const levels = [
  * @returns {string}
  */
 function getLevelValue(level: number): string {
-  let value;
+  let value = 'Expert';
   let i = 0;
   let found = false;
 
