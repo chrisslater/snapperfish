@@ -6,7 +6,7 @@ import shallowWithContext from 'testing/shallowWithContext';
 
 describe('Component', function () {
   /** @test {Post} **/
-  describe('<Post />', function () {
+  describe('Post', function () {
     beforeEach(function () {
       this.mockProps = {
         title:'Test title headline',
