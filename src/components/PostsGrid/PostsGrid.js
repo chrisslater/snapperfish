@@ -32,8 +32,8 @@ class PostsGrid extends Component {
               key={post.getId()}
               title={post.getTitle()}
               titlePosition="bottom"
-              cols={post.isFeatured() ? 2 : 1}
-              rows={post.isFeatured() ? 2 : 1}
+              cols={1}
+              rows={1}
               className={theme.background}
               style={{
                 backgroundImage: `url(${formatted.src})`,

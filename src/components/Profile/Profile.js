@@ -63,7 +63,12 @@ class Profile extends Component {
           </Dimensions>
         </Layout>
 
-
+        <Layout>
+          <h2 className={theme.sectionHeadline}>Work Experience</h2>
+          <Dimensions>
+            TBC
+          </Dimensions>
+        </Layout>
       </div>
     );
   }
