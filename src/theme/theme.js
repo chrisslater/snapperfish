@@ -11,6 +11,7 @@ import {
   BusinessCard,
   Skills,
   Post,
+  TimelineSingle,
 } from 'components';
 import AppTheme from './App/App.scss';
 import LayoutTheme from './Layout/Layout.scss';
@@ -24,6 +25,7 @@ import MenuTheme from './Menu/Menu.scss';
 import ProfileTheme from './Profile/Profile.scss';
 import BusinessCardTheme from './BusinessCard/BusinessCard.scss';
 import SkillsTheme from './Skills/Skills.less';
+import TimelineSingleTheme from './TimelineSingle/TimelineSingle.scss';
 
 require('./global.scss');
 require('./typography.scss');
@@ -41,6 +43,7 @@ const theme = {
   [Profile.theme]: ProfileTheme,
   [BusinessCard.theme]: BusinessCardTheme,
   [Skills.theme]: SkillsTheme,
+  [TimelineSingle.theme]: TimelineSingleTheme,
 };
 
 export default theme;

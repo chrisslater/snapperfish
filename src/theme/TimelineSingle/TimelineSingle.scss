@@ -1,0 +1,24 @@
+@import '../typography';
+
+.self {
+  border-top: 3px solid var(--primary1Color);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.dates {
+  color: var(--primary1Color);
+  padding-bottom: 15px;
+}
+
+.title {
+  @extend %headline;
+}
+
+.strapline {
+  @extend %title;
+}
+
+.body {
+
+}

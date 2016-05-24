@@ -10,7 +10,9 @@ body {
   color: $font-color;
 }
 
-.display {
+
+
+%display {
   max-width: $max-width-paragraph;
   font-size: 2.125em;
   line-height: 1.176;
@@ -18,7 +20,7 @@ body {
   margin-top: 0;
 }
 
-.headline {
+%headline {
   max-width: $max-width-paragraph;
   font-size: 1.500em;
   line-height: 1.33333333;
@@ -26,7 +28,7 @@ body {
   margin-top: 0;
 }
 
-.title {
+%title {
   max-width: $max-width-paragraph;
   font-size: 1.250em;
   line-height: 1.33333333;
@@ -35,7 +37,7 @@ body {
   margin-top: 0;
 }
 
-.subheading {
+%subheading {
   max-width: $max-width-paragraph;
   font-size: 1em;
   line-height: 1.5;
@@ -57,19 +59,19 @@ body {
 }
 
 h1 {
-  @extend .display;
+  @extend %display;
 }
 
 h2 {
-  @extend .headline;
+  @extend %headline;
 }
 
 h3 {
-  @extend .title
+  @extend %title;
 }
 
 p  {
-  @extend .subheading;
+  @extend %subheading;
 }
 
 small {

@@ -9,10 +9,10 @@
 }
 
 .welcome {
-  @extend .title;
+  @extend %title;
 }
 
 .sectionHeadline {
-  @extend .display;
+  @extend %display;
   text-align: center;
 }

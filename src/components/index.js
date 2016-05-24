@@ -19,3 +19,4 @@ export Menu from './Menu/Menu';
 export Profile from './Profile/Profile';
 export BusinessCard from './BusinessCard/BusinessCard';
 export Skills from './Skills/Skills';
+export TimelineSingle from './TimelineSingle/TimelineSingle';
