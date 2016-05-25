@@ -6,6 +6,7 @@ import {
   BusinessCard,
   Skills,
   Dimensions,
+  Timeline,
   TimelineSingle,
 } from 'components';
 
@@ -67,26 +68,38 @@ class Profile extends Component {
         <Layout>
           <h2 className={theme.sectionHeadline}>Work Experience</h2>
           <Dimensions>
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
+            <Timeline>
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+            </Timeline>
           </Dimensions>
         </Layout>
       </div>

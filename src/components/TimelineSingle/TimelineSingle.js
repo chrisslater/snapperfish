@@ -47,17 +47,22 @@ class TimelineSingle extends Component {
       toDateMarkup = moment(toDate).format('MMMM YYYY');
     }
 
+    console.log(this.props.isLeft);
+
     return (
-      <Paper className={theme.self}>
+    <div className={theme.self}>
+
+      <Paper className={theme.paper}>
         <div className={theme.dates}>
-          <time className={theme.fromDate}>{from}</time>
-          <span> - </span>
-          <time className={theme.toDate}>{toDateMarkup}</time>
+        <time className={theme.fromDate}>{from}</time>
+        <span> - </span>
+        <time className={theme.toDate}>{toDateMarkup}</time>
         </div>
         <h1 className={theme.title}>{title}</h1>
         <h2 className={theme.strapline}>{strapline}</h2>
         {bodyMarkup}
       </Paper>
+      </div>
     );
   }
 }

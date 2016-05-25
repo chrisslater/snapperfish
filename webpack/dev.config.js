@@ -97,7 +97,8 @@ module.exports = {
   },
   postcss: [
     autoprefixer({ browsers: ['last 2 versions'] }),
-    customProperties({ variables: require('../src/theme/variables.js') })
+    customProperties({ variables: require('../src/theme/variables.js') }),
+    require('postcss-color-function'),
   ],
   progress: true,
   resolve: {

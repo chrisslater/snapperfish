@@ -1,6 +1,12 @@
 @import '../typography';
 
 .self {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
+.paper {
   border-top: 3px solid var(--primary1Color);
   padding: 20px;
   margin-bottom: 30px;
@@ -20,5 +26,4 @@
 }
 
 .body {
-
 }
