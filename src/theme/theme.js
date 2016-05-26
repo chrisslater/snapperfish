@@ -14,23 +14,22 @@ import {
   Timeline,
   TimelineSingle,
 } from 'components';
-import AppTheme from './App/App.scss';
-import LayoutTheme from './Layout/Layout.scss';
-import FooterTheme from './Footer/Footer.scss';
-import PostsGridTheme from './PostsGrid/PostsGrid.scss';
-import PostTheme from './Post/Post.scss';
-import ButtonTheme from './Button/Button.scss';
-import ImageTheme from './Image/Image.scss';
-import HeroTheme from './Hero/Hero.scss';
-import MenuTheme from './Menu/Menu.scss';
-import ProfileTheme from './Profile/Profile.scss';
-import BusinessCardTheme from './BusinessCard/BusinessCard.scss';
-import SkillsTheme from './Skills/Skills.less';
-import TimelineTheme from './Timeline/Timeline.scss';
-import TimelineSingleTheme from './TimelineSingle/TimelineSingle.scss';
+import AppTheme from './App/App.css';
+import LayoutTheme from './Layout/Layout.css';
+import FooterTheme from './Footer/Footer.css';
+import PostsGridTheme from './PostsGrid/PostsGrid.css';
+import PostTheme from './Post/Post.css';
+import ButtonTheme from './Button/Button.css';
+import ImageTheme from './Image/Image.css';
+import HeroTheme from './Hero/Hero.css';
+import MenuTheme from './Menu/Menu.css';
+import ProfileTheme from './Profile/Profile.css';
+import BusinessCardTheme from './BusinessCard/BusinessCard.css';
+import SkillsTheme from './Skills/Skills.css';
+import TimelineTheme from './Timeline/Timeline.css';
+import TimelineSingleTheme from './TimelineSingle/TimelineSingle.css';
 
-require('./global.scss');
-require('./typography.scss');
+require('./global.css');
 
 const theme = {
   [App.theme]: AppTheme,

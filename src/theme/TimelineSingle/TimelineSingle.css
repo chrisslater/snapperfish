@@ -1,0 +1,71 @@
+@import '../typography';
+
+.self {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
+@define-mixin arrow {
+  .arrow {
+    position: relative;
+    background: #88b7d5;
+    border: 4px solid #c2e1f5;
+  }
+
+  .arrow:after, .arrow:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .arrow:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: #88b7d5;
+    border-width: 20px;
+    margin-top: -20px;
+  }
+
+  .arrow:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: #c2e1f5;
+    border-width: 26px;
+    margin-top: -26px;
+  }
+}
+
+.left {
+  padding-left: 30px;
+  @mixin arrow;
+}
+
+.right {
+  padding-right: 30px;
+}
+
+.paper {
+  border-top: 3px solid var(--primary1Color);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.dates {
+  color: var(--primary1Color);
+  padding-bottom: 15px;
+}
+
+.title {
+  @extend mui-headline;
+}
+
+.strapline {
+  @extend mui-title;
+}
+
+.body {
+}

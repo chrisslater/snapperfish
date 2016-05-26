@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
 import moment from 'moment';
 import Paper from 'material-ui/Paper';
+import classNames from 'classnames';
 
 @themeable
 class TimelineSingle extends Component {
@@ -12,6 +13,7 @@ class TimelineSingle extends Component {
     fromDate: PropTypes.string.isRequired,
     toDate: PropTypes.string,
     body: PropTypes.string,
+    direction: PropTypes.oneOf(['left', 'right']),
   };
 
   /**
@@ -30,6 +32,7 @@ class TimelineSingle extends Component {
       fromDate,
       toDate,
       body,
+      direction,
     } = this.props;
     const theme = this.theme;
     let toDateMarkup = 'present';
@@ -47,21 +50,24 @@ class TimelineSingle extends Component {
       toDateMarkup = moment(toDate).format('MMMM YYYY');
     }
 
-    console.log(this.props.isLeft);
+    const classes = [theme.self];
+
+    if (direction) {
+      classes.push(theme[direction]);
+    }
 
     return (
-    <div className={theme.self}>
-
-      <Paper className={theme.paper}>
-        <div className={theme.dates}>
-        <time className={theme.fromDate}>{from}</time>
-        <span> - </span>
-        <time className={theme.toDate}>{toDateMarkup}</time>
-        </div>
-        <h1 className={theme.title}>{title}</h1>
-        <h2 className={theme.strapline}>{strapline}</h2>
-        {bodyMarkup}
-      </Paper>
+      <div className={classNames(classes)}>
+        <Paper className={theme.paper}>
+          <div className={theme.dates}>
+            <time className={theme.fromDate}>{from}</time>
+            <span> - </span>
+            <time className={theme.toDate}>{toDateMarkup}</time>
+          </div>
+          <h1 className={theme.title}>{title}</h1>
+          <h2 className={theme.strapline}>{strapline}</h2>
+          {bodyMarkup}
+        </Paper>
       </div>
     );
   }

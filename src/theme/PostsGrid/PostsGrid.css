@@ -1,9 +1,7 @@
-@import '../variables';
-
 .background {
   background-size: cover;
 }
 
 .gridTile {
-  margin-bottom: $padding;
+  margin-bottom: var(--padding);
 }

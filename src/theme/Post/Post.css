@@ -1,7 +1,5 @@
-@import "../variables";
-
 .imageContainer {
-  margin-bottom: $padding;
+  margin-bottom: var(--padding);
 }
 
 .title {
@@ -9,11 +7,11 @@
 }
 
 .content {
-  max-width: $max-width-paragraph;
+  max-width: var(--max-width-paragraph);
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding: $padding;
+  padding: var(--padding);
 }
 
 .date:after {
@@ -21,7 +19,7 @@
   content: '';
   height: 0;
   width: 4em;
-  margin-top: $padding;
-  margin-bottom: $padding;
+  margin-top: var(--padding);
+  margin-bottom: var(--padding);
   border-bottom: 2px solid var(--primary1Color);
 }

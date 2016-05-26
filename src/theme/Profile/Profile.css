@@ -9,10 +9,10 @@
 }
 
 .welcome {
-  @extend %title;
+  @extend mui-title;
 }
 
 .sectionHeadline {
-  @extend %display;
+  @extend mui-display;
   text-align: center;
 }

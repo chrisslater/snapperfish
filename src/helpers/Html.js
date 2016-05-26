@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import Helmet from 'react-helmet';
 
+// {Object.keys(assets.styles).length === 0 ?
+//  <style
+//    dangerouslySetInnerHTML={{
+//      __html: require('theme/global.css')._style,
+//    }}
+//  /> : null}
+
 /**
  * Wrapper component containing HTML metadata and boilerplate tags.
  * Used in server-side code only to wrap the string output of the
@@ -53,12 +60,7 @@ function Html(props) {
           /* ideally one could also include here the style
            for the current page (Home.scss, About.scss, etc) */
         }
-        {Object.keys(assets.styles).length === 0 ?
-          <style
-            dangerouslySetInnerHTML={{
-              __html: require('theme/global.scss')._style,
-            }}
-          /> : null}
+
       </head>
       <body>
         <div

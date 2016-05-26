@@ -1,0 +1,12 @@
+.self {
+  margin-top: var(--padding);
+  background-color: var(--footer-background);
+  text-align: center;
+  padding: var(--padding);
+}
+
+.copyright {
+  margin-bottom: 0;
+  color: var(--font-color-light);
+  display: inline-block;
+}

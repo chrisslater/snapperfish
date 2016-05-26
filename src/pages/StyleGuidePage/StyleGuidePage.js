@@ -7,7 +7,7 @@ import {
 } from 'components';
 
 const StyleGuide = function StyleGuide() {
-  const typography = require('theme/typography.scss');
+  const typography = require('theme/typography.css');
 
   return (
     <div>
