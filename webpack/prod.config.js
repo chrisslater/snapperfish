@@ -55,6 +55,7 @@ module.exports = {
     customProperties({ variables: require('../src/theme/variables.js') }),
     require('postcss-color-function'),
     require('postcss-mixins'),
+    require('postcss-nested'),
     simpleExtend(),
   ],
   progress: true,

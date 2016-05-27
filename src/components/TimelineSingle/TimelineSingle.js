@@ -58,6 +58,7 @@ class TimelineSingle extends Component {
 
     return (
       <div className={classNames(classes)}>
+        <div className={theme.triangle}>▲</div>
         <Paper className={theme.paper}>
           <div className={theme.dates}>
             <time className={theme.fromDate}>{from}</time>
