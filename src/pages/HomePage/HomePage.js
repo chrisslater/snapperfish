@@ -8,6 +8,12 @@ import {
   Layout,
 } from 'components';
 
+import Themer from 'components/Themer';
+import Test from 'components/Test';
+import themeTwo from 'theme/theme-two';
+
+console.log(themeTwo);
+
 function HomePage() {
   return (
     <div>
@@ -19,6 +25,11 @@ function HomePage() {
           <h2>{config.app.description}</h2>
         </Layout>
       </Hero>
+
+      <Themer scalesTheme={themeTwo}>
+        <Test />
+      </Themer>
+
       <Profile />
     </div>
   );
