@@ -1,6 +1,6 @@
-import Test from './Test/Test.css';
+const TestTheme = require('./Meh/Meh.css');
 
 
 export default {
-  Test,
+  Test: TestTheme,
 };

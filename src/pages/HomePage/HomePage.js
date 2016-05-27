@@ -27,7 +27,7 @@ function HomePage() {
       </Hero>
 
       <Themer scalesTheme={themeTwo}>
-        <Test />
+        <Test theme={{ random: 'blue' }}/>
       </Themer>
 
       <Profile />

@@ -5,7 +5,7 @@ import themeInjector from 'containers/ThemeInjector';
 class Test extends Component {
   render() {
     const props = this.props;
-    console.log('Test', props);
+    console.log('Test', props.theme);
 
     return (
       <div>
