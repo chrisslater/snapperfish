@@ -1,4 +1,5 @@
 .self {
-    width: 100%;
-    height: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }

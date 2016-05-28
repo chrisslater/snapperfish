@@ -42,20 +42,22 @@
 }
 
 .mainDivide {
-  padding: 57px 50px 15px 50px;
+  /*padding: 57px 50px 15px 50px;*/
+  padding: 20px;
 }
 
 .mainDivide > .picture {
-  flex-basis: 30%;
+  flex-basis: 40%;
 }
 
 .mainDivide > .info {
-  flex-basis: 70%;
+  flex-basis: 60%;
 }
 
 .picture {
   padding: 20px;
   flex-basis: 100%;
+  text-align: center;
 }
 
 .info {

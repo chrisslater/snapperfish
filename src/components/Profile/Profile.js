@@ -3,6 +3,7 @@ import { themeable } from 'rethemeable';
 
 import {
   Layout,
+  Button,
   BusinessCard,
   Skills,
   Dimensions,
@@ -36,7 +37,7 @@ class Profile extends Component {
     const theme = this.theme;
     return (
       <div className={theme.self}>
-        <Layout isExtended>
+        <Layout>
           <Dimensions>
             <BusinessCard
               name={'Chris Slater'}
@@ -50,12 +51,25 @@ class Profile extends Component {
           </Dimensions>
         </Layout>
         <Layout isCentered>
-          <a>Download resume</a>
+          <h2 className={theme.sectionHeadline}>About me</h2>
           <p className={theme.welcome}>
             Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
             Experienced with all stages of the development cycle for dynamic web projects.
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
+          </p>
+        </Layout>
+        <Layout isCentered>
+          <p>
+            <Button>
+              Download resume
+            </Button>
+            <Button
+              href="https://snapperfish.typeform.com/to/V0S5BV"
+              target="_blank"
+            >
+              Get in touch
+            </Button>
           </p>
         </Layout>
         <Layout>

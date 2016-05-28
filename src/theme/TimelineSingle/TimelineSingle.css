@@ -63,6 +63,7 @@
 .right {
   border-right: 40px transparent solid;
   margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .paper {
