@@ -37,6 +37,7 @@ class TimelineSingle extends Component {
     const theme = this.theme;
     let toDateMarkup = 'present';
     let bodyMarkup;
+    let arrowMarkup;
 
     const from = moment(fromDate).format('MMMM YYYY');
 
@@ -50,15 +51,16 @@ class TimelineSingle extends Component {
       toDateMarkup = moment(toDate).format('MMMM YYYY');
     }
 
-    const classes = [theme.self];
+    const classes = [theme.self, theme.triangle];
 
     if (direction) {
       classes.push(theme[direction]);
+      arrowMarkup = (<div className={theme[`arrow-${direction}`]} />);
     }
 
     return (
       <div className={classNames(classes)}>
-        <div className={theme.triangle}>▲</div>
+        {arrowMarkup}
         <Paper className={theme.paper}>
           <div className={theme.dates}>
             <time className={theme.fromDate}>{from}</time>
