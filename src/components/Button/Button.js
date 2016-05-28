@@ -4,7 +4,9 @@ import { themeable } from 'rethemeable';
 @themeable
 export default class Button extends Component {
   static propTypes={
-    href: PropTypes.string
+    href: PropTypes.string,
+    target: PropTypes.string,
+    children: PropTypes.object.isRequired,
   };
 
   render() {
