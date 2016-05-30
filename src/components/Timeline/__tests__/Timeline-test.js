@@ -10,10 +10,12 @@ describe('Component', function () {
 
       it('should display its children', function () {
         const component = shallowWithContext(
-          <Timeline>
-            <div className="child">Child</div>
-            <div className="child">Child</div>
-          </Timeline>
+          <Timeline
+            timeline={[
+              <div className="child">Child</div>,
+              <div className="child">Child</div>,
+            ]}
+          />
         );
 
         const children = component.children();

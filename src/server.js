@@ -1,7 +1,7 @@
 import Express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import config from './config';
+// import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import path from 'path';
@@ -9,7 +9,7 @@ import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
-import http from 'http';
+// import http from 'http';
 
 import { match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -18,12 +18,13 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import NestedStatus from 'react-nested-status';
-import env from './env';
+// import env from './env';
 
 const pretty = new PrettyError();
 const app = new Express();
 
 app.all('/api/*', (req, res, next) => {
+  // eslint-disable-next-line no-param-reassign
   req.url = req.url.replace('/api', '/backend');
   next('route');
 });
@@ -48,16 +49,16 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 //  res.end(JSON.stringify(json));
 // });
 
-app.use(/^\/(?!keystone|backend).*/,(req, res) => {
+app.use(/^\/(?!keystone|backend).*/, (req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
 
-  function formatUrl(path) {
+  function formatUrl(fpath) {
     const apiPart = '/backend';
-    const adjustedPath = path[0] !== '/' ? `/${path}` : path;
+    const adjustedPath = fpath[0] !== '/' ? `/${fpath}` : fpath;
     return `${req.protocol}://${req.get('host')}${apiPart}${adjustedPath}`;
   }
 
