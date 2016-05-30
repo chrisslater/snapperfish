@@ -1,15 +1,15 @@
 @import '../typography';
 
 .self {
-  margin-top: -185px;
+  position: relative;
+  margin-top: -150px;
 }
 
-.bigbox {
-
-}
+.bigbox {}
 
 .welcome {
   @extend mui-title;
+  font-weight: 100;
 }
 
 .sectionHeadline {

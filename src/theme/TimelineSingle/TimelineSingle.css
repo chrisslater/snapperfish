@@ -1,4 +1,5 @@
 @import '../typography';
+/* @TODO correct direction naming to be consistant */
 
 .self {
   flex-basis: 50%;
@@ -7,14 +8,6 @@
   position: relative;
   margin-top: 40px;
 }
-
-/*.self-big:nth-child(odd) {*/
-  /*margin-top: 0;*/
-/*}*/
-
-/*.self-big:nth-child(even) {*/
-  /*margin-top: 40px;*/
-/*}*/
 
 @define-mixin arrow $direction: left {
   position: absolute;
@@ -30,7 +23,7 @@
      width: 10px;
      height: 10px;
      border-radius: 10px;
-     background-color: #00bcd4;
+     background-color: var(--primary1Color);
      position: absolute;
      $(direction): calc(100% - 10px);
   }
@@ -67,7 +60,7 @@
 }
 
 .paper {
-  border-top: 3px solid var(--primary1Color);
+  border-top: 4px solid var(--primary1Color);
   padding: 20px;
 }
 

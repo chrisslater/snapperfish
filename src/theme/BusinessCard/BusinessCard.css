@@ -42,7 +42,6 @@
 }
 
 .mainDivide {
-  /*padding: 57px 50px 15px 50px;*/
   padding: 20px;
 }
 
@@ -67,26 +66,41 @@
 
 .list {
   margin-top: 16px;
-  padding: 36px 0;
+  margin-bottom: 0;
+  padding: 12px 0 0;
   border-top: solid 1px var(--borderColor);
 }
 
+@define-placeholder list-padding {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .list_item {
-   position: relative;
-   list-style: none;
-   margin-bottom: var(--padding);
- }
+  position: relative;
+  list-style: none;
+  margin-bottom: var(--padding);
+}
 
 .list_item_label {
-   position: absolute;
- }
+  position: absolute;
+  @extend list-padding;
+  padding-left: 7px;
+  padding-right: 7px;
+}
 
 .list_item_value {
-   display: inline-block;
-   padding-left: 90px;
-   font-style: normal;
-   color: var(--accent3Color);
- }
+  display: inline-block;
+  padding-left: 90px;
+  font-style: normal;
+  color: var(--accent3Color);
+  @extend list-padding;
+}
+
+.availability {
+  background-color: var(--primary1Color);
+  color: var(--alternateTextColor);
+}
 
 .footer {
   text-align: center;
@@ -95,7 +109,6 @@
 
 .iconButton {
   color: var(--alternateTextColor) !important;
-
 }
 
 .iconButtonHover {

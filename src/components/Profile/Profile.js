@@ -45,8 +45,10 @@ class Profile extends Component {
               email={'contact@snapper.fish'}
               address={'Example Address, London, EG16 3RZ'}
               phone={'+44 78663 34466'}
+              available={'July 2016'}
               githubUrl={'https://github.com/chrisslater'}
               twitterUrl={'https://twitter.com/ChrisOnTheSide'}
+              linkedinUrl={'https://www.linkedin.com/in/crslater'}
             />
           </Dimensions>
         </Layout>
@@ -61,8 +63,11 @@ class Profile extends Component {
         </Layout>
         <Layout isCentered>
           <p>
-            <Button>
-              Download resume
+            <Button
+              href="/files/chris-professional-profile-20160530.pdf"
+              target="_blank"
+            >
+              Download CV
             </Button>
             <Button
               href="https://snapperfish.typeform.com/to/V0S5BV"

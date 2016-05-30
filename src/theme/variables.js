@@ -1,13 +1,12 @@
 const colors = require('material-ui/styles/colors');
-
 const darkBlack = '#000';
 const white = '#fff';
 const maxWidth = '760px';
 const padding = '12px';
 
 module.exports = {
-  '--primary1Color': colors.cyan500,
-  '--primary2Color': colors.cyan700,
+  '--primary1Color': colors.deepPurple500,
+  '--primary2Color': colors.deppPurple700,
   '--primary3Color': colors.grey400,
   '--accent1Color': colors.pinkA200,
   '--accent2Color': colors.grey100,

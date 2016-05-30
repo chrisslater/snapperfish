@@ -16,8 +16,10 @@ class BusinessCard extends Component {
     email: PropTypes.string.isRequired,
     address: PropTypes.string,
     phone: PropTypes.string,
+    available: PropTypes.string,
     githubUrl: PropTypes.string,
     twitterUrl: PropTypes.string,
+    linkedinUrl: PropTypes.string,
   };
 
   render() {
@@ -29,8 +31,10 @@ class BusinessCard extends Component {
       email,
       address,
       phone,
+      available,
       githubUrl,
       twitterUrl,
+      linkedinUrl,
     } = this.props;
     let divide = false;
 
@@ -52,8 +56,8 @@ class BusinessCard extends Component {
           <div className={theme.picture}>
             <Image
               itemProp="image"
-              src={'http://placekitten.com/200/300'}
-              alt={'Chris enjoying the sun'}
+              src={'/files/profile-star-wars.jpg'}
+              alt={'R2D2, C3P0 and I'}
             />
           </div>
           <div className={theme.info}>
@@ -82,9 +86,21 @@ class BusinessCard extends Component {
               </li>
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>Phone</span>
-                <div className={theme.list_item_value}>{phone}</div>
+                <span className={theme.list_item_value}>{phone}</span>
               </li>
-
+              <li className={theme.list_item}>
+                <span
+                  className={
+                    classNames([
+                      theme.list_item_label,
+                      theme.availability,
+                    ])
+                  }
+                >
+                  Available
+                </span>
+                <span className={theme.list_item_value}>{available}</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -108,6 +124,16 @@ class BusinessCard extends Component {
               className={theme.hiddenIconText}
               target="_blank"
             >Go to Twitter</a>
+          </IconButton>
+          <IconButton
+            className={theme.iconButtonHover}
+            iconClassName={`fa fa-linkedin ${theme.iconButton}`}
+          >
+            <a
+              href={linkedinUrl}
+              className={theme.hiddenIconText}
+              target="_blank"
+            >Go to Linked in</a>
           </IconButton>
         </div>
       </Paper>
