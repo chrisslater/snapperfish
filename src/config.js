@@ -11,8 +11,7 @@ const environment = {
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
+  port: process.env.PORT || 5000,
   app: {
     title: 'SnapperFish',
     description: 'All the modern best practices in one example.',

@@ -60,10 +60,6 @@ module.exports = {
   ],
   progress: true,
   resolve: {
-    alias: {
-      conf: path.resolve(__dirname, 'conf', 'development' + '.js')
-    },
-
     modulesDirectories: [
       'src',
       'node_modules'

@@ -4,9 +4,10 @@ require('babel-polyfill');
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+var config = require('../src/config');
 var assetsPath = path.resolve(__dirname, '../static/dist');
-var host = (process.env.HOST || 'localhost');
-var port = (+process.env.PORT + 1) || 3001;
+var host = config.host;
+var port = (Number(config.port) + 1);
 
 var autoprefixer = require('autoprefixer');
 var customProperties = require('postcss-custom-properties');
@@ -109,12 +110,7 @@ module.exports = {
   ],
   progress: true,
   resolve: {
-    alias: {
-      envConfig: path.resolve(__dirname, '..', 'envConfig', 'env-development'),
-    },
-
     modulesDirectories: [
-      'envConfig',
       'src',
       'node_modules'
     ],
