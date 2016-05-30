@@ -1,0 +1,25 @@
+.imageContainer {
+  margin-bottom: var(--padding);
+}
+
+.title {
+  color: var(--primary1Color);
+}
+
+.content {
+  max-width: var(--max-width-paragraph);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--padding);
+}
+
+.date:after {
+  display: block;
+  content: '';
+  height: 0;
+  width: 4em;
+  margin-top: var(--padding);
+  margin-bottom: var(--padding);
+  border-bottom: 2px solid var(--primary1Color);
+}

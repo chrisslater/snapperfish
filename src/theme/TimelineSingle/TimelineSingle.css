@@ -1,0 +1,81 @@
+@import '../typography';
+/* @TODO correct direction naming to be consistant */
+
+.self {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  flex-grow: 0;
+  position: relative;
+  margin-top: 40px;
+}
+
+@define-mixin arrow $direction: left {
+  position: absolute;
+  width: 45px;
+  height: 35px;
+  overflow: hidden;
+  $(direction): 100%;
+  top: 30px;
+
+  &:before {
+     content: "";
+     top: 13px;
+     width: 10px;
+     height: 10px;
+     border-radius: 10px;
+     background-color: var(--primary1Color);
+     position: absolute;
+     $(direction): calc(100% - 10px);
+  }
+
+  &:after {
+     content: "";
+     position: absolute;
+     width: 35px;
+     height: 35px;
+     background: white;
+     transform: rotate(45deg);
+     $(direction): -25px;
+     box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.arrow-left {
+  @mixin arrow right;
+}
+
+.arrow-right {
+  @mixin arrow left;
+}
+
+.left {
+  border-left: 40px transparent solid;
+  margin-top: 40px;
+}
+
+.right {
+  border-right: 40px transparent solid;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.paper {
+  border-top: 4px solid var(--primary1Color);
+  padding: 20px;
+}
+
+.dates {
+  color: var(--primary1Color);
+  padding-bottom: 15px;
+}
+
+.title {
+  @extend mui-headline;
+}
+
+.strapline {
+  @extend mui-title;
+}
+
+.body {
+}

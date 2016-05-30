@@ -1,16 +1,15 @@
 import Express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import config from './config';
+// import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
-// import httpProxy from 'http-proxy';
 import path from 'path';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
-import http from 'http';
+// import http from 'http';
 
 import { match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -19,38 +18,23 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import NestedStatus from 'react-nested-status';
+// import env from './env';
 
-import env from './env';
-
-// const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
-const targetUrl = `${env.CONTENTFUL_URL}/spaces/${env.CONTENTFUL_SPACE}`;
 const pretty = new PrettyError();
 const app = new Express();
-const server = new http.Server(app);
-// const proxy = httpProxy.createProxyServer({
-//  target: targetUrl
-// });
+
+app.all('/api/*', (req, res, next) => {
+  // eslint-disable-next-line no-param-reassign
+  req.url = req.url.replace('/api', '/backend');
+  next('route');
+});
+
+const _keystone = require('../keystone');
+const keystone = _keystone(app);
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
-
-function formatUrl(_path) {
-  const adjustedPath = _path[0] !== '/' ? `/${_path}` : _path;
-  return targetUrl + adjustedPath;
-}
-
-// Proxy to API server
-app.use('/api', (req, res) => {
-  const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN,
-  });
-
-  client
-    .get(req.path, { params: req.query })
-    .then(body => res.send(body))
-    .catch(body => res.send(body));
-});
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {
@@ -65,15 +49,20 @@ app.use('/api', (req, res) => {
 //  res.end(JSON.stringify(json));
 // });
 
-app.use((req, res) => {
+app.use(/^\/(?!keystone|backend).*/, (req, res) => {
   if (__DEVELOPMENT__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   }
-  const client = new ApiClient(req, formatUrl, {
-    access_token: env.CONTENTFUL_ACCESS_TOKEN,
-  });
+
+  function formatUrl(fpath) {
+    const apiPart = '/backend';
+    const adjustedPath = fpath[0] !== '/' ? `/${fpath}` : fpath;
+    return `${req.protocol}://${req.get('host')}${apiPart}${adjustedPath}`;
+  }
+
+  const client = new ApiClient(req, formatUrl);
 
   const memoryHistory = createHistory(req.originalUrl);
   const store = createStore(client);
@@ -129,18 +118,4 @@ app.use((req, res) => {
   });
 });
 
-if (config.port) {
-  server.listen(config.port, (err) => {
-    if (err) {
-      console.error(err);
-    }
-// console.info(
-//  '----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort
-// );
-    console.info(
-      '==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port
-    );
-  });
-} else {
-  console.error('==>     ERROR: No PORT environment variable has been specified');
-}
+keystone.start();

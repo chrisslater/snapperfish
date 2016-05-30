@@ -1,0 +1,11 @@
+.self {
+  background-image: linear-gradient(color(var(--primary1Color) a(30%)), color(var(--primary1Color) a(30%)));
+  background-size: 4px 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+}

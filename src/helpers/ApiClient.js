@@ -9,16 +9,16 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  * Remove it at your own risk.
  */
 class _ApiClient {
-  constructor(req, formatUrl, _params = {}) {
+  constructor(req, formatUrl) {
     methods.forEach((method) => {
       this[method] = (path, { params = {}, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path));
+        const formattedPath = formatUrl(path);
+        const request = superagent[method](formattedPath);
 
         if (__SERVER__ && req.get('cookie')) {
           request.set('cookie', req.get('cookie'));
         }
 
-        request.query(_params);
         request.query(params);
 
         if (data) {

@@ -12,7 +12,7 @@ class Menu extends Component {
   static propTypes = {
     title: PropTypes.string,
     depth: PropTypes.number,
-    isFixed: PropTypes.boolean,
+    isFixed: PropTypes.bool,
     children: PropTypes.array,
   };
 

@@ -3,9 +3,12 @@ import { themeable } from 'rethemeable';
 
 import {
   Layout,
+  Button,
   BusinessCard,
   Skills,
   Dimensions,
+  Timeline,
+  TimelineSingle,
 } from 'components';
 
 const skills = [{
@@ -34,7 +37,7 @@ class Profile extends Component {
     const theme = this.theme;
     return (
       <div className={theme.self}>
-        <Layout isExtended>
+        <Layout>
           <Dimensions>
             <BusinessCard
               name={'Chris Slater'}
@@ -42,18 +45,36 @@ class Profile extends Component {
               email={'contact@snapper.fish'}
               address={'Example Address, London, EG16 3RZ'}
               phone={'+44 78663 34466'}
+              available={'July 2016'}
               githubUrl={'https://github.com/chrisslater'}
               twitterUrl={'https://twitter.com/ChrisOnTheSide'}
+              linkedinUrl={'https://www.linkedin.com/in/crslater'}
             />
           </Dimensions>
         </Layout>
         <Layout isCentered>
-          <a>Download resume</a>
+          <h2 className={theme.sectionHeadline}>About me</h2>
           <p className={theme.welcome}>
             Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
             Experienced with all stages of the development cycle for dynamic web projects.
             Well-versed in numerous programming languages including JavaScript, PHP, and C.
             Stng background in project management and customer relations.
+          </p>
+        </Layout>
+        <Layout isCentered>
+          <p>
+            <Button
+              href="/files/chris-professional-profile-20160530.pdf"
+              target="_blank"
+            >
+              Download CV
+            </Button>
+            <Button
+              href="https://snapperfish.typeform.com/to/V0S5BV"
+              target="_blank"
+            >
+              Get in touch
+            </Button>
           </p>
         </Layout>
         <Layout>
@@ -63,7 +84,75 @@ class Profile extends Component {
           </Dimensions>
         </Layout>
 
-
+        <Layout>
+          <h2 className={theme.sectionHeadline}>Work Experience</h2>
+          <Dimensions>
+            <Timeline
+              timeline={[
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+                <TimelineSingle
+                  fromDate="2015-05-20T23:00:00.000Z"
+                  toDate="2016-07-20T23:00:00.000Z"
+                  title="Pineapple"
+                  strapline="Web Developer"
+                  body={
+                    `programming languages including JavaScript, PHP, and C.
+                    Stng background in project management and customer relations`
+                  }
+                />,
+              ]}
+            />
+          </Dimensions>
+        </Layout>
       </div>
     );
   }

@@ -1,0 +1,14 @@
+@import "normalize.css";
+
+body {
+  background-color: #efefef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*img {*/
+  /*width: 100%;*/
+  /*height: auto;*/
+/*}*/

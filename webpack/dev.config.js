@@ -4,12 +4,15 @@ require('babel-polyfill');
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+var config = require('../src/config');
 var assetsPath = path.resolve(__dirname, '../static/dist');
-var host = (process.env.HOST || 'localhost');
-var port = (+process.env.PORT + 1) || 3001;
+var host = config.host;
+var port = (Number(config.port) + 1);
 
 var autoprefixer = require('autoprefixer');
 var customProperties = require('postcss-custom-properties');
+var simpleExtend = require('postcss-simple-extend');
+var atImport = require("postcss-import");
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
@@ -85,6 +88,7 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel?' + JSON.stringify(babelLoaderQuery), 'eslint-loader']},
       { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.css$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]_[local]__[hash:base64:5]!postcss?browsers=last 2 version' },
       { test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]_[local]__[hash:base64:5]!postcss?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
       { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]_[local]__[hash:base64:5]!postcss?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
@@ -96,17 +100,17 @@ module.exports = {
     ]
   },
   postcss: [
+    atImport(),
     autoprefixer({ browsers: ['last 2 versions'] }),
-    customProperties({ variables: require('../src/theme/variables.js') })
+    customProperties({ variables: require('../src/theme/variables.js') }),
+    require('postcss-color-function'),
+    require('postcss-mixins'),
+    require('postcss-nested'),
+    simpleExtend(),
   ],
   progress: true,
   resolve: {
-    alias: {
-      envConfig: path.resolve(__dirname, '..', 'envConfig', 'env-development'),
-    },
-
     modulesDirectories: [
-      'envConfig',
       'src',
       'node_modules'
     ],
@@ -125,7 +129,8 @@ module.exports = {
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,
-      __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE,
+      //__DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE,
+      __DEVTOOLS__: false,
     }),
     webpackIsomorphicToolsPlugin.development()
   ]

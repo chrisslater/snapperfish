@@ -24,6 +24,7 @@ describe('Component', function() {
 
       const wrapper = shallowWithContext(
         <Skills
+          theme={{ skills : 'skills' }}
           skills={mockSkills}
           containerWidth={300}
         />

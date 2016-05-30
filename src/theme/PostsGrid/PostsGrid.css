@@ -1,0 +1,7 @@
+.background {
+  background-size: cover;
+}
+
+.gridTile {
+  margin-bottom: var(--padding);
+}

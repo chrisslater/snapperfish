@@ -1,3 +1,2 @@
-export assetsContainer from './Assets/Assets';
-export featuresContainer from './Features/Features';
-export featureContainer from './Feature/Feature';
+export postsContainer from './Posts/Posts';
+export postContainer from './Post/Post';

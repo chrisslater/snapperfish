@@ -1,22 +1,16 @@
 import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import featuresContainer from 'containers/Features/Features';
-import assetsContainer from 'containers/Assets/Assets';
-
-import Features from 'models/Features';
-import Assets from 'models/Assets';
-
+import postsContainer from 'containers/Posts/Posts';
+import Posts from 'models/Posts';
 import {
   Dimensions,
-  FeaturesGrid,
+  PostsGrid,
   Menu,
   Layout,
 } from 'components';
 
-function HomePage(props) {
-  const { features, assets } = props;
-  features.attachAssets(assets);
-
+function BlogPage(props) {
+  const { posts } = props;
   const title = 'Blog';
 
   return (
@@ -25,9 +19,9 @@ function HomePage(props) {
       <Menu title={title} />
       <Layout>
         <Dimensions>
-          <FeaturesGrid
+          <PostsGrid
             urlPrefix={'blog/'}
-            features={features}
+            posts={posts.getItems()}
           />
         </Dimensions>
       </Layout>
@@ -35,10 +29,9 @@ function HomePage(props) {
   );
 }
 
-HomePage.propTypes = {
-  features: PropTypes.instanceOf(Features),
-  assets: PropTypes.instanceOf(Assets),
+BlogPage.propTypes = {
+  posts: PropTypes.instanceOf(Posts),
 };
 
-export default featuresContainer(assetsContainer(HomePage));
+export default postsContainer(BlogPage);
 

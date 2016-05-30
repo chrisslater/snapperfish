@@ -48,7 +48,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
-        "PORT": 3000
+        "PORT": 5000
       }
     },
     "watch-client": {
@@ -56,7 +56,7 @@
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
-        "PORT": 3000
+        "PORT": 5000
       }
     },
     "build": {
@@ -90,8 +90,12 @@
     "clean-webpack-plugin": "^0.1.6",
     "compression": "^1.6.0",
     "concurrently": "^2.0.0",
+    "connect-flash": "^0.1.1",
     "css-loader": "^0.23.1",
+    "esdoc": "^0.4.7",
+    "esdoc-es7-plugin": "0.0.3",
     "express": "^4.13.3",
+    "express-session": "^1.13.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.4.0",
@@ -99,16 +103,23 @@
     "hoist-non-react-statics": "^1.0.5",
     "invariant": "^2.2.0",
     "json-loader": "^0.5.4",
+    "keystone": "^0.3.19",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "markdown": "^0.5.0",
     "material-ui": "^0.15.0-beta.2",
     "moment": "^2.13.0",
+    "mongoose": "^4.4.19",
     "node-sass": "^3.4.2",
     "normalize.css": "^4.1.1",
     "piping": "^0.3.0",
+    "postcss-color-function": "^2.0.1",
     "postcss-custom-properties": "^5.0.1",
+    "postcss-import": "^8.1.2",
     "postcss-loader": "^0.9.1",
+    "postcss-mixins": "^4.0.2",
+    "postcss-nested": "^1.0.0",
+    "postcss-simple-extend": "^1.0.0",
     "pretty-error": "^2.0.0",
     "react": "^15.0.0",
     "react-addons-transition-group": "^15.0.1",
@@ -128,6 +139,7 @@
     "scroll-behavior": "^0.4.0",
     "serialize-javascript": "^1.1.2",
     "serve-favicon": "^2.3.0",
+    "serve-static": "^1.10.2",
     "strip-loader": "^0.1.0",
     "style-loader": "^0.13.0",
     "superagent": "^1.4.0",

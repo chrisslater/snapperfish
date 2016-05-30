@@ -4,43 +4,49 @@ import {
   Footer,
   Hero,
   Button,
-  FeaturesGrid,
+  PostsGrid,
   Menu,
   Image,
   Profile,
   BusinessCard,
   Skills,
-  Feature,
+  Post,
+  Timeline,
+  TimelineSingle,
 } from 'components';
-import AppTheme from './App/App.scss';
-import LayoutTheme from './Layout/Layout.scss';
-import FooterTheme from './Footer/Footer.scss';
-import FeaturesGridTheme from './FeaturesGrid/FeaturesGrid.scss';
-import FeatureTheme from './Feature/Feature.scss';
-import ButtonTheme from './Button/Button.scss';
-import ImageTheme from './Image/Image.scss';
-import HeroTheme from './Hero/Hero.scss';
-import MenuTheme from './Menu/Menu.scss';
-import ProfileTheme from './Profile/Profile.scss';
-import BusinessCardTheme from './BusinessCard/BusinessCard.scss';
-import SkillsTheme from './Skills/Skills.less';
+import AppTheme from './App/App.css';
+import LayoutTheme from './Layout/Layout.css';
+import FooterTheme from './Footer/Footer.css';
+import PostsGridTheme from './PostsGrid/PostsGrid.css';
+import PostTheme from './Post/Post.css';
+import ButtonTheme from './Button/Button.css';
+import ImageTheme from './Image/Image.css';
+import HeroTheme from './Hero/Hero.css';
+import MenuTheme from './Menu/Menu.css';
+import ProfileTheme from './Profile/Profile.css';
+import BusinessCardTheme from './BusinessCard/BusinessCard.css';
+import SkillsTheme from './Skills/Skills.css';
+import TimelineTheme from './Timeline/Timeline.css';
+import TimelineSingleTheme from './TimelineSingle/TimelineSingle.css';
 
-require('./global.scss');
-require('./typography.scss');
+require('./global.css');
 
 const theme = {
   [App.theme]: AppTheme,
   [Layout.theme]: LayoutTheme,
   [Hero.theme]: HeroTheme,
   [Footer.theme]: FooterTheme,
-  [FeaturesGrid.theme]: FeaturesGridTheme,
-  [Feature.theme]: FeatureTheme,
+  [PostsGrid.theme]: PostsGridTheme,
+  [Post.theme]: PostTheme,
   [Button.theme]: ButtonTheme,
   [Image.theme]: ImageTheme,
   [Menu.theme]: MenuTheme,
   [Profile.theme]: ProfileTheme,
   [BusinessCard.theme]: BusinessCardTheme,
   [Skills.theme]: SkillsTheme,
+  [Timeline.theme]: TimelineTheme,
+  [TimelineSingle.theme]: TimelineSingleTheme,
+
 };
 
 export default theme;

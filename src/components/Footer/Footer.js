@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { themeable } from 'rethemeable';
 
+/**
+ * @param {Object} [theme={}] Can pass optional theme overrides
+ */
+@themeable
 class Footer extends Component {
   render() {
     const theme = this.theme;
@@ -12,4 +16,4 @@ class Footer extends Component {
   }
 }
 
-export default themeable(Footer);
+export default Footer;

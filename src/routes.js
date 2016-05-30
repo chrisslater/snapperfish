@@ -7,7 +7,7 @@ import { App } from 'components';
 import {
   HomePage,
   BlogPage,
-  FeaturePage,
+  PostPage,
   StyleGuidePage,
   NotFoundPage,
 } from 'pages';
@@ -21,7 +21,7 @@ export default function () {
       <IndexRoute component={HomePage} />
       <Route path="styleguide" component={StyleGuidePage} />
       <Route path="blog" component={BlogPage} />
-      <Route path="blog/:slug" component={FeaturePage} />
+      <Route path="blog/:slug" component={PostPage} />
       <Route path="*" component={NotFoundPage} status={404} />
     </Route>
   );

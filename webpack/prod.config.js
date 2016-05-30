@@ -9,6 +9,8 @@ var strip = require('strip-loader');
 
 var autoprefixer = require('autoprefixer');
 var customProperties = require('postcss-custom-properties');
+var simpleExtend = require('postcss-simple-extend');
+var atImport = require("postcss-import");
 
 var projectRootPath = path.resolve(__dirname, '../');
 var assetsPath = path.resolve(projectRootPath, './static/dist');
@@ -36,6 +38,7 @@ module.exports = {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel']},
       { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.css$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]_[local]__[hash:base64:5]!postcss?browsers=last 2 version' },
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!postcss?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!postcss?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
@@ -47,15 +50,16 @@ module.exports = {
     ]
   },
   postcss: [
+    atImport(),
     autoprefixer({ browsers: ['last 2 versions'] }),
-    customProperties({ variables: require('../src/theme/variables.js') })
+    customProperties({ variables: require('../src/theme/variables.js') }),
+    require('postcss-color-function'),
+    require('postcss-mixins'),
+    require('postcss-nested'),
+    simpleExtend(),
   ],
   progress: true,
   resolve: {
-    alias: {
-      conf: path.resolve(__dirname, 'conf', 'development' + '.js')
-    },
-
     modulesDirectories: [
       'src',
       'node_modules'

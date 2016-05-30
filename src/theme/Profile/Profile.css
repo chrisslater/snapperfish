@@ -1,0 +1,18 @@
+@import '../typography';
+
+.self {
+  position: relative;
+  margin-top: -150px;
+}
+
+.bigbox {}
+
+.welcome {
+  @extend mui-title;
+  font-weight: 100;
+}
+
+.sectionHeadline {
+  @extend mui-display;
+  text-align: center;
+}
