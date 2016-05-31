@@ -7,7 +7,6 @@ import classNames from 'classnames';
 class Timeline extends Component {
   static propTypes = {
     containerWidth: PropTypes.number,
-    timeline: PropTypes.array.isRequired,
   };
 
   /**
@@ -17,20 +16,21 @@ class Timeline extends Component {
    */
   render() {
     const {
-      timeline,
+      children,
       containerWidth,
+      className,
     } = this.props;
     const theme = this.theme;
-    let childrenWithProps = timeline;
+    let childrenWithProps = children;
     const classes = [theme.self];
 
-    if (containerWidth > 680) {
+    if (className === 'large') {
       /*
        * @TODO figure out why I can't just do this with children
        * It has something to do with the Dimensions wrapper
        */
       childrenWithProps = React.Children.map(
-        timeline,
+        children,
         (child, i) => React.cloneElement(child, {
           direction: (i % 2) ? 'left' : 'right',
         })

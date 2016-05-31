@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { themeable } from 'rethemeable';
+import ElementQuery from 'react-element-query'
 
 import {
   Layout,
@@ -35,10 +36,11 @@ const skills = [{
 class Profile extends Component {
   render() {
     const theme = this.theme;
+
     return (
       <div className={theme.self}>
         <Layout>
-          <Dimensions>
+          <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
             <BusinessCard
               name={'Chris Slater'}
               position={'Developer and startup entrepreneur'}
@@ -50,7 +52,7 @@ class Profile extends Component {
               twitterUrl={'https://twitter.com/ChrisOnTheSide'}
               linkedinUrl={'https://www.linkedin.com/in/crslater'}
             />
-          </Dimensions>
+          </ElementQuery>
         </Layout>
         <Layout isCentered>
           <h2 className={theme.sectionHeadline}>About me</h2>
@@ -69,6 +71,7 @@ class Profile extends Component {
             >
               Download CV
             </Button>
+
             <Button
               href="https://snapperfish.typeform.com/to/V0S5BV"
               target="_blank"
@@ -79,79 +82,77 @@ class Profile extends Component {
         </Layout>
         <Layout>
           <h2 className={theme.sectionHeadline}>Professional Skills</h2>
-          <Dimensions>
+          <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
             <Skills skills={skills} />
-          </Dimensions>
+          </ElementQuery>
         </Layout>
 
         <Layout>
           <h2 className={theme.sectionHeadline}>Work Experience</h2>
-          <Dimensions>
-            <Timeline
-              timeline={[
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-                <TimelineSingle
-                  fromDate="2015-05-20T23:00:00.000Z"
-                  toDate="2016-07-20T23:00:00.000Z"
-                  title="Pineapple"
-                  strapline="Web Developer"
-                  body={
-                    `programming languages including JavaScript, PHP, and C.
-                    Stng background in project management and customer relations`
-                  }
-                />,
-              ]}
-            />
-          </Dimensions>
+          <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
+            <Timeline>
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+              <TimelineSingle
+                fromDate="2015-05-20T23:00:00.000Z"
+                toDate="2016-07-20T23:00:00.000Z"
+                title="Pineapple"
+                strapline="Web Developer"
+                body={
+                  `programming languages including JavaScript, PHP, and C.
+                  Stng background in project management and customer relations`
+                }
+              />
+            </Timeline>
+          </ElementQuery>
         </Layout>
       </div>
     );

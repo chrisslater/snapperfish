@@ -10,7 +10,7 @@ import {
 @themeable
 class BusinessCard extends Component {
   static propTypes = {
-    containerWidth: PropTypes.number.isRequired,
+    containerWidth: PropTypes.number,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -21,6 +21,10 @@ class BusinessCard extends Component {
     twitterUrl: PropTypes.string,
     linkedinUrl: PropTypes.string,
   };
+
+  static defaultProps = {
+    containerWidth: 0,
+  }
 
   render() {
     const theme = this.theme;
@@ -35,10 +39,11 @@ class BusinessCard extends Component {
       githubUrl,
       twitterUrl,
       linkedinUrl,
+      className,
     } = this.props;
     let divide = false;
 
-    if (containerWidth > 684) {
+    if (className === 'large') {
       divide = true;
     }
 

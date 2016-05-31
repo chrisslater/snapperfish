@@ -4,6 +4,7 @@ import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress';
+import dimensions from 'react-dimensions';
 
 const levels = [
   {
@@ -43,7 +44,10 @@ function getLevelValue(level: number): string {
 class Skills extends Component {
   static propTypes = {
     skills: PropTypes.array.isRequired,
-    containerWidth: PropTypes.number.isRequired,
+    containerWidth: PropTypes.number,
+  };
+  static defaultProps = {
+    containerWidth: 0,
   };
   theme: Object;
 
@@ -87,12 +91,14 @@ class Skills extends Component {
       skills,
       containerWidth,
     } = this.props;
+
+
     let skillsMarkup = null;
 
     if (Array.isArray(skills) && skills.length > 0) {
       let columns = 1;
 
-      if (containerWidth > 499) {
+      if (this.props.className === 'large') {
         columns = 2;
       }
 
@@ -113,4 +119,5 @@ class Skills extends Component {
   }
 }
 
+export const _Skills = Skills;
 export default Skills;

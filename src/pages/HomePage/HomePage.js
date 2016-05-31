@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import {
   Hero,
@@ -6,18 +6,21 @@ import {
   Profile,
   // Layout,
 } from 'components';
+import { asyncConnect } from 'redux-connect';
 // import config from '../../config';
 // <Menu depth={0} isFixed />
 
-function HomePage() {
-  return (
-    <div>
-      <Helmet title="Home" />
-      <Hero />
-      <Profile />
-    </div>
-  );
+class HomePage extends Component {
+  render() {
+    return (
+      <div>
+        <Helmet title="Home" />
+        <Hero />
+        <Profile />
+      </div>
+    );
+  }
 }
 
-export default HomePage;
+export default asyncConnect([])(HomePage);
 

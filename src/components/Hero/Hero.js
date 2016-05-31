@@ -12,9 +12,6 @@ class Hero extends Component {
     return (
       <div
         className={theme.self}
-        style={{
-          backgroundImage: 'url(/files/profile-background-star-wars.jpg)',
-        }}
       >
         {this.props.children}
       </div>

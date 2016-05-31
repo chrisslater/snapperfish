@@ -13,7 +13,8 @@ import PrettyError from 'pretty-error';
 
 import { match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
+// import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
@@ -101,7 +102,6 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
         );
 
         global.navigator = { userAgent: req.headers['user-agent'] };
-        // global.navigator = { userAgent: 'all' };
 
         const markup = (
           `<!DOCTYPE html>

@@ -3,6 +3,7 @@
   margin-bottom: var(--padding);
   padding: 230px calc(var(--padding)*2);
   background-color: var(--primary1Color);
+  background-image: url('/files/profile-background-star-wars.jpg');
   color: white;
 
   background-size: cover;

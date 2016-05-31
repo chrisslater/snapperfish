@@ -6,7 +6,7 @@ export default class Button extends Component {
   static propTypes={
     href: PropTypes.string,
     target: PropTypes.string,
-    children: PropTypes.object.isRequired,
+    children: PropTypes.string.isRequired,
   };
 
   render() {

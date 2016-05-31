@@ -13,6 +13,8 @@ import { Footer } from 'components';
  */
 injectTapEventPlugin();
 
+
+
 class App extends Component {
   render() {
     const theme = this.theme;

@@ -9,12 +9,14 @@ import {
   Image,
   Profile,
   BusinessCard,
-  Skills,
+  //Skills,
   Post,
   Timeline,
   TimelineSingle,
 } from 'components';
-import AppTheme from './App/App.css';
+import { _Skills as Skills } from 'components/Skills/Skills';
+
+import AppTheme from './App/App.less';
 import LayoutTheme from './Layout/Layout.css';
 import FooterTheme from './Footer/Footer.css';
 import PostsGridTheme from './PostsGrid/PostsGrid.css';
