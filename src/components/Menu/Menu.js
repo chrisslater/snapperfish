@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
 import config from '../../config';
 import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
@@ -11,6 +10,7 @@ import themeInjector from 'containers/themeInjector';
 @themeInjector
 class Menu extends Component {
   static propTypes = {
+    theme: PropTypes.object.isRequired,
     title: PropTypes.string,
     depth: PropTypes.number,
     isFixed: PropTypes.bool,

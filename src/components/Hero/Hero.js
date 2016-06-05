@@ -1,23 +1,24 @@
-import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
+import React, { PropTypes } from 'react';
 import themeInjector from 'containers/themeInjector';
 
-@themeInjector
-class Hero extends Component {
-  static propTypes = {
-    children: PropTypes.array,
-  };
+function Hero(props) {
+  const {
+    theme,
+    children,
+  } = props;
 
-  render() {
-    const theme = this.props.theme;
-    return (
-      <div
-        className={theme.self}
-      >
-        {this.props.children}
-      </div>
-    );
-  }
+  return (
+    <div
+      className={theme.self}
+    >
+      {children}
+    </div>
+  );
 }
 
-export default Hero;
+Hero.propTypes = {
+  theme: PropTypes.object.isRequired,
+  children: PropTypes.array,
+};
+
+export default themeInjector(Hero);

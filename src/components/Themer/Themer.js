@@ -14,8 +14,13 @@ class Themer extends Component {
   }
 }
 
+Themer.propTypes = {
+  scalesTheme: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 Themer.childContextTypes = {
-  scalesTheme: PropTypes.object
+  scalesTheme: PropTypes.object,
 };
 
 export default Themer;

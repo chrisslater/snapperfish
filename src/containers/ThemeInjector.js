@@ -20,7 +20,7 @@ function themeInjectorDecorator(ChildComponent) {
   };
 
   ThemeInjector.contextTypes = {
-    scalesTheme: PropTypes.object
+    scalesTheme: PropTypes.object,
   };
 
   return ThemeInjector;

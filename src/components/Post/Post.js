@@ -1,6 +1,5 @@
-/* @flow */
+// @flow
 import React, { Component, PropTypes } from 'react';
-import { themeable } from 'rethemeable';
 import { Image } from 'components';
 import moment from 'moment';
 import themeInjector from 'containers/themeInjector';
@@ -11,6 +10,7 @@ import themeInjector from 'containers/themeInjector';
 @themeInjector
 class Post extends Component {
   static propTypes = {
+    theme: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
     publishedDate: PropTypes.string.isRequired,
     image: React.PropTypes.shape({

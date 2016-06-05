@@ -1,4 +1,4 @@
-import App from './App/App.scss';
+import ContentWrapper from './ContentWrapper/ContentWrapper.scss';
 import Layout from './Layout/Layout.scss';
 import Footer from './Footer/Footer.scss';
 import PostsGrid from './PostsGrid/PostsGrid.scss';
@@ -16,7 +16,7 @@ import TimelineSingle from './TimelineSingle/TimelineSingle.scss';
 require('./global.scss');
 
 const theme = {
-  App,
+  ContentWrapper,
   Layout,
   Hero,
   Footer,

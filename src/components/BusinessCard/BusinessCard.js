@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
@@ -11,7 +10,8 @@ import {
 @themeInjector
 class BusinessCard extends Component {
   static propTypes = {
-    containerWidth: PropTypes.number,
+    className: PropTypes.string,
+    theme: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -30,7 +30,6 @@ class BusinessCard extends Component {
   render() {
     const {
       theme,
-      containerWidth,
       name,
       position,
       email,

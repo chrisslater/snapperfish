@@ -1,50 +1,47 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import themeInjector from 'containers/themeInjector';
 
 /**
  * Image
+ *
+ * @param {Object} props
+ * @param {!string} props.src
+ * @param {string} props.alt
+ * @param {string} props.title
+ * @param {number} props.width
+ * @param {number} props.height
+ * @returns {Element}
  */
-@themeInjector
-class Image extends Component {
-  static propTypes = {
-    src: PropTypes.string,
-    alt: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
-    title: PropTypes.string,
-  };
+function Image(props) {
+  const {
+    theme,
+    src,
+    alt,
+  } = props; // @TODO Linter complains if it cant see this explicitly
 
-  static defaultProps = {
-    alt: '',
-  };
-
-  /**
-   * @param {Object} props
-   * @param {!string} props.src
-   * @param {string} props.alt
-   * @param {string} props.title
-   * @param {number} props.width
-   * @param {number} props.height
-   * @returns {Element}
-   */
-  render() {
-    const {
-      theme,
-      src,
-      alt,
-    } = this.props; // @TODO Linter complains if it cant see this explicitly
-
-    if (typeof src !== 'string') {
-      return null;
-    }
-
-    const props = Object.assign({}, this.props);
-    delete props.src;
-    delete props.alt;
-    return (
-      <img className={theme.self} src={src} alt={alt} { ...props } />
-    );
+  if (typeof src !== 'string') {
+    return null;
   }
+
+  const newProps = Object.assign({}, props);
+  delete newProps.src;
+  delete newProps.alt;
+  return (
+    <img className={theme.self} src={src} alt={alt} { ...newProps } />
+  );
 }
 
-export default Image;
+Image.propTypes = {
+  theme: PropTypes.object.isRequired,
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  title: PropTypes.string,
+};
+
+Image.defaultProps = {
+  alt: '',
+};
+
+export default themeInjector(Image);

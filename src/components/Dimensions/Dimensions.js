@@ -1,29 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { default as dimensions } from 'react-dimensions';
 
-class Dimensions extends Component {
-  render () {
-    const {
-      children,
-      containerWidth,
-      containerHeight,
-    } = this.props;
-    const childrenWithProps = React.Children.map(
-      children,
-      (child, index) => {
-        React.cloneElement(child, {
-          key: index,
-          containerWidth,
-          containerHeight,
-        })
-      }
-    );
+function Dimensions(props) {
+  const {
+    children,
+    containerWidth,
+    containerHeight,
+  } = props;
+  const childrenWithProps = React.Children.map(
+    children,
+    (child, index) => {
+      React.cloneElement(child, {
+        key: index,
+        containerWidth,
+        containerHeight,
+      });
+    }
+  );
 
-    return <div>{childrenWithProps}</div>;
-  }
+  return <div>{childrenWithProps}</div>;
 }
 
 Dimensions.propTypes = {
+  containerWidth: PropTypes.number,
+  containerHeight: PropTypes.number.isRequired,
   children: PropTypes.object,
 };
 

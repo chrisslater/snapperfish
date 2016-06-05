@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-
 import { GridList, GridTile } from 'material-ui/GridList';
 import Post from 'models/Post';
 import themeInjector from 'containers/themeInjector';
@@ -13,6 +12,7 @@ class PostsGrid extends Component {
   };
 
   static propTypes = {
+    theme: PropTypes.object.isRequired,
     urlPrefix: PropTypes.string,
     posts: PropTypes.arrayOf(Post),
     containerWidth: PropTypes.number,
