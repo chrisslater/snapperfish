@@ -11,24 +11,47 @@ import {
   TimelineSingle,
 } from 'components';
 
+const experience = [{
+  fromDate: '2015-06-20T23:00:00.000Z',
+  toDate: '2016-06-30T23:00:00.000Z',
+  title: 'Amido Ltd',
+  strapline: 'React and Javascript Developer',
+  body:
+    `
+    Built Javascript Single Page Applications and
+    Games using ReactJS, Redux, Flux and NodeJS.
+    `,
+}, {
+  fromDate: '2013-11-01T23:00:00.000Z',
+  toDate: '2015-06-29T23:00:00.000Z',
+  title: 'Rated People Ltd',
+  strapline: 'Senior Web Developer',
+  body:
+    `
+    Built a BackboneJS SPA for logged-in tradesmen.
+    It communicated to the databases through a Symfony API.
+    This was all hosted on AWS using Docker containers.
+    `,
+}];
+
 const skills = [{
   name: 'React',
   level: 0.9,
 }, {
   name: 'Node',
-  level: 0.8,
+  level: 0.9,
 }, {
   name: 'Backbone',
-  level: 0.75,
+  level: 0.8,
 }, {
   name: 'Symfony',
-  level: 0.6,
+  level: 0.7,
 }, {
   name: 'Drupal',
-  level: 0.5,
+  level: 0.6,
 }, {
   name: 'Unity',
-  level: 0.3,
+  level: 0.4,
 }];
 
 function Profile(props) {
@@ -59,10 +82,10 @@ function Profile(props) {
       <Layout isCentered>
         <h2 className={theme.sectionHeadline}>About me</h2>
         <p className={theme.welcome}>
-          Hello! I’m Chris Slater. Senior Web Developer specializing in front end development.
+          Hello! I’m Chris. A Senior Web Developer specializing in front end development.
           Experienced with all stages of the development cycle for dynamic web projects.
-          Well-versed in numerous programming languages including JavaScript, PHP, and C.
-          Stng background in project management and customer relations.
+          I am well-versed in a number of programming languages
+          but have a significant love for JavaScript!
         </p>
       </Layout>
       <Layout isCentered>
@@ -93,66 +116,7 @@ function Profile(props) {
         <h2 className={theme.sectionHeadline}>Work Experience</h2>
         <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
           <Timeline>
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
-            <TimelineSingle
-              fromDate="2015-05-20T23:00:00.000Z"
-              toDate="2016-07-20T23:00:00.000Z"
-              title="Pineapple"
-              strapline="Web Developer"
-              body={
-                `programming languages including JavaScript, PHP, and C.
-                Stng background in project management and customer relations`
-              }
-            />
+            {experience.map((job) => <TimelineSingle {...job} />)}
           </Timeline>
         </ElementQuery>
       </Layout>

@@ -11,7 +11,7 @@ function themeInjectorDecorator(ChildComponent) {
       const { scalesTheme } = this.context;
       let themeFromContext = {};
 
-      if (scalesTheme && scalesTheme[compTheme] !== undefined) {
+      if (scalesTheme && scalesTheme[compName] !== undefined) {
         themeFromContext = scalesTheme[compName];
       }
 
