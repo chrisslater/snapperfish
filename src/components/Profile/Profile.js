@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { themeable } from 'rethemeable';
-import ElementQuery from 'react-element-query'
+import ElementQuery from 'react-element-query';
+import themeInjector from 'containers/themeInjector';
 
 import {
   Layout,
@@ -32,15 +33,19 @@ const skills = [{
   level: 0.3,
 }];
 
-@themeable
+@themeInjector
 class Profile extends Component {
   render() {
-    const theme = this.theme;
+    const theme = this.props.theme;
 
     return (
       <div className={theme.self}>
         <Layout>
-          <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
+          <ElementQuery sizes={[
+              { name: 'small', width: 1 },
+              { name: 'large', width: 700 },
+            ]}
+          >
             <BusinessCard
               name={'Chris Slater'}
               position={'Developer and startup entrepreneur'}

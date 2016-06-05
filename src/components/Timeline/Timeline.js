@@ -2,8 +2,9 @@
 import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
 import classNames from 'classnames';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
+@themeInjector
 class Timeline extends Component {
   static propTypes = {
     containerWidth: PropTypes.number,
@@ -16,11 +17,11 @@ class Timeline extends Component {
    */
   render() {
     const {
+      theme,
       children,
       containerWidth,
       className,
     } = this.props;
-    const theme = this.theme;
     let childrenWithProps = children;
     const classes = [theme.self];
 

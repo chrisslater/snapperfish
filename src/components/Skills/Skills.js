@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress';
 import dimensions from 'react-dimensions';
+import themeInjector from 'containers/themeInjector';
 
 const levels = [
   {
@@ -40,7 +41,7 @@ function getLevelValue(level: number): string {
   return value;
 }
 
-@themeable
+@themeInjector
 class Skills extends Component {
   static propTypes = {
     skills: PropTypes.array.isRequired,
@@ -49,7 +50,6 @@ class Skills extends Component {
   static defaultProps = {
     containerWidth: 0,
   };
-  theme: Object;
 
 
   /**
@@ -86,12 +86,10 @@ class Skills extends Component {
    * @returns {Element}
    */
   render() {
-    const theme = this.theme;
     const {
+      theme,
       skills,
-      containerWidth,
     } = this.props;
-
 
     let skillsMarkup = null;
 

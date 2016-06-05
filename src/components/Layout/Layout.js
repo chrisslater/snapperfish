@@ -1,8 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import { themeable } from 'rethemeable';
 import classNames from 'classnames';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
+@themeInjector
 class Layout extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([
@@ -15,8 +16,8 @@ class Layout extends Component {
   };
 
   render() {
-    const theme = this.theme;
     const {
+      theme,
       children,
       isCentered,
       isExtended,

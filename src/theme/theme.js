@@ -1,54 +1,36 @@
-import {
-  App,
-  Layout,
-  Footer,
-  Hero,
-  Button,
-  PostsGrid,
-  Menu,
-  Image,
-  Profile,
-  BusinessCard,
-  //Skills,
-  Post,
-  Timeline,
-  TimelineSingle,
-} from 'components';
-import { _Skills as Skills } from 'components/Skills/Skills';
+import App from './App/App.scss';
+import Layout from './Layout/Layout.scss';
+import Footer from './Footer/Footer.scss';
+import PostsGrid from './PostsGrid/PostsGrid.scss';
+import Post from './Post/Post.scss';
+import Button from './Button/Button.scss';
+import Image from './Image/Image.scss';
+import Hero from './Hero/Hero.scss';
+import Menu from './Menu/Menu.scss';
+import Profile from './Profile/Profile.scss';
+import BusinessCard from './BusinessCard/BusinessCard.scss';
+import Skills from './Skills/Skills.scss';
+import Timeline from './Timeline/Timeline.scss';
+import TimelineSingle from './TimelineSingle/TimelineSingle.scss';
 
-import AppTheme from './App/App.less';
-import LayoutTheme from './Layout/Layout.css';
-import FooterTheme from './Footer/Footer.css';
-import PostsGridTheme from './PostsGrid/PostsGrid.css';
-import PostTheme from './Post/Post.css';
-import ButtonTheme from './Button/Button.css';
-import ImageTheme from './Image/Image.css';
-import HeroTheme from './Hero/Hero.css';
-import MenuTheme from './Menu/Menu.css';
-import ProfileTheme from './Profile/Profile.css';
-import BusinessCardTheme from './BusinessCard/BusinessCard.css';
-import SkillsTheme from './Skills/Skills.css';
-import TimelineTheme from './Timeline/Timeline.css';
-import TimelineSingleTheme from './TimelineSingle/TimelineSingle.css';
-
-require('./global.css');
+require('./global.scss');
 
 const theme = {
-  [App.theme]: AppTheme,
-  [Layout.theme]: LayoutTheme,
-  [Hero.theme]: HeroTheme,
-  [Footer.theme]: FooterTheme,
-  [PostsGrid.theme]: PostsGridTheme,
-  [Post.theme]: PostTheme,
-  [Button.theme]: ButtonTheme,
-  [Image.theme]: ImageTheme,
-  [Menu.theme]: MenuTheme,
-  [Profile.theme]: ProfileTheme,
-  [BusinessCard.theme]: BusinessCardTheme,
-  [Skills.theme]: SkillsTheme,
-  [Timeline.theme]: TimelineTheme,
-  [TimelineSingle.theme]: TimelineSingleTheme,
-
+  App,
+  Layout,
+  Hero,
+  Footer,
+  PostsGrid,
+  Post,
+  Button,
+  Image,
+  Menu,
+  Profile,
+  BusinessCard,
+  Skills,
+  Timeline,
+  TimelineSingle,
 };
 
 export default theme;
+

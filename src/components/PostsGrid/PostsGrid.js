@@ -3,8 +3,9 @@ import { Link } from 'react-router';
 
 import { GridList, GridTile } from 'material-ui/GridList';
 import Post from 'models/Post';
-import { themeable } from 'rethemeable';
+import themeInjector from 'containers/themeInjector';
 
+@themeInjector
 class PostsGrid extends Component {
   static defaultProps = {
     urlPrefix: '',
@@ -53,8 +54,8 @@ class PostsGrid extends Component {
       urlPrefix,
       posts,
       containerWidth,
+      theme,
     } = this.props;
-    const theme = this.theme;
 
     let colWidth = 1;
 
@@ -74,4 +75,4 @@ class PostsGrid extends Component {
   }
 }
 
-export default themeable(PostsGrid);
+export default PostsGrid;

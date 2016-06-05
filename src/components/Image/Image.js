@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { themeable } from 'rethemeable';
+import themeInjector from 'containers/themeInjector';
 
 /**
  * Image
  */
-@themeable
+@themeInjector
 class Image extends Component {
   static propTypes = {
     src: PropTypes.string,
@@ -28,8 +28,8 @@ class Image extends Component {
    * @returns {Element}
    */
   render() {
-    const theme = this.theme;
     const {
+      theme,
       src,
       alt,
     } = this.props; // @TODO Linter complains if it cant see this explicitly

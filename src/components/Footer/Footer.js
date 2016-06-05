@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { themeable } from 'rethemeable';
+import themeInjector from 'containers/themeInjector';
 
 /**
  * @param {Object} [theme={}] Can pass optional theme overrides
  */
-@themeable
+@themeInjector
 class Footer extends Component {
   render() {
-    const theme = this.theme;
+    const theme = this.props.theme;
     return (
       <footer className={theme.self}>
         <p className={theme.copyright}>© 2016 Snapper.fish</p>

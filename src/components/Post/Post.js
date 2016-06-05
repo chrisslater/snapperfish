@@ -3,11 +3,12 @@ import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
 import { Image } from 'components';
 import moment from 'moment';
+import themeInjector from 'containers/themeInjector';
 
 /**
  * Post Component
  */
-@themeable
+@themeInjector
 class Post extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -55,8 +56,8 @@ class Post extends Component {
    * @returns {Element}
    */
   render() {
-    const theme = this.theme;
     const {
+      theme,
       title,
       image,
       body,

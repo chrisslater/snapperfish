@@ -7,17 +7,17 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import NestedStatus from 'react-nested-status';
 import { Footer } from 'components';
+import themeInjector from 'containers/themeInjector';
 
 /* @TODO Needed for onTouchTap, remove when forfilled
  * http://stackoverflow.com/a/34015469/988941
  */
 injectTapEventPlugin();
 
-
-
+//@themeInjector
 class App extends Component {
   render() {
-    const theme = this.theme;
+    const theme = this.props.theme || {};
     return (
       <NestedStatus code={200}>
         <MuiThemeProvider muiTheme={muiTheme}>
@@ -41,4 +41,4 @@ App.contextTypes = {
   store: PropTypes.object.isRequired,
 };
 
-export default themeable(App);
+export default App;

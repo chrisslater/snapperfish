@@ -23,7 +23,6 @@ function Html(props) {
   const { assets, component, store } = props;
   const content = component ? ReactDOM.renderToString(component) : '';
   const head = Helmet.rewind();
-  console.log(assets);
 
   return (
     <html lang="en-us">

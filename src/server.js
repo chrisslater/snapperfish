@@ -19,6 +19,9 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import NestedStatus from 'react-nested-status';
+
+import { Themer } from 'components';
+import theme from 'theme/theme';
 // import env from './env';
 
 const pretty = new PrettyError();
@@ -97,7 +100,9 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
       loadOnServer({ ...renderProps, store, helpers: { client } }).then(() => {
         const component = (
           <Provider store={store} key="provider">
-            <ReduxAsyncConnect { ...renderProps } />
+            <Themer scalesTheme={theme}>
+              <ReduxAsyncConnect { ...renderProps } />
+            </Themer>
           </Provider>
         );
 

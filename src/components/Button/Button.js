@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { themeable } from 'rethemeable';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
+@themeInjector
 export default class Button extends Component {
   static propTypes={
     href: PropTypes.string,
@@ -10,8 +11,8 @@ export default class Button extends Component {
   };
 
   render() {
-    const theme = this.theme;
     const {
+      theme,
       href,
       target,
     } = this.props;

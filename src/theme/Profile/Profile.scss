@@ -8,11 +8,11 @@
 .bigbox {}
 
 .welcome {
-  @extend mui-title;
+  @extend %mui-title;
   font-weight: 100;
 }
 
 .sectionHeadline {
-  @extend mui-display;
+  @extend %mui-display;
   text-align: center;
 }

@@ -3,11 +3,12 @@ import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
+import themeInjector from 'containers/themeInjector';
 import {
   Image,
 } from 'components';
 
-@themeable
+@themeInjector
 class BusinessCard extends Component {
   static propTypes = {
     containerWidth: PropTypes.number,
@@ -27,8 +28,8 @@ class BusinessCard extends Component {
   }
 
   render() {
-    const theme = this.theme;
     const {
+      theme,
       containerWidth,
       name,
       position,
@@ -41,15 +42,15 @@ class BusinessCard extends Component {
       linkedinUrl,
       className,
     } = this.props;
-    let divide = false;
+    let isSmall = false;
 
-    if (className === 'large') {
-      divide = true;
+    if (className === 'small') {
+      isSmall = true;
     }
 
     const mainClasses = classNames({
       [theme.main]: true,
-      [theme.mainDivide]: divide,
+      [theme.mainIsSmall]: isSmall,
     });
 
     return (

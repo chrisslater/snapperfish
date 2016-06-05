@@ -4,8 +4,9 @@ import { themeable } from 'rethemeable';
 import moment from 'moment';
 import Paper from 'material-ui/Paper';
 import classNames from 'classnames';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
+@themeInjector
 class TimelineSingle extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -33,8 +34,8 @@ class TimelineSingle extends Component {
       toDate,
       body,
       direction,
+      theme,
     } = this.props;
-    const theme = this.theme;
     let toDateMarkup = 'present';
     let bodyMarkup;
     let arrowMarkup;
