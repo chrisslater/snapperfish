@@ -3,6 +3,7 @@
 .*node_modules/config-chain.*
 .*node_modules/npmconf.*
 .*node_modules/@jedwatson.*
+.*node_modules/systemjs-builder/.*
 
 [include]
 ./src/
@@ -13,6 +14,9 @@
 [options]
 esproposal.decorators=ignore
 esproposal.class_static_fields=enable
+
+module.name_mapper='^containers\/\(.*\)$' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^containers$' -> '<PROJECT_ROOT>/src/containers'
 
 module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
 module.name_mapper='^components$' -> '<PROJECT_ROOT>/src/components'

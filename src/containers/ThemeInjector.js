@@ -8,10 +8,16 @@ function themeInjectorDecorator(ChildComponent) {
 
     render() {
       const compName = ChildComponent.prototype.constructor.name;
-      const scalesTheme = this.context.scalesTheme[compName] || {};
-      const styles = Object.assign({}, scalesTheme, this.props.theme);
+      const { scalesTheme } = this.context;
+      let themeFromContext = {};
+
+      if (scalesTheme && scalesTheme[compTheme] !== undefined) {
+        themeFromContext = scalesTheme[compName];
+      }
+
+      const styles = Object.assign({}, themeFromContext, this.props.theme);
       const props = Object.assign({}, this.props, { theme: styles });
-      return (<ChildComponent theme={styles} {...props} />);
+      return (<ChildComponent {...props} />);
     }
   }
 

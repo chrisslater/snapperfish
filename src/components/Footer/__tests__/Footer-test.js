@@ -10,12 +10,13 @@ describe('Component', function () {
       it('should render copyright', function () {
         const mock = {
           theme: {
+            self: 'self',
             copyright: 'copyright'
           }
         };
-        const component = shallowWithContext(<Footer {...mock} />);
+        const component = mountWithContext(<Footer {...mock} />);
         const copyright = component.find('.copyright');
-        expect(copyright.node.props.children).to.equal('© 2016 Snapper.fish');
+        expect(copyright.node.innerText).to.equal('© 2016 Snapper.fish');
       });
     });
   });
