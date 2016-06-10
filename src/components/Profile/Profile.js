@@ -11,6 +11,18 @@ import {
   TimelineSingle,
 } from 'components';
 
+const contactInfo = {
+  name: 'Chris Slater',
+  position: 'Developer and startup entrepreneur',
+  email: 'hello@snapper.fish',
+  address: 'Snapper Fish Ltd, <br>Office 7, <br>35-37 Ludgate Hill, <br>London <br>EC4M 7JN',
+  phone: '+44 78663 34466',
+  available: 'July 2016',
+  githubUrl:' https://github.com/chrisslater',
+  twitterUrl: 'https://twitter.com/ChrisOnTheSide',
+  linkedinUrl: 'https://www.linkedin.com/in/crslater',
+};
+
 const experience = [{
   fromDate: '2015-06-20T23:00:00.000Z',
   toDate: '2016-06-30T23:00:00.000Z',
@@ -31,6 +43,32 @@ const experience = [{
     Built a BackboneJS SPA for logged-in tradesmen.
     It communicated to the databases through a Symfony API.
     This was all hosted on AWS using Docker containers.
+    `,
+}, {
+  fromDate: '2011-08-01T23:00:00.000Z',
+  toDate: '2013-06-28T23:00:00.000Z',
+  title: 'IPC Media Ltd',
+  strapline: 'Digital Developer',
+  body:
+    `
+      Brought in for my Drupal experience,
+      I mostly actually worked with Symfony.
+      This was no bad thing!
+      As I grew more confident, I began to experiment with
+      Javascript libraries and Object Orientated CSS.
+    `,
+}, {
+  fromDate: '2011-08-01T23:00:00.000Z',
+  toDate: '2013-06-28T23:00:00.000Z',
+  title: 'Moore Wilson Ltd',
+  strapline: 'Drupal Developer',
+  body:
+    `
+      Brought in for my Drupal experience,
+      I mostly actually worked with Symfony.
+      This was no bad thing!
+      As I grew more confident, I began to experiment with
+      Javascript libraries and Object Orientated CSS.
     `,
 }];
 
@@ -66,17 +104,7 @@ function Profile(props) {
             { name: 'large', width: 700 },
           ]}
         >
-          <BusinessCard
-            name={'Chris Slater'}
-            position={'Developer and startup entrepreneur'}
-            email={'contact@snapper.fish'}
-            address={'Example Address, London, EG16 3RZ'}
-            phone={'+44 78663 34466'}
-            available={'July 2016'}
-            githubUrl={'https://github.com/chrisslater'}
-            twitterUrl={'https://twitter.com/ChrisOnTheSide'}
-            linkedinUrl={'https://www.linkedin.com/in/crslater'}
-          />
+          <BusinessCard {...contactInfo}/>
         </ElementQuery>
       </Layout>
       <Layout isCentered>

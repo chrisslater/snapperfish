@@ -8,7 +8,7 @@ function Footer(props) {
   const theme = props.theme;
   return (
     <footer className={theme.self}>
-      <p className={theme.copyright}>© 2016 Snapper.fish</p>
+      <p className={theme.copyright}>© 2016, Snapper Fish Ltd</p>
     </footer>
   );
 }

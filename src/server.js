@@ -35,10 +35,11 @@ app.all('/api/*', (req, res, next) => {
 
 const _keystone = require('../keystone');
 const keystone = _keystone(app);
+const maxAge = 31557600000;
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
-app.use(Express.static(path.join(__dirname, '..', 'static')));
+app.use(Express.static(path.join(__dirname, '..', 'static'), { maxAge }));
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {
@@ -58,6 +59,8 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
+  } else {
+    if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', 'public, max-age=' + (maxAge/1000));
   }
 
   function formatUrl(fpath) {

@@ -16,7 +16,7 @@ describe('Component', function () {
         };
         const component = mountWithContext(<Footer {...mock} />);
         const copyright = component.find('.copyright');
-        expect(copyright.node.innerText).to.equal('© 2016 Snapper.fish');
+        expect(copyright.node.innerText).to.equal('© 2016, Snapper Fish Ltd');
       });
     });
   });
