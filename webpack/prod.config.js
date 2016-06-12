@@ -20,7 +20,7 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
 module.exports = {
-  // devtool: 'source-map',
+  devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
     'main': [
@@ -95,13 +95,13 @@ module.exports = {
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
 
     // optimizations
-    //new webpack.optimize.DedupePlugin(),
-    //new webpack.optimize.OccurenceOrderPlugin(),
-    //new webpack.optimize.UglifyJsPlugin({
-    //  compress: {
-    //    warnings: false
-    //  }
-    //}),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+     compress: {
+       warnings: false
+     }
+    }),
 
     webpackIsomorphicToolsPlugin
   ]
