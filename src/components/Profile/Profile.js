@@ -18,7 +18,11 @@ const contactInfo = {
   address: 'Snapper Fish Ltd, <br>Office 7, <br>35-37 Ludgate Hill, <br>London <br>EC4M 7JN',
   phone: '+44 78663 34466',
   available: 'July 2016',
-  githubUrl:' https://github.com/chrisslater',
+  profileImage: {
+    src: '/files/profile.jpg',
+    alt: 'Enjoying a country walk',
+  },
+  githubUrl: 'https://github.com/chrisslater',
   twitterUrl: 'https://twitter.com/ChrisOnTheSide',
   linkedinUrl: 'https://www.linkedin.com/in/crslater',
 };
@@ -26,49 +30,46 @@ const contactInfo = {
 const experience = [{
   fromDate: '2015-06-20T23:00:00.000Z',
   toDate: '2016-06-30T23:00:00.000Z',
-  title: 'Amido Ltd',
+  title: 'Amido',
   strapline: 'React and Javascript Developer',
   body:
     `
     Built Javascript Single Page Applications and
     Games using ReactJS, Redux, Flux and NodeJS.
+    These were hosted on AWS using Docker containers.
     `,
 }, {
   fromDate: '2013-11-01T23:00:00.000Z',
   toDate: '2015-06-29T23:00:00.000Z',
-  title: 'Rated People Ltd',
+  title: 'Rated People',
   strapline: 'Senior Web Developer',
   body:
     `
-    Built a BackboneJS SPA for logged-in tradesmen.
+    Architected and developed BackboneJS SPA for logged-in experience tradesmen.
     It communicated to the databases through a Symfony API.
     This was all hosted on AWS using Docker containers.
     `,
 }, {
   fromDate: '2011-08-01T23:00:00.000Z',
   toDate: '2013-06-28T23:00:00.000Z',
-  title: 'IPC Media Ltd',
+  title: 'IPC Media',
   strapline: 'Digital Developer',
   body:
     `
-      Brought in for my Drupal experience,
-      I mostly actually worked with Symfony.
-      This was no bad thing!
-      As I grew more confident, I began to experiment with
-      Javascript libraries and Object Orientated CSS.
+    Brought in for my Drupal experience,
+    I actually spent most of my time working with Symfony projects.
+    This was no bad thing!
+    As I grew more confident as a developer, I began to experiment with
+    Javascript libraries and Object Orientated CSS.
     `,
 }, {
-  fromDate: '2011-08-01T23:00:00.000Z',
-  toDate: '2013-06-28T23:00:00.000Z',
-  title: 'Moore Wilson Ltd',
+  fromDate: '2011-03-01T23:00:00.000Z',
+  toDate: '2011-08-01T23:00:00.000Z',
+  title: 'Moore Wilson',
   strapline: 'Drupal Developer',
   body:
     `
-      Brought in for my Drupal experience,
-      I mostly actually worked with Symfony.
-      This was no bad thing!
-      As I grew more confident, I began to experiment with
-      Javascript libraries and Object Orientated CSS.
+    Built a number of websites in Drupal 6 & 7
     `,
 }];
 
@@ -104,7 +105,7 @@ function Profile(props) {
             { name: 'large', width: 700 },
           ]}
         >
-          <BusinessCard {...contactInfo}/>
+          <BusinessCard {...contactInfo} />
         </ElementQuery>
       </Layout>
       <Layout isCentered>
@@ -119,7 +120,7 @@ function Profile(props) {
       <Layout isCentered>
         <p>
           <Button
-            href="/files/chris-professional-profile-20160530.pdf"
+            href="/files/chris-professional-profile-20160612.pdf"
             target="_blank"
           >
             Download CV
@@ -144,7 +145,7 @@ function Profile(props) {
         <h2 className={theme.sectionHeadline}>Work Experience</h2>
         <ElementQuery sizes={[{ name: 'large', width: 700 }]}>
           <Timeline>
-            {experience.map((job) => <TimelineSingle {...job} />)}
+            {experience.map((job, key) => <TimelineSingle key={key} {...job} />)}
           </Timeline>
         </ElementQuery>
       </Layout>

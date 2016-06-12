@@ -60,7 +60,9 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
   } else {
-    if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', 'public, max-age=' + (maxAge/1000));
+    if (!res.getHeader('Cache-Control')) {
+      res.setHeader('Cache-Control', `public, max-age=${(maxAge / 1000)}`);
+    }
   }
 
   function formatUrl(fpath) {

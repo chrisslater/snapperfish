@@ -21,6 +21,10 @@ class BusinessCard extends Component {
     githubUrl: PropTypes.string,
     twitterUrl: PropTypes.string,
     linkedinUrl: PropTypes.string,
+    profileImage: PropTypes.shape({
+      src: PropTypes.string,
+      alt: PropTypes.string,
+    }),
   };
 
   static defaultProps = {
@@ -40,6 +44,10 @@ class BusinessCard extends Component {
       twitterUrl,
       linkedinUrl,
       className,
+      profileImage: {
+        src,
+        alt,
+      },
     } = this.props;
     let isSmall = false;
 
@@ -61,8 +69,8 @@ class BusinessCard extends Component {
           <div className={theme.picture}>
             <Image
               itemProp="image"
-              src={'/files/profile-star-wars.jpg'}
-              alt={'R2D2, C3P0 and I'}
+              src={src}
+              alt={alt}
             />
           </div>
           <div className={theme.info}>
@@ -87,7 +95,11 @@ class BusinessCard extends Component {
               </li>
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>Address</span>
-                <address itemProp="address" className={theme.list_item_value}>{address}</address>
+                <address
+                  itemProp="address"
+                  className={theme.list_item_value}
+                  dangerouslySetInnerHTML={{ __html: address }}
+                />
               </li>
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>Phone</span>
