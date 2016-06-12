@@ -100,6 +100,7 @@
     "file-loader": "^0.8.5",
     "font-awesome": "^4.4.0",
     "font-awesome-webpack": "0.0.4",
+    "heroku-ssl-redirect": "0.0.3",
     "hoist-non-react-statics": "^1.0.5",
     "invariant": "^2.2.0",
     "json-loader": "^0.5.4",
