@@ -1,4 +1,5 @@
 import Express from 'express';
+import sslRedirect from 'heroku-ssl-redirect';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 // import config from './config';
@@ -37,6 +38,7 @@ const _keystone = require('../keystone');
 const keystone = _keystone(app);
 const maxAge = 31557600000;
 
+app.use(sslRedirect());
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static'), { maxAge }));
