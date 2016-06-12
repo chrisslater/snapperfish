@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import { syncHistoryWithStore } from 'react-router-redux';
-
-import { ApplyTheme } from 'rethemeable';
+import { Themer } from 'components';
 import theme from 'theme/theme';
 
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
@@ -40,9 +39,9 @@ const component = (
 
 ReactDOM.render(
   <Provider store={store} key="provider">
-    <ApplyTheme theme={theme}>
+    <Themer scalesTheme={theme}>
       {component}
-    </ApplyTheme>
+    </Themer>
   </Provider>,
   dest
 );
@@ -66,12 +65,12 @@ if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
     <Provider store={store} key="provider">
-      <ApplyTheme theme={theme}>
+      <Themer scalesTheme={theme}>
         <div>
           {component}
           <DevTools />
         </div>
-      </ApplyTheme>
+      </Themer>
     </Provider>,
     dest
   );

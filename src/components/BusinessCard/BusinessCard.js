@@ -1,16 +1,17 @@
 import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
+import themeInjector from 'containers/themeInjector';
 import {
   Image,
 } from 'components';
 
-@themeable
+@themeInjector
 class BusinessCard extends Component {
   static propTypes = {
-    containerWidth: PropTypes.number.isRequired,
+    className: PropTypes.string,
+    theme: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -20,12 +21,19 @@ class BusinessCard extends Component {
     githubUrl: PropTypes.string,
     twitterUrl: PropTypes.string,
     linkedinUrl: PropTypes.string,
+    profileImage: PropTypes.shape({
+      src: PropTypes.string,
+      alt: PropTypes.string,
+    }),
   };
 
+  static defaultProps = {
+    containerWidth: 0,
+  }
+
   render() {
-    const theme = this.theme;
     const {
-      containerWidth,
+      theme,
       name,
       position,
       email,
@@ -35,16 +43,21 @@ class BusinessCard extends Component {
       githubUrl,
       twitterUrl,
       linkedinUrl,
+      className,
+      profileImage: {
+        src,
+        alt,
+      },
     } = this.props;
-    let divide = false;
+    let isSmall = false;
 
-    if (containerWidth > 684) {
-      divide = true;
+    if (className === 'small') {
+      isSmall = true;
     }
 
     const mainClasses = classNames({
       [theme.main]: true,
-      [theme.mainDivide]: divide,
+      [theme.mainIsSmall]: isSmall,
     });
 
     return (
@@ -56,8 +69,8 @@ class BusinessCard extends Component {
           <div className={theme.picture}>
             <Image
               itemProp="image"
-              src={'/files/profile-star-wars.jpg'}
-              alt={'R2D2, C3P0 and I'}
+              src={src}
+              alt={alt}
             />
           </div>
           <div className={theme.info}>
@@ -82,7 +95,11 @@ class BusinessCard extends Component {
               </li>
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>Address</span>
-                <address itemProp="address" className={theme.list_item_value}>{address}</address>
+                <address
+                  itemProp="address"
+                  className={theme.list_item_value}
+                  dangerouslySetInnerHTML={{ __html: address }}
+                />
               </li>
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>Phone</span>

@@ -1,4 +1,5 @@
 import Express from 'express';
+import sslRedirect from 'heroku-ssl-redirect';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 // import config from './config';
@@ -13,11 +14,15 @@ import PrettyError from 'pretty-error';
 
 import { match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
+// import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import getRoutes from './routes';
 import NestedStatus from 'react-nested-status';
+
+import { Themer } from 'components';
+import theme from 'theme/theme';
 // import env from './env';
 
 const pretty = new PrettyError();
@@ -31,10 +36,12 @@ app.all('/api/*', (req, res, next) => {
 
 const _keystone = require('../keystone');
 const keystone = _keystone(app);
+const maxAge = 31557600000;
 
+app.use(sslRedirect());
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
-app.use(Express.static(path.join(__dirname, '..', 'static')));
+app.use(Express.static(path.join(__dirname, '..', 'static'), { maxAge }));
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 // proxy.on('error', (error, req, res) => {
@@ -54,6 +61,10 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
+  } else {
+    if (!res.getHeader('Cache-Control')) {
+      res.setHeader('Cache-Control', `public, max-age=${(maxAge / 1000)}`);
+    }
   }
 
   function formatUrl(fpath) {
@@ -96,12 +107,13 @@ app.use(/^\/(?!keystone|backend).*/, (req, res) => {
       loadOnServer({ ...renderProps, store, helpers: { client } }).then(() => {
         const component = (
           <Provider store={store} key="provider">
-            <ReduxAsyncConnect { ...renderProps } />
+            <Themer scalesTheme={theme}>
+              <ReduxAsyncConnect { ...renderProps } />
+            </Themer>
           </Provider>
         );
 
         global.navigator = { userAgent: req.headers['user-agent'] };
-        // global.navigator = { userAgent: 'all' };
 
         const markup = (
           `<!DOCTYPE html>

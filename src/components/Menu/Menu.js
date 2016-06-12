@@ -1,15 +1,16 @@
 import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
 import config from '../../config';
 import { browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
+@themeInjector
 class Menu extends Component {
   static propTypes = {
+    theme: PropTypes.object.isRequired,
     title: PropTypes.string,
     depth: PropTypes.number,
     isFixed: PropTypes.bool,
@@ -37,8 +38,8 @@ class Menu extends Component {
   };
 
   render() {
-    const theme = this.theme;
     const {
+      theme,
       title,
       depth,
       isFixed,

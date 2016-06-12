@@ -1,38 +1,39 @@
-import React, { Component, PropTypes } from 'react';
-import { themeable } from 'rethemeable';
+import React, { PropTypes } from 'react';
+import themeInjector from 'containers/themeInjector';
 
-@themeable
-export default class Button extends Component {
-  static propTypes={
-    href: PropTypes.string,
-    target: PropTypes.string,
-    children: PropTypes.object.isRequired,
-  };
+function Button(props) {
+  const {
+    theme,
+    href,
+    target,
+    children,
+  } = props;
 
-  render() {
-    const theme = this.theme;
-    const {
-      href,
-      target,
-    } = this.props;
+  const aProps = {};
 
-    const aProps = {};
-
-    if (href) {
-      aProps.href = href;
-    }
-
-    if (target) {
-      aProps.target = target;
-    }
-
-    return (
-      <a
-        className={theme.self}
-        { ...aProps }
-      >
-        {this.props.children}
-      </a>
-    );
+  if (href) {
+    aProps.href = href;
   }
+
+  if (target) {
+    aProps.target = target;
+  }
+
+  return (
+    <a
+      className={theme.self}
+      { ...aProps }
+    >
+      {children}
+    </a>
+  );
 }
+
+Button.propTypes = {
+  theme: PropTypes.object.isRequired,
+  href: PropTypes.string,
+  target: PropTypes.string,
+  children: PropTypes.string.isRequired,
+};
+
+export default themeInjector(Button);

@@ -9,12 +9,12 @@
   margin-top: 40px;
 }
 
-@define-mixin arrow $direction: left {
+@mixin arrow($direction: left) {
   position: absolute;
   width: 45px;
   height: 35px;
   overflow: hidden;
-  $(direction): 100%;
+  #{$direction}: 100%;
   top: 30px;
 
   &:before {
@@ -25,7 +25,7 @@
      border-radius: 10px;
      background-color: var(--primary1Color);
      position: absolute;
-     $(direction): calc(100% - 10px);
+     #{$direction}: calc(100% - 10px);
   }
 
   &:after {
@@ -35,17 +35,17 @@
      height: 35px;
      background: white;
      transform: rotate(45deg);
-     $(direction): -25px;
+     #{$direction}: -25px;
      box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.5);
   }
 }
 
 .arrow-left {
-  @mixin arrow right;
+  @include arrow(right);
 }
 
 .arrow-right {
-  @mixin arrow left;
+  @include arrow(left);
 }
 
 .left {
@@ -70,12 +70,9 @@
 }
 
 .title {
-  @extend mui-headline;
+  @extend %mui-headline;
 }
 
 .strapline {
-  @extend mui-title;
-}
-
-.body {
+  @extend %mui-title;
 }

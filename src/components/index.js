@@ -4,7 +4,9 @@
  *  ie: import { CounterButton, InfoBar } from 'components';
  *
  */
+export Themer from './Themer/Themer';
 export App from './App/App';
+export ContentWrapper from './ContentWrapper/ContentWrapper';
 export Button from './Button/Button';
 export PostsGrid from './PostsGrid/PostsGrid';
 export Post from './Post/Post';
@@ -22,4 +24,3 @@ export Skills from './Skills/Skills';
 
 export Timeline from './Timeline/Timeline';
 export TimelineSingle from './TimelineSingle/TimelineSingle';
-

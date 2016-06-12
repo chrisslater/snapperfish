@@ -41,26 +41,19 @@
   flex-wrap: wrap;
 }
 
-.mainDivide {
-  padding: 20px;
-}
-
-.mainDivide > .picture {
-  flex-basis: 40%;
-}
-
-.mainDivide > .info {
-  flex-basis: 60%;
+.mainIsSmall {
+  display: block;
 }
 
 .picture {
+  flex-basis: 40%;
   padding: 20px;
-  flex-basis: 100%;
   text-align: center;
 }
 
 .info {
   flex: 1.5;
+  flex-basis: 60%;
   padding: 20px;
 }
 
@@ -71,7 +64,7 @@
   border-top: solid 1px var(--borderColor);
 }
 
-@define-placeholder list-padding {
+%list-padding {
   padding-top: 2px;
   padding-bottom: 2px;
 }
@@ -84,7 +77,7 @@
 
 .list_item_label {
   position: absolute;
-  @extend list-padding;
+  @extend %list-padding;
   padding-left: 7px;
   padding-right: 7px;
 }
@@ -94,7 +87,7 @@
   padding-left: 90px;
   font-style: normal;
   color: var(--accent3Color);
-  @extend list-padding;
+  @extend %list-padding;
 }
 
 .availability {

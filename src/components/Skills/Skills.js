@@ -1,9 +1,9 @@
 // @flow
 import React, { PropTypes, Component } from 'react';
-import { themeable } from 'rethemeable';
 import classNames from 'classnames';
 import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress';
+import themeInjector from 'containers/themeInjector';
 
 const levels = [
   {
@@ -39,14 +39,13 @@ function getLevelValue(level: number): string {
   return value;
 }
 
-@themeable
+@themeInjector
 class Skills extends Component {
   static propTypes = {
+    className: PropTypes.string,
+    theme: PropTypes.object.isRequired,
     skills: PropTypes.array.isRequired,
-    containerWidth: PropTypes.number.isRequired,
   };
-  theme: Object;
-
 
   /**
    * Create the markup up for an individual skill
@@ -82,17 +81,18 @@ class Skills extends Component {
    * @returns {Element}
    */
   render() {
-    const theme = this.theme;
     const {
+      theme,
       skills,
-      containerWidth,
+      className,
     } = this.props;
+
     let skillsMarkup = null;
 
     if (Array.isArray(skills) && skills.length > 0) {
       let columns = 1;
 
-      if (containerWidth > 499) {
+      if (className === 'large') {
         columns = 2;
       }
 

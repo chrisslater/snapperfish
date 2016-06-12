@@ -1,7 +1,7 @@
 import React from 'react';
-import shallowWithContext from 'testing/shallowWithContext';
+import mountWithContext from 'testing/mountWithContext';
 import { expect } from 'chai';
-import { TimelineSingle } from 'components';
+import TimelineSingle from '../TimelineSingle';
 
 describe('Component', function () {
   /** @test {TimelineSingle} */
@@ -27,7 +27,7 @@ describe('Component', function () {
 
       /** @test {TimelineSingle#render()} */
       it('should render a fromDate', function () {
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -39,7 +39,7 @@ describe('Component', function () {
       /** @test {TimelineSingle#render()} */
       it('should render a toDate', function () {
         this.mock.toDate = '2016-07-20T23:00:00.000Z';
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -50,7 +50,7 @@ describe('Component', function () {
 
       /** @test {TimelineSingle#render()} */
       it('should render to present text, if toDate is not passed', function () {
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -61,7 +61,7 @@ describe('Component', function () {
 
       /** @test {TimelineSingle#render()} */
       it('should render a title', function () {
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -72,7 +72,7 @@ describe('Component', function () {
 
       /** @test {TimelineSingle#render()} */
       it('should render a strapline', function () {
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -84,7 +84,7 @@ describe('Component', function () {
       /** @test {TimelineSingle#render()} */
       it('should render body text', function () {
         this.mock.body = 'This is body text';
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />
@@ -95,7 +95,7 @@ describe('Component', function () {
 
       /** @test {TimelineSingle#render()} */
       it('should not render body text, if not passed', function () {
-        const component = shallowWithContext(
+        const component = mountWithContext(
           <TimelineSingle
             {...this.mock}
           />

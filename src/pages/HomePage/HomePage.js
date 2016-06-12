@@ -6,6 +6,7 @@ import {
   Profile,
   // Layout,
 } from 'components';
+import { asyncConnect } from 'redux-connect';
 // import config from '../../config';
 // <Menu depth={0} isFixed />
 
@@ -19,5 +20,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
-
+export default asyncConnect([])(HomePage);

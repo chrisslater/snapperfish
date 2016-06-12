@@ -9,7 +9,7 @@ body {
   color: var(--font-color);
 }
 
-@define-placeholder mui-display {
+%mui-display {
   max-width: var(--max-width-paragraph);
   font-size: 2.125em;
   line-height: 1.176;
@@ -17,7 +17,7 @@ body {
   margin-top: 0;
 }
 
-@define-placeholder mui-headline {
+%mui-headline {
   max-width: var(--max-width-paragraph);
   font-size: 1.500em;
   line-height: 1.33333333;
@@ -25,7 +25,7 @@ body {
   margin-top: 0;
 }
 
-@define-placeholder mui-title {
+%mui-title {
   max-width: var(--max-width-paragraph);
   font-size: 1.250em;
   line-height: 1.33333333;
@@ -34,7 +34,7 @@ body {
   margin-top: 0;
 }
 
-@define-placeholder mui-subheading {
+%mui-subheading {
   max-width: var(--max-width-paragraph);
   font-size: 1em;
   line-height: 1.5;
@@ -42,7 +42,7 @@ body {
   margin-top: 0;
 }
 
-@define-placeholder mui-body {
+%mui-body {
   max-width: var(--max-width-paragraph);
   font-size:  0.875em;
   line-height: 1.5;
@@ -50,31 +50,31 @@ body {
   margin-top: 0;
 }
 
-@define-placeholder fancy-button {
+%fancy-button {
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
 
 h1 {
-  @extend mui-display;
+  @extend %mui-display;
 }
 
 h2 {
-  @extend mui-headline;
+  @extend %mui-headline;
 }
 
 h3 {
-  @extend mui-title;
+  @extend %mui-title;
 }
 
 p  {
-  @extend mui-subheading;
+  @extend %mui-subheading;
 }
 
 small {
-  @extend mui-body;
+  @extend %mui-body;
 }
 
 button {
-  @extend fancy-button;
+  @extend %fancy-button;
 }
