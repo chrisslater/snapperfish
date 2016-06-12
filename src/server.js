@@ -38,7 +38,7 @@ const _keystone = require('../keystone');
 const keystone = _keystone(app);
 const maxAge = 31557600000;
 
-app.use(sslRedirect());
+// app.use(sslRedirect());
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static'), { maxAge }));
