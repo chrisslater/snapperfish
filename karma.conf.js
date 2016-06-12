@@ -44,11 +44,11 @@ module.exports = function (config) {
       devtool: 'inline-source-map',
       module: {
         preLoaders: [
-          //{
-          //  test: /\.js$/,
-          //  exclude: /(tests\.webpack.js|node_modules|__tests__)/,
-          //  loader: 'isparta'
-          //}
+          {
+           test: /\.js$/,
+           exclude: /(tests\.webpack.js|node_modules|__tests__)/,
+           loader: 'isparta'
+          }
         ],
         loaders: [
           { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: {limit: 10240} },
