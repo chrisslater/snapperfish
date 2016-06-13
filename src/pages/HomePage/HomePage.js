@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import {
   Hero,
   // Menu,
@@ -13,7 +12,6 @@ import { asyncConnect } from 'redux-connect';
 function HomePage() {
   return (
     <div>
-      <Helmet title="Home" />
       <Hero />
       <Profile />
     </div>
