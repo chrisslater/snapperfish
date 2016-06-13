@@ -16,7 +16,7 @@ const contactInfo = {
   position: 'Developer and startup entrepreneur',
   email: 'hello@snapper.fish',
   address: 'Snapper Fish Ltd, <br>Office 7, <br>35-37 Ludgate Hill, <br>London <br>EC4M 7JN',
-  phone: '+44 78663 34466',
+  // phone: '+44 78663 34466',
   available: 'July 2016',
   profileImage: {
     src: '/files/profile.jpg',
@@ -124,9 +124,7 @@ function Profile(props) {
             target="_blank"
           >
             Download CV
-          </Button>
-
-          <Button
+          </Button> <Button
             href="https://snapperfish.typeform.com/to/V0S5BV"
             target="_blank"
           >

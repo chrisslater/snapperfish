@@ -1,5 +1,5 @@
 import Express from 'express';
-import sslRedirect from 'heroku-ssl-redirect';
+// import sslRedirect from 'heroku-ssl-redirect';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 // import config from './config';

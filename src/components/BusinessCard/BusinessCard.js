@@ -60,6 +60,17 @@ class BusinessCard extends Component {
       [theme.mainIsSmall]: isSmall,
     });
 
+    let phoneMarkup;
+    if (phone) {
+      phoneMarkup = (
+        <li className={theme.list_item}>
+          <span className={theme.list_item_label}>
+            Phone
+          </span> <span className={theme.list_item_value}>{phone}</span>
+        </li>
+      );
+    }
+
     return (
       <Paper
         itemScope
@@ -76,8 +87,9 @@ class BusinessCard extends Component {
           <div className={theme.info}>
             <div className={theme.head}>
               <h1 className={theme.title}>
-                <span className={theme.hello}>Hello</span>
-                I'm <strong itemProp="name" className={theme.name}>{name}</strong>
+                <span className={theme.hello}>
+                 Hello
+                </span> I'm <strong itemProp="name" className={theme.name}>{name}</strong>
               </h1>
               <div className={theme.position}>{position}</div>
             </div>
@@ -85,8 +97,7 @@ class BusinessCard extends Component {
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>
                   Email
-                </span>
-                <span
+                </span> <span
                   itemProp="email"
                   className={theme.list_item_value}
                 >
@@ -94,17 +105,15 @@ class BusinessCard extends Component {
                 </span>
               </li>
               <li className={theme.list_item}>
-                <span className={theme.list_item_label}>Address</span>
-                <address
+                <span className={theme.list_item_label}>
+                  Address
+                </span> <address
                   itemProp="address"
                   className={theme.list_item_value}
                   dangerouslySetInnerHTML={{ __html: address }}
                 />
               </li>
-              <li className={theme.list_item}>
-                <span className={theme.list_item_label}>Phone</span>
-                <span className={theme.list_item_value}>{phone}</span>
-              </li>
+              {phoneMarkup}
               <li className={theme.list_item}>
                 <span
                   className={
@@ -115,8 +124,7 @@ class BusinessCard extends Component {
                   }
                 >
                   Available
-                </span>
-                <span className={theme.list_item_value}>{available}</span>
+                </span> <span className={theme.list_item_value}>{available}</span>
               </li>
             </ul>
           </div>
