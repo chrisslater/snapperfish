@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ElementQuery from 'react-element-query';
 import themeInjector from 'containers/themeInjector';
+import analytics from 'helpers/analytics';
 
 import {
   Layout,
@@ -13,10 +14,10 @@ import {
 
 const contactInfo = {
   name: 'Chris Slater',
-  position: 'Developer and startup entrepreneur',
+  position: 'Full stack web developer',
   email: 'hello@snapper.fish',
   address: 'Snapper Fish Ltd, <br>Office 7, <br>35-37 Ludgate Hill, <br>London <br>EC4M 7JN',
-  // phone: '+44 78663 34466',
+  phone: '020 3290 3474',
   available: 'July 2016',
   profileImage: {
     src: '/files/profile.jpg',
@@ -93,6 +94,13 @@ const skills = [{
   level: 0.4,
 }];
 
+const handleProfileOnClick = () => {
+  analytics.event({
+    category: 'PDF',
+    action: 'CV',
+  });
+};
+
 function Profile(props) {
   const theme = props.theme;
 
@@ -120,8 +128,9 @@ function Profile(props) {
       <Layout isCentered>
         <p>
           <Button
-            href="/files/chris-professional-profile-20160612.pdf"
+            href="/files/chris-professional-profile-20160613.pdf"
             target="_blank"
+            onClick={handleProfileOnClick}
           >
             Download CV
           </Button> <Button

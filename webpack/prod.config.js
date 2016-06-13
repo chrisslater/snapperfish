@@ -83,7 +83,8 @@ module.exports = {
     new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        GOOGLE_ANALYTICS: JSON.stringify(process.env.GOOGLE_ANALYTICS)
       },
       __CLIENT__: true,
       __SERVER__: false,

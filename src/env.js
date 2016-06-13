@@ -1,6 +1,4 @@
 export default {
-  CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
-  CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
-  CONTENTFUL_URL: process.env.CONTENTFUL_URL,
+  GOOGLE_ANALYTICS: process.env.GOOGLE_ANALYTICS,
   API_URL: 'http://localhost:5000/api',
 };

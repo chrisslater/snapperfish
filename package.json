@@ -127,6 +127,7 @@
     "react-dimensions": "^1.1.1",
     "react-dom": "^15.0.1",
     "react-element-query": "^2.0.2",
+    "react-ga": "^2.1.0",
     "react-helmet": "^3.0.2",
     "react-nested-status": "^0.1.2",
     "react-redux": "^4.0.0",

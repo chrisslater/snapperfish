@@ -7,6 +7,7 @@ function Button(props) {
     href,
     target,
     children,
+    onClick,
   } = props;
 
   const aProps = {};
@@ -23,17 +24,23 @@ function Button(props) {
     <a
       className={theme.self}
       { ...aProps }
+      onClick={onClick}
     >
       {children}
     </a>
   );
 }
 
+Button.defaultProps = {
+  onClick: () => {},
+};
+
 Button.propTypes = {
   theme: PropTypes.object.isRequired,
   href: PropTypes.string,
   target: PropTypes.string,
   children: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default themeInjector(Button);

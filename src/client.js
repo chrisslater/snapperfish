@@ -16,6 +16,7 @@ import theme from 'theme/theme';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import getRoutes from './routes';
+import analytics from 'helpers/analytics';
 
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
@@ -27,11 +28,19 @@ const dest = document.getElementById('content');
 const store = createStore(client, window.__data);
 const history = syncHistoryWithStore(useScroll(() => browserHistory)(), store);
 
+function recordPageView() {
+  if (__CLIENT__ && window && window.location) {
+    analytics.pageview(window.location.pathname);
+  }
+}
+
 const component = (
   <Router
     render={(props) =>
       <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} />
-    } history={history}
+    }
+    history={history}
+    onUpdate={recordPageView}
   >
     {getRoutes(store)}
   </Router>

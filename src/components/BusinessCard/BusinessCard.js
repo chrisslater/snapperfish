@@ -104,6 +104,7 @@ class BusinessCard extends Component {
                   {email}
                 </span>
               </li>
+              {phoneMarkup}
               <li className={theme.list_item}>
                 <span className={theme.list_item_label}>
                   Address
@@ -113,7 +114,6 @@ class BusinessCard extends Component {
                   dangerouslySetInnerHTML={{ __html: address }}
                 />
               </li>
-              {phoneMarkup}
               <li className={theme.list_item}>
                 <span
                   className={
