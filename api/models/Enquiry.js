@@ -7,54 +7,52 @@ var Types = keystone.Field.Types;
  */
 
 var Enquiry = new keystone.List('Enquiry', {
-	nocreate: true,
-	noedit: true,
+  nocreate: true,
+  noedit: true,
 });
 
 Enquiry.add({
-	name: { type: Types.Name, required: true },
-	email: { type: Types.Email, required: true },
-	phone: { type: String },
-	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: 'Just leaving a message' },
-		{ value: 'question', label: 'I\'ve got a question' },
-		{ value: 'other', label: 'Something else...' },
-	] },
-	message: { type: Types.Markdown, required: true },
-	createdAt: { type: Date, default: Date.now },
+  name: { type: Types.Text, required: true },
+  email: { type: Types.Email, required: true },
+  message: { type: Types.Markdown, required: true },
 });
 
-Enquiry.schema.pre('save', function(next) {
-	this.wasNew = this.isNew;
-	next();
+Enquiry.schema.path('email').validate((email) => {
+  const emailRegex = /.+@.+/;
+  return emailRegex.test(email); // Assuming email has a text attribute
+}, 'Invalid email type');
+
+Enquiry.schema.pre('save', function (next) {
+  this.wasNew = this.isNew;
+  next();
 });
 
 Enquiry.schema.post('save', function() {
-	if (this.wasNew) {
-		this.sendNotificationEmail();
-	}
+  if (this.wasNew) {
+    this.sendNotificationEmail();
+  }
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 
-	if ('function' !== typeof callback) {
-		callback = function() {};
-	}
+  if ('function' !== typeof callback) {
+    callback = function() {};
+  }
 
-	var enquiry = this;
+  var enquiry = this;
 
-	keystone.list('Y').model.find().where('isAdmin', true).exec(function(err, admins) {
+  keystone.list('Y').model.find().where('isAdmin', true).exec(function(err, admins) {
 
-		if (err) return callback(err);
+    if (err) return callback(err);
 
     new keystone.Email({
-        
+
         templateName: 'enquiry-notification'
       }).send({
         to: admins,
         from: {
           name: 'keystone',
-          email: 'contact@keystone.com'
+          email: 'hello@snapper.fish'
         },
         subject: 'New Enquiry for keystone',
         enquiry: enquiry

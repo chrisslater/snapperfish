@@ -1,25 +1,22 @@
-var async = require('async');
-var keystone = require('keystone');
-var Post = keystone.list('Post');
+import async from 'async';
+import keystone from 'keystone';
+const Post = keystone.list('Post');
 
 /**
  * List Posts
  */
-exports.list = function(req, res) {
-  console.log('working');
-	Post.paginate({
-		page: req.query.page || 1,
-		perPage: 10,
-		maxPages: 10
-	})
-	.where('state', 'published')
-	.sort('-publishedDate')
-	.populate('author', '-password')
-	.populate('categories')
-	.exec(function(err, results) {
-		res.apiResponse(results);
-	});
-}
+exports.list = (req, res) => {
+  Post.paginate({
+    page: req.query.page || 1,
+    perPage: 10,
+    maxPages: 10,
+  })
+  .where('state', 'published')
+  .sort('-publishedDate')
+  .populate('author', '-password')
+  .populate('categories')
+  .exec((err, results) => res.apiResponse(results));
+};
 
 ///**
 // * Get Post by ID

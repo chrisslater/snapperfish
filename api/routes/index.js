@@ -38,6 +38,8 @@ exports = module.exports = function (app) {
 	app.get('/backend/posts', keystone.middleware.api, routes.api.posts.list);
 	app.get('/backend/posts/:slug', keystone.middleware.api, routes.api.posts.get);
 
+	app.post('/backend/enquiries', keystone.middleware.api, routes.api.enquiries.create);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };
