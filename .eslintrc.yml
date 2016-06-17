@@ -20,6 +20,7 @@ rules:
 
   no-underscore-dangle: 0
   global-require: 0
+  new-cap: [ 2, { properties: false } ]
 
   flow-vars/define-flow-type: 1
   flow-vars/use-flow-type: 1
@@ -47,4 +48,3 @@ globals:
   __DEVTOOLS__: true
   socket: true
   webpackIsomorphicTools: true
-

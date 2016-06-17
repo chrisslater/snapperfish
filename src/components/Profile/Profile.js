@@ -10,6 +10,7 @@ import {
   Skills,
   Timeline,
   TimelineSingle,
+  ContactForm,
 } from 'components';
 
 const contactInfo = {
@@ -155,6 +156,10 @@ function Profile(props) {
             {experience.map((job, key) => <TimelineSingle key={key} {...job} />)}
           </Timeline>
         </ElementQuery>
+      </Layout>
+
+      <Layout>
+        <ContactForm />
       </Layout>
     </div>
   );

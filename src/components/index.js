@@ -17,6 +17,9 @@ export Hero from './Hero/Hero';
 export Layout from './Layout/Layout';
 export Menu from './Menu/Menu';
 
+// Contact
+export ContactForm from './ContactForm/ContactForm';
+
 // Profile
 export Profile from './Profile/Profile';
 export BusinessCard from './BusinessCard/BusinessCard';
