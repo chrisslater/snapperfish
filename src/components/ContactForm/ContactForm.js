@@ -1,11 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { SUBMIT_CONTACT_FORM } from './constants';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 
+
 @connect(null)
 class ContactForm extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     email: '',
@@ -19,9 +25,10 @@ class ContactForm extends Component {
     });
   }
 
-  handleSubmit(event) {
-    // this.props.dispatch();
+  handleSubmit(event, dispatch) {
     console.log('submit', event);
+    console.log(dispatch);
+    return dispatch({ type: SUBMIT_CONTACT_FORM });
   }
 
   render() {
@@ -30,6 +37,9 @@ class ContactForm extends Component {
       email,
       message,
     } = this.state;
+    const {
+      dispatch,
+    } = this.props;
 
     return (
       <Paper>
@@ -65,7 +75,7 @@ class ContactForm extends Component {
           </div>
           <div>
             <RaisedButton
-              onTouchEnd={event => this.handleSubmit(event)}
+              onMouseUp={event => this.handleSubmit(event, dispatch)}
               label="Submit"
               primary
             />

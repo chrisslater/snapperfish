@@ -1,8 +1,12 @@
 import { createStore as _createStore, applyMiddleware, compose } from 'redux';
 import createMiddleware from './middleware/clientMiddleware';
+import createSagaMiddleware from 'redux-saga';
+import { helloSaga, submitContactForm } from 'components/ContactForm/sagas';
+
 
 export default function createStore(client, data) {
-  const middleware = [createMiddleware(client)];
+  const sagaMiddleware = createSagaMiddleware();
+  const middleware = [createMiddleware(client), sagaMiddleware];
 
   let finalCreateStore;
   if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
@@ -25,6 +29,9 @@ export default function createStore(client, data) {
       store.replaceReducer(require('./modules/reducer'));
     });
   }
+
+  sagaMiddleware.run(helloSaga);
+  sagaMiddleware.run(submitContactForm);
 
   return store;
 }

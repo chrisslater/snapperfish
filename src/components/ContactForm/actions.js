@@ -1,1 +1,0 @@
-export const CONTACT_FORM_SUBMITTED = 'contactForm/CONTACT_FORM_SUBMITTED';

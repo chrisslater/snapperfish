@@ -138,6 +138,7 @@
     "redux": "^3.0.4",
     "redux-async-connect": "1.0.0-rc4",
     "redux-connect": "^2.4.0",
+    "redux-saga": "^0.10.5",
     "rethemeable": "^4.0.2",
     "sass-loader": "^3.1.2",
     "scroll-behavior": "^0.4.0",
