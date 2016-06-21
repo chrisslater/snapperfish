@@ -128,7 +128,7 @@ function Profile(props) {
       <Layout isCentered>
         <p>
           <Button
-            href="/files/chris-slater-professional-profile-20160620.pdf"
+            href="/files/cv/chris-slater-professional-profile-20160621.pdf"
             target="_blank"
             onClick={handleProfileOnClick}
           >
