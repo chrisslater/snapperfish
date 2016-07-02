@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { SUBMIT_CONTACT_FORM } from './constants';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import { connect } from 'react-redux';
@@ -64,8 +65,9 @@ class ContactForm extends Component {
       message: messageError,
     } = errors;
 
-    let headerMessageMarkup = '';
-    let loadingMarkup = '';
+    let headerMessageMarkup;
+    let bodyMarkup;
+    let loadingMarkup;
 
     if (Object.keys(errors).length > 0) {
       headerMessageMarkup = (<p>There has been an error</p>);
@@ -73,20 +75,15 @@ class ContactForm extends Component {
       headerMessageMarkup = (<p>Great success, your form has been submitted!</p>);
     }
 
-    if (isLoading) {
-      loadingMarkup = (
-        <div className={styles.loaderBackground}>
-          <div className={styles.loader}>
-            <CircularProgress />
-          </div>
+    if (isSubmitted) {
+      bodyMarkup = (
+        <div>
+          <FlatButton label="Send another message" primary />
         </div>
       );
-    }
-
-    return (
-      <Paper className={styles.self}>
-        <div className={classNames(styles.container, { [styles.isLoading]: isLoading })}>
-          {headerMessageMarkup}
+    } else {
+      bodyMarkup = (
+        <div>
           <div>
             <TextField
               id="name"
@@ -133,6 +130,25 @@ class ContactForm extends Component {
               primary
             />
           </div>
+        </div>
+      );
+    }
+
+    if (isLoading) {
+      loadingMarkup = (
+        <div className={styles.loaderBackground}>
+          <div className={styles.loader}>
+            <CircularProgress />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <Paper className={styles.self}>
+        <div className={classNames(styles.container, { [styles.isLoading]: isLoading })}>
+          {headerMessageMarkup}
+          {bodyMarkup}
         </div>
         {loadingMarkup}
       </Paper>
