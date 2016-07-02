@@ -1,25 +1,38 @@
-import { takeEvery } from 'redux-saga';
-import { put } from 'redux-saga/effects';
+import { takeLatest, delay } from 'redux-saga';
+import { put, call } from 'redux-saga/effects';
 import {
   SUBMIT_CONTACT_FORM,
   SUBMIT_CONTACT_FORM_SUCCEEDED,
+  SUBMIT_CONTACT_FORM_LOADING,
   SUBMIT_CONTACT_FORM_FAILED,
 } from './constants';
+import client from 'helpers/client';
+import { API_ERROR } from 'constants';
 
-export function* helloSaga() {
-  console.log('Hello world!');
-}
+export function* submitForm({ payload }) {
+  yield put({ type: SUBMIT_CONTACT_FORM_LOADING, payload: { fields: payload } });
+  yield delay(5000);
 
-export function* submitForm() {
   try {
-    console.log('yay');
-    yield put({ type: SUBMIT_CONTACT_FORM_SUCCEEDED });
+    const res = yield call(client.post, '/api/enquiries', payload);
+    yield put({ type: SUBMIT_CONTACT_FORM_SUCCEEDED, payload: res });
   } catch (e) {
-    yield put({ type: SUBMIT_CONTACT_FORM_FAILED, message: e.message });
+    switch (e.status) {
+      case 400:
+        yield put({
+          type: SUBMIT_CONTACT_FORM_FAILED,
+          payload: {
+            errors: e.response.body.detail.errors,
+            fields: payload,
+          },
+        });
+        break;
+      default:
+        yield put({ type: API_ERROR, payload: e });
+    }
   }
 }
 
 export function* submitContactForm() {
-  console.log('test');
-  yield* takeEvery(SUBMIT_CONTACT_FORM, submitForm);
+  yield* takeLatest(SUBMIT_CONTACT_FORM, submitForm);
 }

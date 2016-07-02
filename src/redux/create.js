@@ -1,7 +1,7 @@
 import { createStore as _createStore, applyMiddleware, compose } from 'redux';
 import createMiddleware from './middleware/clientMiddleware';
 import createSagaMiddleware from 'redux-saga';
-import { helloSaga, submitContactForm } from 'components/ContactForm/sagas';
+import { submitContactForm } from 'components/ContactForm/sagas';
 
 
 export default function createStore(client, data) {
@@ -30,8 +30,6 @@ export default function createStore(client, data) {
     });
   }
 
-  sagaMiddleware.run(helloSaga);
   sagaMiddleware.run(submitContactForm);
-
   return store;
 }

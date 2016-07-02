@@ -14,7 +14,7 @@ var Enquiry = new keystone.List('Enquiry', {
 Enquiry.add({
   name: { type: Types.Text, required: true },
   email: { type: Types.Email, required: true },
-  message: { type: Types.Markdown, required: true },
+  message: { type: Types.Textarea, required: true },
 });
 
 Enquiry.schema.path('email').validate((email) => {

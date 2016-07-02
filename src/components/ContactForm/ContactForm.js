@@ -3,20 +3,36 @@ import { SUBMIT_CONTACT_FORM } from './constants';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
+const defaultFields = {
+  name: '',
+  email: '',
+  message: '',
+};
 
-@connect(null)
+@connect(
+  ({ contactForm }) => ({ contactForm })
+)
 class ContactForm extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    contactForm: PropTypes.object.isRequired,
   };
 
-  state = {
-    name: '',
-    email: '',
-    message: '',
-  };
+  state = defaultFields;
+
+  componentWillReceiveProps({ contactForm }): void {
+    const { fields, isSubmitted } = contactForm;
+
+    if (isSubmitted) {
+      this.setState(Object.assign({}, defaultFields));
+    } else {
+      this.setState(fields);
+    }
+  }
 
   handleChange(event) {
     const { id, value } = event.target;
@@ -25,25 +41,52 @@ class ContactForm extends Component {
     });
   }
 
-  handleSubmit(event, dispatch) {
-    console.log('submit', event);
-    console.log(dispatch);
-    return dispatch({ type: SUBMIT_CONTACT_FORM });
-  }
-
   render() {
+    const styles = require('./ContactForm.scss');
     const {
       name,
       email,
       message,
     } = this.state;
+
     const {
       dispatch,
+      contactForm: {
+        isLoading,
+        isSubmitted,
+        errors,
+      },
     } = this.props;
 
+    const {
+      name: nameError,
+      email: emailError,
+      message: messageError,
+    } = errors;
+
+    let headerMessageMarkup = '';
+    let loadingMarkup = '';
+
+    if (Object.keys(errors).length > 0) {
+      headerMessageMarkup = (<p>There has been an error</p>);
+    } else if (isSubmitted) {
+      headerMessageMarkup = (<p>Great success, your form has been submitted!</p>);
+    }
+
+    if (isLoading) {
+      loadingMarkup = (
+        <div className={styles.loaderBackground}>
+          <div className={styles.loader}>
+            <CircularProgress />
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <Paper>
-        <div>
+      <Paper className={styles.self}>
+        <div className={classNames(styles.container, { [styles.isLoading]: isLoading })}>
+          {headerMessageMarkup}
           <div>
             <TextField
               id="name"
@@ -51,6 +94,8 @@ class ContactForm extends Component {
               onChange={event => this.handleChange(event)}
               floatingLabelText="Name"
               fullWidth
+              errorText={nameError && nameError.message}
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -60,6 +105,8 @@ class ContactForm extends Component {
               value={email}
               floatingLabelText="Email"
               fullWidth
+              errorText={emailError && emailError.message}
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -71,16 +118,23 @@ class ContactForm extends Component {
               fullWidth
               multiLine
               rows={4}
+              errorText={messageError && messageError.message}
+              disabled={isLoading}
             />
           </div>
           <div>
             <RaisedButton
-              onMouseUp={event => this.handleSubmit(event, dispatch)}
+              onMouseUp={() => dispatch({
+                type: SUBMIT_CONTACT_FORM,
+                payload: this.state,
+              })}
               label="Submit"
+              disabled={isLoading}
               primary
             />
           </div>
         </div>
+        {loadingMarkup}
       </Paper>
     );
   }

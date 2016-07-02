@@ -1,0 +1,30 @@
+$size: 70px;
+
+.self {
+  position: relative;
+}
+
+.container {
+  padding: var(--padding);
+}
+
+.isLoading {
+  filter: blur(1px);
+}
+
+.loaderBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: 0-$size/2;
+  margin-left: 0-$size/2;
+}
